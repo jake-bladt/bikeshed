@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDCMS.Business", "QDCMS.Business\QDCMS.Business.csproj", "{5A062A27-F84E-4BEE-8002-5F814DDF64FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDCMS.CommonLibrary", "QDCMS.CommonLibrary\QDCMS.CommonLibrary.csproj", "{9707DD2B-BAA8-46F9-9BEF-68DF9340E81A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDCMS.DataAccess", "QDCMS.DataAccess\QDCMS.DataAccess.csproj", "{96F22D27-E6FF-48C0-8D01-1ECC7D8AE9A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDCMS.Tests", "QDCMS.Tests\QDCMS.Tests.csproj", "{A952A2A3-28F5-47C4-87EA-578562265670}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BC33B47F-9B90-4497-8B23-D5D2F3A3956D}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		QDCMS.vsmdi = QDCMS.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QDCMS.Mvc2", "QDCMS.Mvc2\QDCMS.Mvc2.csproj", "{2D4416D5-BCA9-4916-A578-A9815919B1F1}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = QDCMS.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5A062A27-F84E-4BEE-8002-5F814DDF64FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A062A27-F84E-4BEE-8002-5F814DDF64FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A062A27-F84E-4BEE-8002-5F814DDF64FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A062A27-F84E-4BEE-8002-5F814DDF64FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9707DD2B-BAA8-46F9-9BEF-68DF9340E81A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9707DD2B-BAA8-46F9-9BEF-68DF9340E81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9707DD2B-BAA8-46F9-9BEF-68DF9340E81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9707DD2B-BAA8-46F9-9BEF-68DF9340E81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96F22D27-E6FF-48C0-8D01-1ECC7D8AE9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F22D27-E6FF-48C0-8D01-1ECC7D8AE9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F22D27-E6FF-48C0-8D01-1ECC7D8AE9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F22D27-E6FF-48C0-8D01-1ECC7D8AE9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A952A2A3-28F5-47C4-87EA-578562265670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A952A2A3-28F5-47C4-87EA-578562265670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A952A2A3-28F5-47C4-87EA-578562265670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A952A2A3-28F5-47C4-87EA-578562265670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D4416D5-BCA9-4916-A578-A9815919B1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D4416D5-BCA9-4916-A578-A9815919B1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D4416D5-BCA9-4916-A578-A9815919B1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D4416D5-BCA9-4916-A578-A9815919B1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

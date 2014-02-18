@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="pfixcon">
+</Property><Property Name="Solution File" Value="M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\pfixcon.sln">
+</Property><Property Name="User Options File" Value="M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\pfixcon.suo">
+</Property><Property Name="Date" Value="Friday, August 26, 2011">
+</Property><Property Name="Time" Value="16:39 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="pfixcon.sln" Description="File successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon.sln">
+</Event><Event ErrorLevel="0" Project="" Source="pfixcon.suo" Description="File successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon.suo">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\pfixcon.csproj" Description="Project file successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon\pfixcon.csproj">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\pfixcon.csproj.user" Description="Project user file successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon\pfixcon.csproj.user">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\Program.cs" Description="File successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon\Program.cs">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\Properties\AssemblyInfo.cs" Description="File successfully backed up as M:\shared_root\Dev\OLD.SharedRootDev\pfixcon\Backup\pfixcon\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\pfixcon.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="pfixcon" Source="pfixcon\pfixcon.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="pfixcon.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="pfixcon.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="pfixcon" Source="pfixcon\pfixcon.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>

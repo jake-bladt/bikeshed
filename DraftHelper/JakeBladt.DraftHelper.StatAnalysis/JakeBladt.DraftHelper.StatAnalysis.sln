@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JakeBladt.DraftHelper.StatAnalysis", "JakeBladt.DraftHelper.StatAnalysis\JakeBladt.DraftHelper.StatAnalysis.csproj", "{D9901DD5-85E1-47D7-B262-C859D9CEB729}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JakeBladt.DraftHelper.StatAnalysis.Tests", "..\JakeBladt.DraftHelper.StatAnalysis.Tests\JakeBladt.DraftHelper.StatAnalysis.Tests.csproj", "{E3614F69-AC38-44E3-9018-9E5D7CDD61F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9901DD5-85E1-47D7-B262-C859D9CEB729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9901DD5-85E1-47D7-B262-C859D9CEB729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9901DD5-85E1-47D7-B262-C859D9CEB729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9901DD5-85E1-47D7-B262-C859D9CEB729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3614F69-AC38-44E3-9018-9E5D7CDD61F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3614F69-AC38-44E3-9018-9E5D7CDD61F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3614F69-AC38-44E3-9018-9E5D7CDD61F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3614F69-AC38-44E3-9018-9E5D7CDD61F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
