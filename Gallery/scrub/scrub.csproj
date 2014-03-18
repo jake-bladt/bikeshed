@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b63541b2-4f52-43f3-8e11-592432f40284</ProjectGuid>
+    <ProjectGuid>{1C43C767-0DA5-4FAB-B853-83F3FD54ADA4}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>scrub</RootNamespace>
@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GalleryScrubber\GalleryScrubber.csproj">
+      <Project>{465fc05c-bf7c-4047-aca1-16194b16f4a4}</Project>
+      <Name>GalleryScrubber</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
+      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
+      <Name>ImageGallery</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
