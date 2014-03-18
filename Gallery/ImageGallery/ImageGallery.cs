@@ -10,6 +10,7 @@ namespace ImageGallery
     public class ImageGallery
     {
         protected string _root;
+        protected Dictionary<string, Subject> _subjects;
 
         public ImageGallery(string rootPath)
         {
@@ -17,5 +18,28 @@ namespace ImageGallery
                  String.Format("There is no directory named {0}.", rootPath));
             _root = rootPath;
         }
+
+        public Subject Subject(string name)
+        {
+            var subjectPath = Path.Combine(_root, name);
+            if (!Directory.Exists(subjectPath)) throw new ArgumentException(String.Format("There is no subject named {0}.", name));
+            return new Subject(name, subjectPath);
+        }
+
+        public Dictionary<string, Subject> Sujects
+        {
+            get
+            {
+                if(null == _subjects)
+                {
+                    _subjects = new Dictionary<string, Subject>();
+                    var di = new DirectoryInfo(_root);
+                    var subjectDirs = di.GetDirectories("*", SearchOption.TopDirectoryOnly);
+                    subjectDirs.ToList().ForEach(sdi => _subjects[sdi.Name] = new Subject(sdi.FullName, sdi.Name));
+                }
+                return _subjects;
+            }
+        }
+
     }
 }
