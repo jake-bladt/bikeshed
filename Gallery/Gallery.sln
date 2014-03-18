@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery", "Gallery\Gallery.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Tests", "Gallery.Tests\Gallery.Tests.csproj", "{F02DFD09-F504-4A26-951D-2B340F30EC3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalleryScrubber", "GalleryScrubber\GalleryScrubber.csproj", "{465FC05C-BF7C-4047-ACA1-16194B16F4A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery", "ImageGallery\ImageGallery.csproj", "{2F476677-78E0-4B78-BD75-C450F8F244DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F02DFD09-F504-4A26-951D-2B340F30EC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F02DFD09-F504-4A26-951D-2B340F30EC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F02DFD09-F504-4A26-951D-2B340F30EC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{465FC05C-BF7C-4047-ACA1-16194B16F4A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{465FC05C-BF7C-4047-ACA1-16194B16F4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{465FC05C-BF7C-4047-ACA1-16194B16F4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{465FC05C-BF7C-4047-ACA1-16194B16F4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F476677-78E0-4B78-BD75-C450F8F244DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F476677-78E0-4B78-BD75-C450F8F244DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F476677-78E0-4B78-BD75-C450F8F244DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F476677-78E0-4B78-BD75-C450F8F244DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
