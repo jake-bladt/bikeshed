@@ -28,9 +28,9 @@ namespace scrub
                 }
                 else
                 {
-
+                    var ret = scrubber.Scrub();
+                    ret.ForEach(l => Console.WriteLine(l));
                 }
-
             }
             catch(Exception ex)
             {

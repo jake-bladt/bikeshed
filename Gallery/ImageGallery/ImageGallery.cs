@@ -26,7 +26,7 @@ namespace ImageGallery
             return new Subject(subjectPath, name);
         }
 
-        public Dictionary<string, Subject> Sujects
+        public Dictionary<string, Subject> Subjects
         {
             get
             {

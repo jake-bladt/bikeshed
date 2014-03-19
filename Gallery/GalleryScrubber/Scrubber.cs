@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -13,6 +14,17 @@ namespace GalleryScrubber
         public Scrubber(ImageGallery.ImageGallery gallery) 
         { 
             _gallery = gallery;  
+        }
+
+        public List<String> Scrub()
+        {
+            var ret = new List<String>();
+            _gallery.Subjects.Values.ToList().ForEach(subj =>
+            {
+                int count = ScrubSubjectDirectory(subj);
+                if (count > 0) ret.Add(String.Format("{0}: {1} file(s) renamed."));
+            });
+            return ret;
         }
 
         public string ScrubSubject(string subjectName)
@@ -47,7 +59,6 @@ namespace GalleryScrubber
                     incorrectFileNames.Add(path);
                 }
             });
-
             return RenameFiles(incorrectFileNames, correctFileNames);
         }
 
@@ -90,11 +101,10 @@ namespace GalleryScrubber
 
             for (int i = 0; i < badArr.Length; i++)
             {
-                File.Move(badArr[i], goodArr[i]);
+                Trace.WriteLine(String.Format("{0} -> {1}", badArr[i], goodArr[i]));
+                // File.Move(badArr[i], goodArr[i]);
             }
-
             return ret;
-
         }
     }
 
