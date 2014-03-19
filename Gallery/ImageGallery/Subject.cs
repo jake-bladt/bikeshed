@@ -29,7 +29,7 @@ namespace ImageGallery
                     _files = new Dictionary<string, FileInfo>();
                     var di = new DirectoryInfo(DirectoryPath);
                     var arr = di.GetFiles("*.jpg", SearchOption.AllDirectories);
-                    arr.ToList().ForEach(fi => _files[fi.Name] = fi);
+                    arr.ToList().ForEach(fi => _files[fi.FullName] = fi);
                 }
                 return _files;
             }

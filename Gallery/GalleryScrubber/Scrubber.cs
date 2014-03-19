@@ -15,5 +15,69 @@ namespace GalleryScrubber
         { 
             _gallery = gallery;  
         }
+
+        public string ScrubSubject(string subjectName)
+        {
+            string ret;
+            try
+            {
+                var subject = _gallery.Subject(subjectName);
+                int count = ScrubSubjectDirectory(subject);
+                return String.Format("{0} file(s) renamed.");
+            }
+            catch(Exception ex)
+            {
+                ret = String.Format("Failed to scrub: {0}", ex.ToString());
+            }
+
+            return ret;
+        }
+
+        protected int ScrubSubjectDirectory(Subject subject)
+        {
+            var correctFileNames = GetCorrectFileNames(subject);
+            var incorrectFileNames = new List<String>();
+            subject.Files.Keys.ToList().ForEach(path =>
+            {
+                if (correctFileNames.Contains(path))
+                {
+                    correctFileNames.Remove(path);
+                }
+                else
+                {
+                    incorrectFileNames.Add(path);
+                }
+            });
+
+            return incorrectFileNames.Count;
+
+        }
+
+        protected List<String> GetCorrectFileNames(Subject subject)
+        {
+            var ret = new List<String>();
+            int fileCount = subject.Files.Count;
+            for (int i = 1; i <= fileCount; i++)
+            {
+                ret.Add(CorrectFileName(subject, i, fileCount >= 1000));
+            }
+            return ret;
+        }
+
+        protected string CorrectFileName(Subject subject, int ordinal, bool useSubdirectories)
+        {
+            string ret;
+            if (useSubdirectories)
+            {
+                ret = String.Format(@"{0}\Vol{1:D3}\{2}(3).jpg", subject.DirectoryPath, (ordinal / 1000) + 1, subject.Name, ordinal);
+            }
+            else
+            {
+                ret = String.Format(@"{0}\{1}(2).jpg", subject.DirectoryPath, subject.Name, ordinal);
+            }
+            return ret;
+        }
+
     }
+
 }
