@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery", "ImageGaller
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "scrub", "scrub\scrub.csproj", "{1C43C767-0DA5-4FAB-B853-83F3FD54ADA4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Utilities", "Gallery.Utilities\Gallery.Utilities.csproj", "{52E9E149-8B8C-4908-8320-7F32B982021C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{1C43C767-0DA5-4FAB-B853-83F3FD54ADA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C43C767-0DA5-4FAB-B853-83F3FD54ADA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C43C767-0DA5-4FAB-B853-83F3FD54ADA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52E9E149-8B8C-4908-8320-7F32B982021C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52E9E149-8B8C-4908-8320-7F32B982021C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52E9E149-8B8C-4908-8320-7F32B982021C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52E9E149-8B8C-4908-8320-7F32B982021C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
