@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using ImageGallery;
 
@@ -49,8 +48,7 @@ namespace GalleryScrubber
                 }
             });
 
-            return incorrectFileNames.Count;
-
+            return RenameFiles(incorrectFileNames, correctFileNames);
         }
 
         protected List<String> GetCorrectFileNames(Subject subject)
@@ -78,6 +76,26 @@ namespace GalleryScrubber
             return ret;
         }
 
+        protected int RenameFiles(List<String> badNames, List<String> goodNames)
+        {
+            if(badNames.Count != goodNames.Count) 
+            {
+                throw new ArgumentException(String.Format("Can not rename {0} file(s) to (1) file names.", badNames.Count, goodNames.Count));
+            }
+
+            var ret = badNames.Count;
+
+            var badArr = badNames.ToArray();
+            var goodArr = goodNames.ToArray();
+
+            for (int i = 0; i < badArr.Length; i++)
+            {
+                File.Move(badArr[i], goodArr[i]);
+            }
+
+            return ret;
+
+        }
     }
 
 }
