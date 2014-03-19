@@ -22,7 +22,7 @@ namespace GalleryScrubber
             _gallery.Subjects.Values.ToList().ForEach(subj =>
             {
                 int count = ScrubSubjectDirectory(subj);
-                if (count > 0) ret.Add(String.Format("{0}: {1} file(s) renamed."));
+                if (count > 0) ret.Add(String.Format("{0}: {1} file(s) renamed.", subj.Name, count));
             });
             return ret;
         }
@@ -101,11 +101,9 @@ namespace GalleryScrubber
 
             for (int i = 0; i < badArr.Length; i++)
             {
-                Trace.WriteLine(String.Format("{0} -> {1}", badArr[i], goodArr[i]));
-                // File.Move(badArr[i], goodArr[i]);
+                File.Move(badArr[i], goodArr[i]);
             }
             return ret;
         }
     }
-
 }
