@@ -23,7 +23,7 @@ namespace ImageGallery
         {
             var subjectPath = Path.Combine(_root, name);
             if (!Directory.Exists(subjectPath)) throw new ArgumentException(String.Format("There is no subject named {0}.", name));
-            return new Subject(name, subjectPath);
+            return new Subject(subjectPath, name);
         }
 
         public Dictionary<string, Subject> Sujects

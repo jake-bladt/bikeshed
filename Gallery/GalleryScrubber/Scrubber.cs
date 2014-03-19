@@ -23,7 +23,7 @@ namespace GalleryScrubber
             {
                 var subject = _gallery.Subject(subjectName);
                 int count = ScrubSubjectDirectory(subject);
-                return String.Format("{0} file(s) renamed.");
+                return String.Format("{0} file(s) renamed.", count);
             }
             catch(Exception ex)
             {
@@ -69,11 +69,11 @@ namespace GalleryScrubber
             string ret;
             if (useSubdirectories)
             {
-                ret = String.Format(@"{0}\Vol{1:D3}\{2}(3).jpg", subject.DirectoryPath, (ordinal / 1000) + 1, subject.Name, ordinal);
+                ret = String.Format(@"{0}\Vol{1:D3}\{2}(3:D3).jpg", subject.DirectoryPath, (ordinal / 1000) + 1, subject.Name, ordinal);
             }
             else
             {
-                ret = String.Format(@"{0}\{1}(2).jpg", subject.DirectoryPath, subject.Name, ordinal);
+                ret = String.Format(@"{0}\{1}{2:D3}.jpg", subject.DirectoryPath, subject.Name, ordinal);
             }
             return ret;
         }
