@@ -17,7 +17,7 @@ namespace scrub
             try
             {
                 var galleryPath = ConfigurationManager.AppSettings["GallerySource"];
-                var gallery = new ImageGallery.ImageGallery(galleryPath);
+                var gallery = new ImageGallery.FileSystemImageGallery(galleryPath);
                 var scrubber = new Scrubber(gallery);
 
                 if (args.Length > 0)

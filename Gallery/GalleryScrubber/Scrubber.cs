@@ -10,8 +10,8 @@ namespace GalleryScrubber
 {
     public class Scrubber
     {
-        protected ImageGallery.ImageGallery _gallery;
-        public Scrubber(ImageGallery.ImageGallery gallery) 
+        protected ImageGallery.FileSystemImageGallery _gallery;
+        public Scrubber(ImageGallery.FileSystemImageGallery gallery) 
         { 
             _gallery = gallery;  
         }
@@ -21,7 +21,7 @@ namespace GalleryScrubber
             var ret = new List<String>();
             _gallery.Subjects.Values.ToList().ForEach(subj =>
             {
-                int count = ScrubSubjectDirectory(subj);
+                int count = ScrubSubjectDirectory((FileBackedSubject)subj);
                 if (count > 0) ret.Add(String.Format("{0}: {1} file(s) renamed.", subj.Name, count));
             });
             return ret;
@@ -33,7 +33,7 @@ namespace GalleryScrubber
             try
             {
                 var subject = _gallery.Subject(subjectName);
-                int count = ScrubSubjectDirectory(subject);
+                int count = ScrubSubjectDirectory((FileBackedSubject)subject);
                 return String.Format("{0} file(s) renamed.", count);
             }
             catch(Exception ex)
@@ -44,7 +44,7 @@ namespace GalleryScrubber
             return ret;
         }
 
-        protected int ScrubSubjectDirectory(Subject subject)
+        protected int ScrubSubjectDirectory(FileBackedSubject subject)
         {
             var correctFileNames = GetCorrectFileNames(subject);
             var incorrectFileNames = new List<String>();
@@ -62,7 +62,7 @@ namespace GalleryScrubber
             return RenameFiles(incorrectFileNames, correctFileNames);
         }
 
-        protected List<String> GetCorrectFileNames(Subject subject)
+        protected List<String> GetCorrectFileNames(FileBackedSubject subject)
         {
             var ret = new List<String>();
             int fileCount = subject.Files.Count;
@@ -73,7 +73,7 @@ namespace GalleryScrubber
             return ret;
         }
 
-        protected string CorrectFileName(Subject subject, int ordinal, bool useSubdirectories)
+        protected string CorrectFileName(FileBackedSubject subject, int ordinal, bool useSubdirectories)
         {
             string ret;
             if (useSubdirectories)

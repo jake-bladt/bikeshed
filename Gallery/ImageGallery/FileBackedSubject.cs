@@ -5,16 +5,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Gallery.Utilities;
+
 namespace ImageGallery
 {
-    public class Subject
+    public class FileBackedSubject : ISubject
     {
+        public static readonly int UninitializedID = -42;
+
         public string DirectoryPath { get; protected set; }
         public string Name { get; protected set; }
+        public int ID { get; set; }
+        protected string _displayName = String.Empty;
+
+        public string DisplayName
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(_displayName)) _displayName = NameMapper.DirectoryNameToDisplayName(Name);
+                return _displayName;
+            }
+        }
+
+        public int ImageCount
+        {
+            get
+            {
+                return Files.Keys.Count;
+            }
+        }
 
         protected Dictionary<String, FileInfo> _files;
 
-        public Subject(string path, string name)
+        public FileBackedSubject(string path, string name)
         {
             DirectoryPath = path;
             Name = name;
