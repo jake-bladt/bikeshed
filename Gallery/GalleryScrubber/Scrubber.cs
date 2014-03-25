@@ -44,7 +44,7 @@ namespace GalleryScrubber
             return ret;
         }
 
-        protected int ScrubSubjectDirectory(Subject subject)
+        protected int ScrubSubjectDirectory(FileBackedSubject subject)
         {
             var correctFileNames = GetCorrectFileNames(subject);
             var incorrectFileNames = new List<String>();
@@ -62,7 +62,7 @@ namespace GalleryScrubber
             return RenameFiles(incorrectFileNames, correctFileNames);
         }
 
-        protected List<String> GetCorrectFileNames(Subject subject)
+        protected List<String> GetCorrectFileNames(FileBackedSubject subject)
         {
             var ret = new List<String>();
             int fileCount = subject.Files.Count;
@@ -73,7 +73,7 @@ namespace GalleryScrubber
             return ret;
         }
 
-        protected string CorrectFileName(Subject subject, int ordinal, bool useSubdirectories)
+        protected string CorrectFileName(FileBackedSubject subject, int ordinal, bool useSubdirectories)
         {
             string ret;
             if (useSubdirectories)

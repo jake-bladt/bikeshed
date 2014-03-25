@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace ImageGallery
 {
-    public class Subject
+    public class FileBackedSubject
     {
         public string DirectoryPath { get; protected set; }
         public string Name { get; protected set; }
 
         protected Dictionary<String, FileInfo> _files;
 
-        public Subject(string path, string name)
+        public FileBackedSubject(string path, string name)
         {
             DirectoryPath = path;
             Name = name;
