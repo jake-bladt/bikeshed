@@ -9,7 +9,6 @@ namespace Gallery.Utilities
         public static string DirectoryNameToDisplayName(string dirName)
         {
             var retBuilder = new StringBuilder();
-            var spacers = " -".ToCharArray().ToList();
 
             string working = dirName.Replace(".", " ");
             var workingArr = working.ToCharArray();
@@ -18,7 +17,7 @@ namespace Gallery.Utilities
             for (int i = 0; i < workingArr.Length; i++)
             {
                 retBuilder.Append(capNext ? workingArr[i].ToString().ToUpper() : workingArr[i].ToString());
-                capNext = spacers.Contains(workingArr[1]);
+                capNext = (workingArr[i] == ' ' || workingArr[i] == '-');
             }
 
             var ret = retBuilder.ToString();
