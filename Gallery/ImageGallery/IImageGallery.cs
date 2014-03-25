@@ -8,7 +8,7 @@ namespace ImageGallery
 {
     public interface IImageGallery
     {
-        FileBackedSubject Subject(string name);
-        Dictionary<String, FileBackedSubject> Subjects { get; }
+        ISubject Subject(string name);
+        Dictionary<String, ISubject> Subjects { get; }
     }
 }

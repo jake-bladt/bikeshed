@@ -8,8 +8,10 @@ namespace ImageGallery
 {
     public interface ISubject
     {
+        int ID { get; }
         string Name { get; }
         string DisplayName { get;  }
         int ImageCount { get; }
     }
 }
+

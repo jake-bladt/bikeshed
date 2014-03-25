@@ -8,7 +8,7 @@ namespace ImageGallery
 {
     public class SqlTrackedImageGallery : IImageGallery
     {
-        protected Dictionary<string, FileBackedSubject> _subjects = null;
+        protected Dictionary<string, ISubject> _subjects = null;
         protected string _connStr;
 
         public SqlTrackedImageGallery(string cn)
@@ -16,12 +16,12 @@ namespace ImageGallery
             _connStr = cn;
         }
 
-        public FileBackedSubject Subject(string name)
+        public ISubject Subject(string name)
         {
             return (Subjects.ContainsKey(name) ? Subjects[name] : null);
         }
 
-        public Dictionary<string, FileBackedSubject> Subjects
+        public Dictionary<string, ISubject> Subjects
         {
             get 
             {

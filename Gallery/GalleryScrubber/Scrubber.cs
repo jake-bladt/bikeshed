@@ -21,7 +21,7 @@ namespace GalleryScrubber
             var ret = new List<String>();
             _gallery.Subjects.Values.ToList().ForEach(subj =>
             {
-                int count = ScrubSubjectDirectory(subj);
+                int count = ScrubSubjectDirectory((FileBackedSubject)subj);
                 if (count > 0) ret.Add(String.Format("{0}: {1} file(s) renamed.", subj.Name, count));
             });
             return ret;
@@ -33,7 +33,7 @@ namespace GalleryScrubber
             try
             {
                 var subject = _gallery.Subject(subjectName);
-                int count = ScrubSubjectDirectory(subject);
+                int count = ScrubSubjectDirectory((FileBackedSubject)subject);
                 return String.Format("{0} file(s) renamed.", count);
             }
             catch(Exception ex)

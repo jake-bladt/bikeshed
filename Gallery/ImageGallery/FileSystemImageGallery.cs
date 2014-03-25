@@ -10,7 +10,7 @@ namespace ImageGallery
     public class FileSystemImageGallery : IImageGallery
     {
         protected string _root;
-        protected Dictionary<string, FileBackedSubject> _subjects;
+        protected Dictionary<string, ISubject> _subjects;
 
         public FileSystemImageGallery(string rootPath)
         {
@@ -19,20 +19,20 @@ namespace ImageGallery
             _root = rootPath;
         }
 
-        public FileBackedSubject Subject(string name)
+        public ISubject Subject(string name)
         {
             var subjectPath = Path.Combine(_root, name);
             if (!Directory.Exists(subjectPath)) throw new ArgumentException(String.Format("There is no subject named {0}.", name));
             return new FileBackedSubject(subjectPath, name);
         }
 
-        public Dictionary<string, FileBackedSubject> Subjects
+        public Dictionary<string, ISubject> Subjects
         {
             get
             {
                 if(null == _subjects)
                 {
-                    _subjects = new Dictionary<string, FileBackedSubject>();
+                    _subjects = new Dictionary<string, ISubject>();
                     var di = new DirectoryInfo(_root);
                     var subjectDirs = di.GetDirectories("*", SearchOption.TopDirectoryOnly);
                     subjectDirs.ToList().ForEach(sdi => _subjects[sdi.Name] = new FileBackedSubject(sdi.FullName, sdi.Name));

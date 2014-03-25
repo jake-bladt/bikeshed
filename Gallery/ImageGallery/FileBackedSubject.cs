@@ -11,14 +11,19 @@ namespace ImageGallery
 {
     public class FileBackedSubject : ISubject
     {
+        public static readonly int UninitializedID = -42;
+
         public string DirectoryPath { get; protected set; }
         public string Name { get; protected set; }
+        public int ID { get; set; }
+        protected string _displayName = String.Empty;
 
         public string DisplayName
         {
             get
             {
-                return NameMapper.DirectoryNameToDisplayName(Name);
+                if (String.IsNullOrEmpty(_displayName)) _displayName = NameMapper.DirectoryNameToDisplayName(Name);
+                return _displayName;
             }
         }
 
