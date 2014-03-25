@@ -5,12 +5,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Gallery.Utilities;
+
 namespace ImageGallery
 {
-    public class FileBackedSubject
+    public class FileBackedSubject : ISubject
     {
         public string DirectoryPath { get; protected set; }
         public string Name { get; protected set; }
+
+        public string DisplayName
+        {
+            get
+            {
+                return NameMapper.DirectoryNameToDisplayName(Name);
+            }
+        }
+
+        public int ImageCount
+        {
+            get
+            {
+                return Files.Keys.Count;
+            }
+        }
 
         protected Dictionary<String, FileInfo> _files;
 

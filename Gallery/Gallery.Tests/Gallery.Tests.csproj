@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
+    <Compile Include="UtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gallery.Utilities\Gallery.Utilities.csproj">
+      <Project>{52e9e149-8b8c-4908-8320-7f32b982021c}</Project>
+      <Name>Gallery.Utilities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gallery\Gallery.csproj">
       <Project>{B68E868D-E12F-4D1B-A1D5-FCCC6AD90685}</Project>
       <Name>Gallery</Name>
