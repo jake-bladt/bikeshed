@@ -9,7 +9,6 @@ using Gallery.Controllers;
 
 namespace Gallery.Tests.Controllers
 {
-    [TestClass]
     public class HomeControllerTest
     {
         [TestMethod]
