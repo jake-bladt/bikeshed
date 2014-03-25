@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace ImageGallery
 {
-    public class ImageGallery
+    public class FileSystemImageGallery : IImageGallery
     {
         protected string _root;
         protected Dictionary<string, Subject> _subjects;
 
-        public ImageGallery(string rootPath)
+        public FileSystemImageGallery(string rootPath)
         {
             if (!Directory.Exists(rootPath)) throw new FileNotFoundException(
                  String.Format("There is no directory named {0}.", rootPath));

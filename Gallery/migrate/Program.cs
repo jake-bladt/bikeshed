@@ -10,6 +10,12 @@ namespace migrate
     {
         static void Main(string[] args)
         {
+            var subjectResult = MigrateSubjects();
+        }
+
+        public static bool MigrateSubjects()
+        {
+            return false;
         }
     }
 }
