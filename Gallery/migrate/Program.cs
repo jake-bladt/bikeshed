@@ -23,7 +23,12 @@ namespace migrate
             var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             var dbGallery = new SqlTrackedImageGallery(connStr);
             int dbCount = dbGallery.Subjects.Count;
-            Console.WriteLine(String.Format("{0} subjects in database.", dbCount));
+            Console.WriteLine(String.Format("{0} subjects in the database.", dbCount.ToString("#,##0")));
+
+            var galleryPath = ConfigurationManager.AppSettings["gallerySource"].ToString();
+            var fsoGallery = new FileSystemImageGallery(galleryPath);
+            int fsCount = fsoGallery.Subjects.Count;
+            Console.WriteLine(String.Format("{0} subjects in the file system.", fsCount.ToString("#,##0")));
 
             return false;
         }
