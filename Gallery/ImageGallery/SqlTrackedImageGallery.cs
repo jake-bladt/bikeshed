@@ -29,6 +29,7 @@ namespace ImageGallery
             {
                 if (null == _subjects)
                 {
+                    _subjects = new Dictionary<string, ISubject>();
                     var cn = new SqlConnection(_connStr);
                     cn.Open();
                     var cmd = new SqlCommand("getAllSubjects", cn) { CommandType = CommandType.StoredProcedure };
