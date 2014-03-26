@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +29,21 @@ namespace ImageGallery
             {
                 if (null == _subjects)
                 {
+                    var cn = new SqlConnection(_connStr);
+                    cn.Open();
+                    var cmd = new SqlCommand("getAllSubjects", cn) { CommandType = CommandType.StoredProcedure };
+                    var rdr = cmd.ExecuteReader();
+                    while (rdr.Read())
+                    {
+                        var subj = new SqlTrackedSubject
+                        {
+                            Name = rdr["Name"].ToString(),
+                            DisplayName = rdr["DisplayName"].ToString(),
+                            ID = (int)rdr["Id"],
+                            ImageCount = (int)rdr["ImageCount"]
+                        };
+                        _subjects[subj.Name] = subj;
+                    }
 
                 }
                 return _subjects;
