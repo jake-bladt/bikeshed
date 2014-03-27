@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Utilities", "Galler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "migrate", "migrate\migrate.csproj", "{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery.Migration", "ImageGallery.Migration\ImageGallery.Migration.csproj", "{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
