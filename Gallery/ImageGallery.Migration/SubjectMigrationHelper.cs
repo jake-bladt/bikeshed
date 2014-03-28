@@ -42,7 +42,7 @@ namespace ImageGallery.Migration
             return ret;
         }
 
-        public static object MigrateToDB(IImageGallery source, SqlTrackedImageGallery target)
+        public static Result MigrateToDB(IImageGallery source, SqlTrackedImageGallery target)
         {
             var ret = new Result();
             var deltas = GetDeltas(source, target);
