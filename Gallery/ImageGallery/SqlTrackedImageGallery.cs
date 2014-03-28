@@ -50,5 +50,19 @@ namespace ImageGallery
                 return _subjects;
             }
         }
+
+        public bool Add(ISubject subject)
+        {
+            if (Subjects.ContainsKey(subject.Name))
+            {
+                var id = Subjects[subject.Name].ID;
+
+            }
+            else
+            {
+
+            }
+        }
+
     }
 }
