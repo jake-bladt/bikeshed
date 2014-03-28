@@ -29,7 +29,7 @@ namespace ImageGallery.Migration
                 {
                     var sourceSubject = kvp.Value;
                     var targetSubject = target.Subjects[key];
-                    if (sourceSubject.Name != targetSubject.Name || sourceSubject.ImageCount == targetSubject.ImageCount)
+                    if (sourceSubject.Name != targetSubject.Name || sourceSubject.ImageCount != targetSubject.ImageCount)
                     {
                         ret.Add(sourceSubject);
                     }
