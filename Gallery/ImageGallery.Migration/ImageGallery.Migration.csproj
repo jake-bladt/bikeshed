@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>migrate</RootNamespace>
-    <AssemblyName>migrate</AssemblyName>
+    <RootNamespace>ImageGallery.Migration</RootNamespace>
+    <AssemblyName>ImageGallery.Migration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,17 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="SubjectMigrationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageGallery.Migration\ImageGallery.Migration.csproj">
-      <Project>{37cf7ef6-4dd4-40db-a903-39e9148c8e67}</Project>
-      <Name>ImageGallery.Migration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
       <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
       <Name>ImageGallery</Name>
