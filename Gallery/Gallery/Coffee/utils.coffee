@@ -1,3 +1,6 @@
 ﻿$(document).ready ->
-  alert "Coffee's ready!"
+  $('#migrateElectionFromDir').submit (e) ->
+    alert "Coffee's ready!"
+    e.preventDefault()
+    
   
