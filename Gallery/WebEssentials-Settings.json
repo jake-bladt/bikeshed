@@ -10,7 +10,7 @@
     "CamelCaseTypeNames": false
   },
   "CoffeeScript": {
-    "CompileOnBuild": false,
+    "CompileOnBuild": true,
     "CompileOnSave": true,
     "GenerateSourceMaps": true,
     "LintOnBuild": false,
