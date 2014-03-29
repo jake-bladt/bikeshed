@@ -10,9 +10,9 @@
 @using (Html.BeginForm("DirToElection", "Migration", FormMethod.Post, new { @class="well form-inline" }))
 {
   <fieldset>
-    Directory Path: <input type="text" name="dirPath"/>
-    Election Name:<input type="text" name="electionName" /> 
-    Election Date:<input type="text" name="eventDate" />
+    <input type="text" name="dirPath" class="input-small" placeholder="Directory"/>
+    <input type="text" name="electionName" class="input-small" placeholder="Election Name" /> 
+    <input type="text" name="eventDate" class="input-small" placeholder="Event Date" />
     <input type="submit" id="migrateElectionFromDir" value="Migrate"/>
   </fieldset>  
 }
