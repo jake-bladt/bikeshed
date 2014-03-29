@@ -6,12 +6,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F02DFD09-F504-4A26-951D-2B340F30EC3A}</ProjectGuid>
+    <ProjectGuid>{7DB8B3C1-9D1D-4975-86BB-24790CBBE16F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Gallery.Tests</RootNamespace>
     <AssemblyName>Gallery.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
@@ -84,7 +84,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
-    <Compile Include="UtilityTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -93,12 +92,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gallery.Utilities\Gallery.Utilities.csproj">
-      <Project>{52e9e149-8b8c-4908-8320-7f32b982021c}</Project>
-      <Name>Gallery.Utilities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Gallery\Gallery.csproj">
-      <Project>{B68E868D-E12F-4D1B-A1D5-FCCC6AD90685}</Project>
+      <Project>{A325B276-7DD1-4160-AF89-B9B327FC03D3}</Project>
       <Name>Gallery</Name>
     </ProjectReference>
   </ItemGroup>
