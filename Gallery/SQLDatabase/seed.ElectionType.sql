@@ -1,0 +1,7 @@
+﻿INSERT INTO ElectionType(Id, Name) VALUES(1, 'travel')
+INSERT INTO ElectionType(Id, Name) VALUES(2, 'rookie')
+INSERT INTO ElectionType(Id, Name) VALUES(3, 'star')
+INSERT INTO ElectionType(Id, Name) VALUES(4, 'walk-in')
+INSERT INTO ElectionType(Id, Name) VALUES(5, 'wonder')
+INSERT INTO ElectionType(Id, Name) VALUES(6, 'run-off')
+INSERT INTO ElectionType(Id, Name) VALUES(7, 'special')

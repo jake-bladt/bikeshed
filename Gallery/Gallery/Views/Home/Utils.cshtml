@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Utils";
+}
+
+<h2>Utilities</h2>
+
+<h3>Election from Directory</h3>
+
+@using (Html.BeginForm("DirToElection", "Migration", FormMethod.Post, new { @class="well form-inline", @id="migrateElectionsFromDir" }))
+{
+  <fieldset>
+    <input type="text" name="dirPath" class="input-small" placeholder="Directory"/>
+    <input type="text" name="electionName" class="input-small" placeholder="Election Name" /> 
+    <input type="text" name="eventDate" class="input-small" placeholder="Event Date" />
+    <input type="submit" value="Migrate" class="btn btn-primary"/>
+  </fieldset>  
+}
+
+<div id="migrationResult"></div>
