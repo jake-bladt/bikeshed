@@ -11,7 +11,7 @@ namespace Gallery.Controllers
         [HttpPost]
         public ActionResult DirToElection(string dirPath, string electionName, DateTime? eventDate = null)
         {
-            return View();
+            return Json(new { Result = "OK" });
         }
 	}
 }
