@@ -3,5 +3,16 @@
     ViewBag.Title = "Utils";
 }
 
-<h2>Utils</h2>
+<h2>Utilities</h2>
 
+<h3>Election from Directory</h3>
+
+@using(Html.BeginForm("DirToElection", "Migration", FormMethod.Post)) 
+{
+  <fieldset>
+    Directory Path: <input type="text" name="dirPath"/>
+    Election Name:<input type="text" name="electionName" /> 
+    Election Date:<input type="text" name="eventDate" />
+    <input type="submit" id="migrateElectionFromDir" value="Migrate"/>
+  </fieldset>  
+}
