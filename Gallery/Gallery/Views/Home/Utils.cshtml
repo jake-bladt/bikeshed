@@ -7,7 +7,7 @@
 
 <h3>Election from Directory</h3>
 
-@using(Html.BeginForm("DirToElection", "Migration", FormMethod.Post)) 
+@using (Html.BeginForm("DirToElection", "Migration", FormMethod.Post, new { @class="well form-inline" }))
 {
   <fieldset>
     Directory Path: <input type="text" name="dirPath"/>
