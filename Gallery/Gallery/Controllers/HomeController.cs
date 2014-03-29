@@ -12,5 +12,11 @@ namespace Gallery.Controllers
         {
             return View();
         }
+
+        public ActionResult Utils()
+        {
+            return View();
+        }
+
     }
 }
