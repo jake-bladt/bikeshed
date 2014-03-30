@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Gallery.Utilities
+namespace Gallery.Entities.Utilities
 {
     public class NameMapper
     {

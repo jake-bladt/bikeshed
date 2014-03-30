@@ -161,7 +161,6 @@
     <Content Include="Views\Home\Utils.cshtml" />
     <Content Include="Coffee\utils.coffee" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

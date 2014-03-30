@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-using Gallery.Utilities;
+using Gallery.Entities.Utilities;
 
-namespace ImageGallery
+namespace Gallery.Entities.Subjects
 {
     public class FileBackedSubject : ISubject
     {
@@ -47,7 +46,7 @@ namespace ImageGallery
         {
             get
             {
-                if(null == _files)
+                if (null == _files)
                 {
                     _files = new Dictionary<string, FileInfo>();
                     var di = new DirectoryInfo(DirectoryPath);

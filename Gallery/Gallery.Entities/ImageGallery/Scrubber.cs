@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 
-using ImageGallery;
+using Gallery.Entities.Subjects;
 
-namespace GalleryScrubber
+namespace Gallery.Entities.ImageGallery
 {
     public class Scrubber
     {
-        protected ImageGallery.FileSystemImageGallery _gallery;
-        public Scrubber(ImageGallery.FileSystemImageGallery gallery) 
-        { 
-            _gallery = gallery;  
+        protected FileSystemImageGallery _gallery;
+        public Scrubber(FileSystemImageGallery gallery)
+        {
+            _gallery = gallery;
         }
 
         public List<String> Scrub()
@@ -36,7 +36,7 @@ namespace GalleryScrubber
                 int count = ScrubSubjectDirectory((FileBackedSubject)subject);
                 return String.Format("{0} file(s) renamed.", count);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ret = String.Format("Failed to scrub: {0}", ex.ToString());
             }
@@ -89,7 +89,7 @@ namespace GalleryScrubber
 
         protected int RenameFiles(List<String> badNames, List<String> goodNames)
         {
-            if(badNames.Count != goodNames.Count) 
+            if (badNames.Count != goodNames.Count)
             {
                 throw new ArgumentException(String.Format("Can not rename {0} file(s) to (1) file names.", badNames.Count, goodNames.Count));
             }

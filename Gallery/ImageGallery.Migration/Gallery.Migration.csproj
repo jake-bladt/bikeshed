@@ -7,10 +7,11 @@
     <ProjectGuid>{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageGallery.Migration</RootNamespace>
+    <RootNamespace>Gallery.Migration</RootNamespace>
     <AssemblyName>ImageGallery.Migration</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,9 +44,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
-      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
-      <Name>ImageGallery</Name>
+    <ProjectReference Include="..\Gallery.Entities\Gallery.Entities.csproj">
+      <Project>{c468c90b-aff4-4139-80a9-9d18a9a44148}</Project>
+      <Name>Gallery.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

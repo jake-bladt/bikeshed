@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageGallery
+namespace Gallery.Entities.Subjects
 {
     public interface ISubject
     {
         int ID { get; }
         string Name { get; }
-        string DisplayName { get;  }
+        string DisplayName { get; }
         int ImageCount { get; }
     }
 }
-

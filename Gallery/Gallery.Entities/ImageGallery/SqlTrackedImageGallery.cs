@@ -4,9 +4,10 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ImageGallery
+using Gallery.Entities.Subjects;
+
+namespace Gallery.Entities.ImageGallery
 {
     public class SqlTrackedImageGallery : IImageGallery
     {
@@ -25,7 +26,7 @@ namespace ImageGallery
 
         public Dictionary<string, ISubject> Subjects
         {
-            get 
+            get
             {
                 if (null == _subjects)
                 {

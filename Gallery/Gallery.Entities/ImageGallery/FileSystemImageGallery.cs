@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace ImageGallery
+using Gallery.Entities.Subjects;
+
+namespace Gallery.Entities.ImageGallery
 {
     public class FileSystemImageGallery : IImageGallery
     {
@@ -30,7 +31,7 @@ namespace ImageGallery
         {
             get
             {
-                if(null == _subjects)
+                if (null == _subjects)
                 {
                     _subjects = new Dictionary<string, ISubject>();
                     var di = new DirectoryInfo(_root);

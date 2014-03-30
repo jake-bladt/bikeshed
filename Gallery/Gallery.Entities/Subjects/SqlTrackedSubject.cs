@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageGallery
+namespace Gallery.Entities.Subjects
 {
     public class SqlTrackedSubject : ISubject
     {

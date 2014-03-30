@@ -5,8 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ImageGallery;
-using GalleryScrubber;
+using Gallery.Entities.ImageGallery;
 
 namespace scrub
 {
@@ -17,7 +16,7 @@ namespace scrub
             try
             {
                 var galleryPath = ConfigurationManager.AppSettings["GallerySource"];
-                var gallery = new ImageGallery.FileSystemImageGallery(galleryPath);
+                var gallery = new FileSystemImageGallery(galleryPath);
                 var scrubber = new Scrubber(gallery);
 
                 if (args.Length > 0)

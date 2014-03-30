@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>scrub</RootNamespace>
     <AssemblyName>scrub</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,13 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GalleryScrubber\GalleryScrubber.csproj">
-      <Project>{465fc05c-bf7c-4047-aca1-16194b16f4a4}</Project>
-      <Name>GalleryScrubber</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
-      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
-      <Name>ImageGallery</Name>
+    <ProjectReference Include="..\Gallery.Entities\Gallery.Entities.csproj">
+      <Project>{c468c90b-aff4-4139-80a9-9d18a9a44148}</Project>
+      <Name>Gallery.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

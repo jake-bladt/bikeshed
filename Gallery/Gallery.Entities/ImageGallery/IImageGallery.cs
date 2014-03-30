@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageGallery
+using Gallery.Entities.Subjects;
+
+namespace Gallery.Entities.ImageGallery
 {
     public interface IImageGallery
     {

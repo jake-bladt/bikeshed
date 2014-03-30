@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ImageGallery;
-using ImageGallery.Migration;
+using Gallery.Entities.ImageGallery;
+using Gallery.Migration;
 
 namespace migrate
 {
