@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Elections\Election.cs" />
     <Compile Include="Elections\IElection.cs" />
+    <Compile Include="Elections\IElectionSet.cs" />
+    <Compile Include="Elections\SqlBackedElectionSet.cs" />
     <Compile Include="ImageGallery\FileSystemImageGallery.cs" />
     <Compile Include="ImageGallery\IImageGallery.cs" />
     <Compile Include="ImageGallery\Scrubber.cs" />
@@ -49,6 +51,7 @@
     <Compile Include="Subjects\FileBackedSubject.cs" />
     <Compile Include="Subjects\ISubject.cs" />
     <Compile Include="Subjects\SqlTrackedSubject.cs" />
+    <Compile Include="Utilities\Exceptions.cs" />
     <Compile Include="Utilities\NameMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Gallery.Entities.Subjects;
+
 namespace Gallery.Entities.Elections
 {
     public enum ElectionType
@@ -19,9 +21,11 @@ namespace Gallery.Entities.Elections
 
     public interface IElection
     {
+        int Id { get; set; }
         string Name { get; set; }
         ElectionType EventType { get; set; }
         int WinnerCount { get; set; }
         DateTime EventDate { get; set; }
+        Dictionary<int, ISubject> Winners { get; set; }
     }
 }

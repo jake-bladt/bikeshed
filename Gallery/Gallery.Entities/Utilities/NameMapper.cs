@@ -28,5 +28,23 @@ namespace Gallery.Entities.Utilities
 
             return ret;
         }
+
+        public static Tuple<int, String> ElectionFileNameToElectionEntry(string line)
+        {
+            int pos = 0;
+            string name = String.Empty;
+            
+            // Set up most common exception for reuse.
+            string invalidFileName = String.Format("{0} is not a valid election file name.", line);
+            var invalidNameException = new ArgumentException(invalidFileName);
+
+            if (!line.Contains("-")) throw invalidNameException;
+            var strPos = line.Split('-')[0];
+            if (!Int32.TryParse(strPos, out pos)) throw invalidNameException;
+            name = line.Replace(strPos + "-", String.Empty).Replace(".jpg", String.Empty);
+
+            return new Tuple<int, string>(pos, name);
+        }
+
     }
 }
