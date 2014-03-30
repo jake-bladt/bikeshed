@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ImageGallery</RootNamespace>
     <AssemblyName>ImageGallery</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -41,13 +42,14 @@
   <ItemGroup>
     <Compile Include="IImageGallery.cs" />
     <Compile Include="FileSystemImageGallery.cs" />
-    <Compile Include="ISubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlTrackedImageGallery.cs" />
-    <Compile Include="FileBackedSubject.cs" />
-    <Compile Include="SqlTrackedSubject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gallery.Subjects\Gallery.Subjects.csproj">
+      <Project>{a66280e4-02d0-4392-98d2-305855a6eee2}</Project>
+      <Name>Gallery.Subjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Gallery.Utilities\Gallery.Utilities.csproj">
       <Project>{52e9e149-8b8c-4908-8320-7f32b982021c}</Project>
       <Name>Gallery.Utilities</Name>
