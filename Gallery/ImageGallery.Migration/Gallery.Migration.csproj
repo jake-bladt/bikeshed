@@ -7,7 +7,7 @@
     <ProjectGuid>{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageGallery.Migration</RootNamespace>
+    <RootNamespace>Gallery.Migration</RootNamespace>
     <AssemblyName>ImageGallery.Migration</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -43,6 +43,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gallery.Subjects\Gallery.Subjects.csproj">
+      <Project>{a66280e4-02d0-4392-98d2-305855a6eee2}</Project>
+      <Name>Gallery.Subjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
       <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
       <Name>ImageGallery</Name>

@@ -7,7 +7,7 @@
     <ProjectGuid>{2F476677-78E0-4B78-BD75-C450F8F244DE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ImageGallery</RootNamespace>
+    <RootNamespace>Gallery</RootNamespace>
     <AssemblyName>ImageGallery</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>

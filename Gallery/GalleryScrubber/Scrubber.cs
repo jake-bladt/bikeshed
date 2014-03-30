@@ -10,8 +10,8 @@ namespace GalleryScrubber
 {
     public class Scrubber
     {
-        protected ImageGallery.FileSystemImageGallery _gallery;
-        public Scrubber(ImageGallery.FileSystemImageGallery gallery) 
+        protected FileSystemImageGallery _gallery;
+        public Scrubber(FileSystemImageGallery gallery) 
         { 
             _gallery = gallery;  
         }

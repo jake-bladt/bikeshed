@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ImageGallery.Migration
+using Gallery.Subjects;
+
+namespace Gallery.Migration
 {
     public class SubjectMigrationHelper
     {

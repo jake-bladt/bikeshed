@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using ImageGallery.Subjects;
+using Gallery.Subjects;
 
 namespace ImageGallery
 {

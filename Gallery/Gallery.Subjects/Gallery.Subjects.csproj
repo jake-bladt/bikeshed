@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{A66280E4-02D0-4392-98D2-305855A6EEE2}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>migrate</RootNamespace>
-    <AssemblyName>migrate</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Gallery.Subjects</RootNamespace>
+    <AssemblyName>Gallery.Subjects</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -33,7 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -42,20 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="FileBackedSubject.cs" />
+    <Compile Include="ISubject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlTrackedSubject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageGallery.Migration\Gallery.Migration.csproj">
-      <Project>{37cf7ef6-4dd4-40db-a903-39e9148c8e67}</Project>
-      <Name>Gallery.Migration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
-      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
-      <Name>ImageGallery</Name>
+    <ProjectReference Include="..\Gallery.Utilities\Gallery.Utilities.csproj">
+      <Project>{52e9e149-8b8c-4908-8320-7f32b982021c}</Project>
+      <Name>Gallery.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Utilities", "Galler
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "migrate", "migrate\migrate.csproj", "{41FF9644-5BF4-4A9E-9C5A-28DFD58B6E1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageGallery.Migration", "ImageGallery.Migration\ImageGallery.Migration.csproj", "{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Migration", "ImageGallery.Migration\Gallery.Migration.csproj", "{37CF7EF6-4DD4-40DB-A903-39E9148C8E67}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery", "Gallery\Gallery.csproj", "{A325B276-7DD1-4160-AF89-B9B327FC03D3}"
 EndProject
