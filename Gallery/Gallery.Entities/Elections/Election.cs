@@ -37,7 +37,7 @@ namespace Gallery.Entities.Elections
                 if (winners.ContainsKey(pos)) throw new DuplicateElectionEntryException(String.Format("Multiple entries at position {0}", pos));
                 if (!gallery.Subjects.ContainsKey(winnerName)) throw new UnknownSubjectException(String.Format("Unknown subject: {0}", winnerName));
                 var subject = gallery.Subjects[winnerName];
-                if (gallery.Subjects.ContainsValue(subject)) throw new DuplicateSubjectException(String.Format("Duplicate subject: {0}", winnerName));
+                if (winners.ContainsValue(subject)) throw new DuplicateSubjectException(String.Format("Duplicate subject: {0}", winnerName));
                 winners[pos] = gallery.Subjects[winnerName];
             });
 
@@ -46,6 +46,7 @@ namespace Gallery.Entities.Elections
                 if (!winners.ContainsKey(i)) throw new EmptyElectionSlotException(String.Format("Slot {0} is empty", i));
             }
 
+            
             var ret = new Election(name, date) { EventType = eventType, WinnerCount = winnerCount, Winners = winners };
             return ret;
         }

@@ -49,6 +49,7 @@
     <Compile Include="Subjects\FileBackedSubject.cs" />
     <Compile Include="Subjects\ISubject.cs" />
     <Compile Include="Subjects\SqlTrackedSubject.cs" />
+    <Compile Include="Utilities\Exceptions.cs" />
     <Compile Include="Utilities\NameMapper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
