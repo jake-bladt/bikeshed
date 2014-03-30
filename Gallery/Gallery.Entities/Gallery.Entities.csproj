@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="Elections\Election.cs" />
     <Compile Include="Elections\IElection.cs" />
+    <Compile Include="Elections\IElectionSet.cs" />
+    <Compile Include="Elections\SqlBackedElectionSet.cs" />
     <Compile Include="ImageGallery\FileSystemImageGallery.cs" />
     <Compile Include="ImageGallery\IImageGallery.cs" />
     <Compile Include="ImageGallery\Scrubber.cs" />

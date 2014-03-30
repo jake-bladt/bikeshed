@@ -21,6 +21,7 @@ namespace Gallery.Entities.Elections
 
     public interface IElection
     {
+        int Id { get; set; }
         string Name { get; set; }
         ElectionType EventType { get; set; }
         int WinnerCount { get; set; }

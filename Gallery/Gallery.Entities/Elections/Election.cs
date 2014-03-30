@@ -52,6 +52,7 @@ namespace Gallery.Entities.Elections
         }
 
         public string Name { get; set; }
+        public int Id { get; set; }
         public ElectionType EventType { get; set; }
         public int WinnerCount { get; set; }
         public DateTime EventDate { get; set; }

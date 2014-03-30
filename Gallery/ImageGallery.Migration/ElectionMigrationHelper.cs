@@ -12,16 +12,18 @@ namespace Gallery.Migration
     public class ElectionMigrationHelper
     {
         public IImageGallery Gallery { get; protected set; }
+        public IElectionSet Target { get; protected set; }
 
-        public ElectionMigrationHelper(IImageGallery gallery )
+        public ElectionMigrationHelper(IImageGallery gallery, IElectionSet target )
         {
             Gallery = gallery;
+            Target = target;
         }
 
         public bool MigrateDirectoryToDB(string dirPath, string electionName, DateTime eventDate, ElectionType eventType)
         {
             var election = Election.FromDirectory(dirPath, electionName, eventDate, eventType, Gallery);
-            return false;
+            return Target.Store(election);
         }
     }
 }

@@ -20,7 +20,9 @@ namespace Gallery.Controllers
             var galleryDbConn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
 
             var gallery = new SqlTrackedImageGallery(galleryDbConn);
-            var helper = new ElectionMigrationHelper(gallery);
+            var electionSet = new SqlBackedElectionSet(galleryDbConn);
+
+            var helper = new ElectionMigrationHelper(gallery, electionSet);
             var date = eventDate ?? DateTime.Now;
             bool result = helper.MigrateDirectoryToDB(dirPath, electionName, date, ElectionType.RunOff);
 
