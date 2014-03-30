@@ -42,12 +42,6 @@
     <Compile Include="Scrubber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
-      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
-      <Name>ImageGallery</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

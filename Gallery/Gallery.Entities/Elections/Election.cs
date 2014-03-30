@@ -4,9 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-using Gallery.Enitities.Utilities;
-
-namespace Gallery.Elections
+namespace Gallery.Entities.Elections
 {
     public class Election : IElection
     {
@@ -22,7 +20,7 @@ namespace Gallery.Elections
             var di = new DirectoryInfo(dirPath);
             var fis = di.GetFiles("*.jpg");
             var winnerCount = fis.Count();
-            
+
 
 
             var ret = new Election(name, date) { EventType = eventType, WinnerCount = winnerCount };

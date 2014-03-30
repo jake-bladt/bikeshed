@@ -162,12 +162,6 @@
     <Content Include="Coffee\utils.coffee" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gallery.Subjects\Gallery.Subjects.csproj">
-      <Project>{a66280e4-02d0-4392-98d2-305855a6eee2}</Project>
-      <Name>Gallery.Subjects</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />

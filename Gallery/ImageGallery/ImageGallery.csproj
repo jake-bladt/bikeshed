@@ -45,16 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlTrackedImageGallery.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Gallery.Subjects\Gallery.Subjects.csproj">
-      <Project>{a66280e4-02d0-4392-98d2-305855a6eee2}</Project>
-      <Name>Gallery.Subjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Gallery.Utilities\Gallery.Utilities.csproj">
-      <Project>{52e9e149-8b8c-4908-8320-7f32b982021c}</Project>
-      <Name>Gallery.Utilities</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

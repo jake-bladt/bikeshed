@@ -43,13 +43,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Gallery.Subjects\Gallery.Subjects.csproj">
-      <Project>{a66280e4-02d0-4392-98d2-305855a6eee2}</Project>
-      <Name>Gallery.Subjects</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\ImageGallery\ImageGallery.csproj">
-      <Project>{2f476677-78e0-4b78-bd75-c450f8f244de}</Project>
-      <Name>ImageGallery</Name>
+    <ProjectReference Include="..\Gallery.Entities\Gallery.Entities.csproj">
+      <Project>{c468c90b-aff4-4139-80a9-9d18a9a44148}</Project>
+      <Name>Gallery.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
