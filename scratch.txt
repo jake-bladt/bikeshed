@@ -6,3 +6,8 @@
       success: (data) ->
         alert data
     e.preventDefault()
+
+      dirPath: "foo"
+      , electionName: "eName"
+      , eventDate: "eDate"
+
