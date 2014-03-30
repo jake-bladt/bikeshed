@@ -16,8 +16,10 @@ namespace Gallery.Controllers
         [HttpPost]
         public ActionResult DirToElection(string dirPath, string electionName, DateTime? eventDate = null)
         {
-            var subjectsLoc = ConfigurationManager.AppSettings["subjectLocation"];
-            var gallery = new FileSystemImageGallery(subjectsLoc);
+
+            var galleryDbConn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+
+            var gallery = new SqlTrackedImageGallery(galleryDbConn);
             var helper = new ElectionMigrationHelper(gallery);
             var date = eventDate ?? DateTime.Now;
             bool result = helper.MigrateDirectoryToDB(dirPath, electionName, date, ElectionType.RunOff);
