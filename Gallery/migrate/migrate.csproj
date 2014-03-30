@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>migrate</RootNamespace>
     <AssemblyName>migrate</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Gallery.Entities\Gallery.Entities.csproj">
+      <Project>{c468c90b-aff4-4139-80a9-9d18a9a44148}</Project>
+      <Name>Gallery.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ImageGallery.Migration\Gallery.Migration.csproj">
       <Project>{37cf7ef6-4dd4-40db-a903-39e9148c8e67}</Project>
       <Name>Gallery.Migration</Name>

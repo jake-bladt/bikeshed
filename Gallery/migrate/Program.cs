@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Gallery;
+using Gallery.Entities.ImageGallery;
 using Gallery.Migration;
 
 namespace migrate
