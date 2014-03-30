@@ -5,7 +5,11 @@
       $.ajax({
         url: '/Migration/DirToElection',
         type: 'POST',
-        data: $(this).serialize(),
+        data: {
+          dirPath: "foo",
+          electionName: "eName",
+          eventDate: "eDate"
+        },
         success: function(data) {
           return alert(data);
         }
