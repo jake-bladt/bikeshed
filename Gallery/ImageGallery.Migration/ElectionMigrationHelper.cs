@@ -43,8 +43,7 @@ namespace Gallery.Migration
                             if (!MigrateMonthlyDirectory(monthDi))
                             {
                                 throw new ElectionMigrationException(
-                                    String.Format("Failed to migrate election at " + monthDi.FullName)
-                                    );
+                                    String.Format("Failed to migrate election at " + monthDi.FullName));
                             }
                         }
                     });
@@ -54,8 +53,18 @@ namespace Gallery.Migration
             return true;
         }
 
+        protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType> 
+          { 
+              { "travel", ElectionType.Travel },
+              { "rookie", ElectionType.Rookie },
+              { "star",   ElectionType.Star   },
+              { "walkin", ElectionType.WalkIn },
+              { "wonder", ElectionType.Wonder }
+          };
+
         protected bool MigrateMonthlyDirectory(DirectoryInfo di)
         {
+            
 
             return false;
         }
