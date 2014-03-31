@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Gallery.Entities.Elections;
 using Gallery.Entities.ImageGallery;
 using Gallery.Migration;
 
@@ -51,6 +52,14 @@ namespace migrate
 
         public static bool MigrateElections()
         {
+            string rootPath = ConfigurationManager.AppSettings["electionSource"];
+
+            var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var dbGallery = new SqlTrackedImageGallery(connStr);
+            var targetSet = new SqlBackedElectionSet(connStr);
+
+            var helper = new ElectionMigrationHelper(dbGallery, targetSet);
+
 
             return false;
         }
