@@ -25,5 +25,10 @@ namespace Gallery.Migration
             var election = Election.FromDirectory(dirPath, electionName, eventDate, eventType, Gallery);
             return Target.Store(election);
         }
+
+        public bool MigrateHistory(string rootPath)
+        {
+            return false;
+        }
     }
 }
