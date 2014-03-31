@@ -17,7 +17,8 @@ namespace migrate
             var subjectResult = MigrateSubjects();
             if (!subjectResult) return ExitOn("Subject migration failed.");
 
-
+            var electionResult = MigrateElections();
+            if (!subjectResult) return ExitOn("Election migration failed.");
 
             return ExitOn("Migration complete.");
         }
@@ -46,6 +47,12 @@ namespace migrate
             Console.WriteLine(String.Format("{0} subject(s) failed to migrate.", res.Failures));
 
             return true;
+        }
+
+        public static bool MigrateElections()
+        {
+
+            return false;
         }
     }
 }
