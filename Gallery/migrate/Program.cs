@@ -12,11 +12,22 @@ namespace migrate
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var subjectResult = MigrateSubjects();
+            if (!subjectResult) return ExitOn("Subject migration failed.");
 
+            var electionResult = MigrateElections();
+            if (!subjectResult) return ExitOn("Election migration failed.");
+
+            return ExitOn("Migration complete.");
+        }
+
+        public static int ExitOn(string step)
+        {
+            Console.WriteLine(step);
             Console.ReadLine();
+            return 0;
         }
 
         public static bool MigrateSubjects()
@@ -36,6 +47,12 @@ namespace migrate
             Console.WriteLine(String.Format("{0} subject(s) failed to migrate.", res.Failures));
 
             return true;
+        }
+
+        public static bool MigrateElections()
+        {
+
+            return false;
         }
     }
 }
