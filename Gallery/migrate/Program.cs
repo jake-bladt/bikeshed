@@ -12,11 +12,21 @@ namespace migrate
 {
     class Program
     {
-        static void Main(string[] args)
+        static int Main(string[] args)
         {
             var subjectResult = MigrateSubjects();
+            if (!subjectResult) return ExitOn("Subject migration failed.");
 
+
+
+            return ExitOn("Migration complete.");
+        }
+
+        public static int ExitOn(string step)
+        {
+            Console.WriteLine(step);
             Console.ReadLine();
+            return 0;
         }
 
         public static bool MigrateSubjects()
