@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
+using Gallery.Entities.Subjects;
+
 namespace Gallery.Entities.Elections
 {
     public class SqlBackedElectionSet : IElectionSet
@@ -38,7 +40,7 @@ namespace Gallery.Entities.Elections
                 }               
             });
 
-            return true;
+            return AddAllWinners(election);
         }
 
         public bool ElectionExists(Election election, out int id)
@@ -70,7 +72,6 @@ namespace Gallery.Entities.Elections
             cmd.Parameters.Add(new SqlParameter("typeId", (int)election.EventType));
             var id = cmd.ExecuteScalar();
             election.Id = Convert.ToInt32(id);
-
             return true;
         }
 
@@ -85,7 +86,6 @@ namespace Gallery.Entities.Elections
             cmd.Parameters.Add(new SqlParameter("winnerCount", election.WinnerCount));
             cmd.Parameters.Add(new SqlParameter("typeId", (int)election.EventType));
             cmd.ExecuteNonQuery();
-
             return ClearElectionWinners(election.Id);
         }
 
@@ -94,9 +94,21 @@ namespace Gallery.Entities.Elections
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
             var cmd = new SqlCommand("clearElectionWinners", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.Add(new SqlParameter("id", id));
+            cmd.Parameters.Add(new SqlParameter("electionId", id));
             cmd.ExecuteNonQuery();
             return true;
+        }
+
+        protected bool AddAllWinners(IElection election)
+        {
+            var ret = true;
+            election.Winners.ToList().ForEach(kvp =>
+            {
+                int rank = kvp.Key;
+                ISubject subject = kvp.Value;
+                ret = ret && AddElectionWinner(election.Id, subject.ID, rank, election.WinnerCount - rank + 1);
+            });
+            return ret;
         }
 
         protected bool AddElectionWinner(int electionId, int winnerId, int rank, int points)

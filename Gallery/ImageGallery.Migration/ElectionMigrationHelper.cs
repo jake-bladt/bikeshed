@@ -64,9 +64,20 @@ namespace Gallery.Migration
 
         protected bool MigrateMonthlyDirectory(DirectoryInfo di)
         {
-            
-
-            return false;
+            ElectionTypesByName.ToList().ForEach(kvp =>
+            {
+                string fullPath = Path.Combine(di.FullName, kvp.Key);
+                if (Directory.Exists(fullPath))
+                {
+                    DateTime eventDate = EventDateFromDirName(di.Name);
+                    string name = ElectionNameFromParts(eventDate, kvp.Key);
+                    var eventType = kvp.Value;
+                    var migrateSuccess = MigrateDirectoryToDB(fullPath, name, eventDate, eventType);
+                    if (!migrateSuccess) throw new ElectionMigrationException(
+                         "Failed to migrate " + fullPath);
+                }                
+            });
+            return true;
         }
 
         protected bool IsAnnualFolder(DirectoryInfo di)
@@ -80,5 +91,19 @@ namespace Gallery.Migration
             string pattern = @"^\d{6}$";
             return Regex.IsMatch(di.Name, pattern);
         }
+
+        protected string ElectionNameFromParts(DateTime eventDate, string subdirName)
+        {
+            return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
+        }
+
+        protected DateTime EventDateFromDirName(string dirName)
+        {
+            var monthAndYearToken = Int32.Parse(dirName);
+            int year = monthAndYearToken / 100;
+            int month = monthAndYearToken % 100;
+            return new DateTime(year, month, 1);
+        }
+
     }
 }
