@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 using Gallery.Entities.Elections;
 using Gallery.Entities.ImageGallery;
+using Gallery.Entities.Utilities;
 
 namespace Gallery.Migration
 {
@@ -28,7 +30,46 @@ namespace Gallery.Migration
 
         public bool MigrateHistory(string rootPath)
         {
+            if (!Directory.Exists(rootPath)) throw new ArgumentException("Could not find the directory " + rootPath);
+            var rootDi = new DirectoryInfo(rootPath);
+            rootDi.GetDirectories().ToList().ForEach(yearDi =>
+            {
+                if (IsAnnualFolder(yearDi))
+                {
+                    yearDi.GetDirectories().ToList().ForEach(monthDi =>
+                    {
+                        if(IsMonthlyFolder(monthDi))
+                        {
+                            if (!MigrateMonthlyDirectory(monthDi))
+                            {
+                                throw new ElectionMigrationException(
+                                    String.Format("Failed to migrate election at " + monthDi.FullName)
+                                    );
+                            }
+                        }
+                    });
+                }
+            });
+
+            return true;
+        }
+
+        protected bool MigrateMonthlyDirectory(DirectoryInfo di)
+        {
+
             return false;
+        }
+
+        protected bool IsAnnualFolder(DirectoryInfo di)
+        {
+            string pattern = @"^\d{4}$";
+            return Regex.IsMatch(di.Name, pattern);
+        }
+
+        protected bool IsMonthlyFolder(DirectoryInfo di)
+        {
+            string pattern = @"^\d{6}$";
+            return Regex.IsMatch(di.Name, pattern);
         }
     }
 }

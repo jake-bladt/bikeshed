@@ -30,4 +30,11 @@ namespace Gallery.Entities.Utilities
         public EmptyElectionSlotException(string msg) : base(msg) { }
     }
 
+    public class ElectionMigrationException : System.Exception
+    {
+        public ElectionMigrationException() : base() { }
+        public ElectionMigrationException(string msg) : base(msg) { }
+    }
+
+
 }
