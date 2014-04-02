@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Entities", "Gallery.Entities\Gallery.Entities.csproj", "{C468C90B-AFF4-4139-80A9-9D18A9A44148}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rosubj", "rosubj\rosubj.csproj", "{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{C468C90B-AFF4-4139-80A9-9D18A9A44148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C468C90B-AFF4-4139-80A9-9D18A9A44148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C468C90B-AFF4-4139-80A9-9D18A9A44148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
