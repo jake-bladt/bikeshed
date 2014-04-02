@@ -29,17 +29,7 @@ namespace Gallery.Entities.Elections
             else
             {
                 if (!CreateElection(election)) throw new ApplicationException("Failed to save election.");
-                id = election.Id;
             }
-
-            election.Winners.ToList().ForEach(kvp =>
-            {
-                if (!AddElectionWinner(election.Id, kvp.Value.ID, kvp.Key, (election.WinnerCount - kvp.Key + 1)))
-                {
-                    if (!CreateElection(election)) throw new ApplicationException("Failed to save election winner.");
-                }               
-            });
-
             return AddAllWinners(election);
         }
 
@@ -48,6 +38,7 @@ namespace Gallery.Entities.Elections
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
             var cmd = new SqlCommand("getElection", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add("name", election.Name);
             var rdr = cmd.ExecuteReader();
             if(rdr.Read())
             {
