@@ -160,6 +160,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Utils.cshtml" />
     <Content Include="Coffee\utils.coffee" />
+    <Content Include="Views\Shared\_SubjectSets.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
