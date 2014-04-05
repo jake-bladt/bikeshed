@@ -145,6 +145,8 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\Specs\app_spec.js" />
+    <Content Include="Scripts\Specs\stat_calculator_spec.js" />
+    <Content Include="Scripts\StatCalculator.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
