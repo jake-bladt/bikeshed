@@ -61,5 +61,11 @@ namespace migrate
             var helper = new ElectionMigrationHelper(dbGallery, targetSet);
             return helper.MigrateHistory(rootPath);
         }
+
+        public static bool MigrateSubjectSets()
+        {
+
+            return false;
+        }
     }
 }
