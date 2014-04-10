@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 
@@ -16,7 +17,15 @@ namespace setlist
 
             for (int i = 1; i < args.Length; i++)
             {
+                int id;
+                if (Int32.TryParse(args[i], out id) && id.ToString() == args[i])
+                {
 
+                }
+                else
+                {
+
+                }
             }
         }
     }
