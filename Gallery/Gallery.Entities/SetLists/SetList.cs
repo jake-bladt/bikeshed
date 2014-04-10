@@ -17,8 +17,7 @@ namespace Gallery.Entities.SetLists
             var ret = new SetList(name);
             elections.ToList().ForEach(el =>
             {
-                el.Winners.Values.ToList().ForEach(winner =>
-                {
+                el.Winners.Values.ToList().ForEach(winner => {
                     if (!ret.ContainsKey(winner.Name)) ret[winner.Name] = winner;
                 });
             });
