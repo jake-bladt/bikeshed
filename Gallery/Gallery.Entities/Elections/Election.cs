@@ -62,6 +62,17 @@ namespace Gallery.Entities.Elections
         {
             Name = name;
             EventDate = eventDate;
+            InitializeWinners();
+        }
+
+        public Election()
+        {
+            InitializeWinners();
+        }
+
+        protected void InitializeWinners()
+        {
+            Winners = new Dictionary<int, ISubject>();
         }
     }
 }
