@@ -55,7 +55,7 @@ namespace Gallery.Entities.SetLists
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                var subject = new SqlTrackedSubject
+                var subject = new SqlBackedSubject
                 {
                     ID = (int)rdr["Id"],
                     Name = (string)rdr["Name"],
