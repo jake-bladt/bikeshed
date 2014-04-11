@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rosubj", "rosubj\rosubj.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setlist", "setlist\setlist.csproj", "{70AEEF7E-8D31-48DF-B528-8A527ED31F39}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "slideshow", "slideshow\slideshow.csproj", "{F137D8D2-118F-4AF4-8C4C-FB63917355C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{70AEEF7E-8D31-48DF-B528-8A527ED31F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70AEEF7E-8D31-48DF-B528-8A527ED31F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70AEEF7E-8D31-48DF-B528-8A527ED31F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

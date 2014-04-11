@@ -60,7 +60,7 @@ namespace Gallery.Entities.SetLists
                     ID = (int)rdr["Id"],
                     Name = (string)rdr["Name"],
                     DisplayName = (string)rdr["DisplayName"],
-                    ImageCount = (int)rdr["IamgeCount"]
+                    ImageCount = (int)rdr["ImageCount"]
                 };
                 this[subject.Name] = subject;
             }
