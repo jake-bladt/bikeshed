@@ -65,8 +65,8 @@ namespace Gallery.Entities.Elections
         {
             var cn = new SqlConnection(cnStr);
             cn.Open();
-            var cmd = new SqlCommand("getElectionWinners", cn);
-            cmd.Parameters.Add("electionId", election.Id);
+            var cmd = new SqlCommand("getElectionWinners", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("electionId", election.Id));
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
