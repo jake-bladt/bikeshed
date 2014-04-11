@@ -18,7 +18,13 @@ namespace Gallery.Entities.Subjects
 
         public bool UpdateImageCount(string name, int imageCount)
         {
-            throw new NotImplementedException();
+            var cn = new SqlConnection(ConnectionString);
+            cn.Open();
+            var cmd = new SqlCommand("updateSubject", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("name", name);
+            cmd.Parameters.Add(new SqlParameter("imageCount", imageCount));
+            cmd.ExecuteNonQuery();
+            return true;
         }
     }
 }
