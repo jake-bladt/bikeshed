@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Gallery.Entities.ImageGallery;
+using Gallery.Entities.Subjects;
 
 namespace scrub
 {
@@ -17,7 +18,10 @@ namespace scrub
             {
                 var galleryPath = ConfigurationManager.AppSettings["GallerySource"];
                 var gallery = new FileSystemImageGallery(galleryPath);
-                var scrubber = new Scrubber(gallery);
+                var dbCnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+
+                var dbUpdater = new SqlSubjectWriter(dbCnStr);
+                var scrubber = new Scrubber(gallery, dbUpdater);
 
                 if (args.Length > 0)
                 {
@@ -35,6 +39,7 @@ namespace scrub
             {
                 Console.WriteLine(ex);
             }
+            Console.ReadLine();
         }
     }
 }
