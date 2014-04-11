@@ -21,7 +21,7 @@ namespace Gallery.Entities.Subjects
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
             var cmd = new SqlCommand("updateSubject", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.Add(new SqlParameter("name", name);
+            cmd.Parameters.Add(new SqlParameter("name", name));
             cmd.Parameters.Add(new SqlParameter("imageCount", imageCount));
             cmd.ExecuteNonQuery();
             return true;
