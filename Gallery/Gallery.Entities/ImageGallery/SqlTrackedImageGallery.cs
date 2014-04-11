@@ -37,7 +37,7 @@ namespace Gallery.Entities.ImageGallery
                     var rdr = cmd.ExecuteReader();
                     while (rdr.Read())
                     {
-                        var subj = new SqlTrackedSubject
+                        var subj = new SqlBackedSubject
                         {
                             Name = rdr["Name"].ToString(),
                             DisplayName = rdr["DisplayName"].ToString(),
@@ -65,7 +65,7 @@ namespace Gallery.Entities.ImageGallery
                 cmd.Parameters.Add(new SqlParameter("displayName", subject.DisplayName));
                 cmd.Parameters.Add(new SqlParameter("imageCount", subject.ImageCount));
                 cmd.ExecuteNonQuery();
-                Subjects[subject.Name] = new SqlTrackedSubject(subject, id);
+                Subjects[subject.Name] = new SqlBackedSubject(subject, id);
             }
             else
             {
@@ -77,7 +77,7 @@ namespace Gallery.Entities.ImageGallery
                 cmd.Parameters.Add(new SqlParameter("imageCount", subject.ImageCount));
                 var obj = cmd.ExecuteScalar();
                 var id = Convert.ToInt32(obj);
-                Subjects[subject.Name] = new SqlTrackedSubject(subject, id);
+                Subjects[subject.Name] = new SqlBackedSubject(subject, id);
             }
             return true;
         }

@@ -11,7 +11,7 @@ namespace Gallery.Entities.SetLists
 {
     public class SetList : Dictionary<String, ISubject>
     {
-        public static SetList FromElections(IEnumerable<Election> elections, string name = "")
+        public static SetList FromElections(IEnumerable<IElection> elections, string name = "")
         {
             if (String.IsNullOrEmpty(name)) name = elections.ToList().First(e => !String.IsNullOrEmpty(e.Name)).Name;
             var ret = new SetList(name);
