@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setlist", "setlist\setlist.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "slideshow", "slideshow\slideshow.csproj", "{F137D8D2-118F-4AF4-8C4C-FB63917355C2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ss2dir", "ss2dir\ss2dir.csproj", "{B2679344-083F-4B46-BC16-78B89279E6AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +70,10 @@ Global
 		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F137D8D2-118F-4AF4-8C4C-FB63917355C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2679344-083F-4B46-BC16-78B89279E6AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2679344-083F-4B46-BC16-78B89279E6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2679344-083F-4B46-BC16-78B89279E6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2679344-083F-4B46-BC16-78B89279E6AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
