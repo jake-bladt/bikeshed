@@ -11,9 +11,12 @@ namespace Gallery.Entities.ImageGallery
     public class Scrubber
     {
         protected FileSystemImageGallery _gallery;
-        public Scrubber(FileSystemImageGallery gallery)
+        protected ISubjectWriter _writer = null;
+
+        public Scrubber(FileSystemImageGallery gallery, ISubjectWriter writer = null)
         {
             _gallery = gallery;
+            _writer = writer;
         }
 
         public List<String> Scrub()
@@ -59,7 +62,12 @@ namespace Gallery.Entities.ImageGallery
                     incorrectFileNames.Add(path);
                 }
             });
-            return RenameFiles(incorrectFileNames, correctFileNames);
+            int ret = RenameFiles(incorrectFileNames, correctFileNames);
+            if (ret > 0 && null != _writer)
+            {
+                _writer.UpdateImageCount(subject.Name, subject.Files.Count());
+            }
+            return ret;
         }
 
         protected List<String> GetCorrectFileNames(FileBackedSubject subject)
@@ -103,6 +111,7 @@ namespace Gallery.Entities.ImageGallery
             {
                 File.Move(badArr[i], goodArr[i]);
             }
+
             return ret;
         }
     }
