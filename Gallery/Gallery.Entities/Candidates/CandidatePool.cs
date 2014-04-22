@@ -22,6 +22,8 @@ namespace Gallery.Entities.Candidates
         }
 
         protected Dictionary<string, ISubject> _Subjects;
+        protected bool _ListIsDirty = false;
+        protected List<ISubject> _Candidates;
 
         public CandidatePool()
         {
@@ -42,6 +44,7 @@ namespace Gallery.Entities.Candidates
             if (_Subjects.ContainsKey(subject.Name))
             {
                 _Subjects.Remove(subject.Name);
+                _ListIsDirty = true;
                 return true;
             }
             return false;
@@ -56,7 +59,22 @@ namespace Gallery.Entities.Candidates
             else
             {
                 _Subjects[subject.Name] = subject;
+                _ListIsDirty = true;
                 return true;
+            }
+        }
+
+        public List<ISubject> Candidates
+        {
+            get
+            {
+                if (_ListIsDirty || null == _Candidates)
+                {
+                    _Candidates = new List<ISubject>();
+                    _Subjects.Values.ToList().ForEach(subj => _Candidates.Add(subj));
+                    _ListIsDirty = false;
+                }
+                return _Candidates;
             }
         }
     }
