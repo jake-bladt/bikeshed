@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
+using Gallery.Entities.Candidates;
 using Gallery.Entities.ImageGallery;
 
 
@@ -17,7 +18,7 @@ namespace candirs
             string rootPath = args[0];
             string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             var gallery = new SqlTrackedImageGallery(cn);
-            var pool = SubjectPool.FromGallery(gallery);
+            var pool = CandidatePool.FromGallery(gallery);
         }
     }
 }

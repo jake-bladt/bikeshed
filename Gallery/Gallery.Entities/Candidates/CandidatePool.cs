@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
+using Gallery.Entities.ImageGallery;
 using Gallery.Entities.Subjects;
 
-namespace Gallery.Entities.ImageGallery
+namespace Gallery.Entities.Candidates
 {
-    public class SubjectPool : ISubjectPool
+    public class CandidatePool : ICandidatePool
     {
-        public static SubjectPool FromGallery(IImageGallery gallery)
+        public static CandidatePool FromGallery(IImageGallery gallery)
         {
-            var ret = new SubjectPool();
+            var ret = new CandidatePool();
             gallery.Subjects.Values.ToList().ForEach(subj =>
             {
                 ret.Add(subj);
@@ -21,7 +23,7 @@ namespace Gallery.Entities.ImageGallery
 
         protected Dictionary<string, ISubject> _Subjects;
 
-        public SubjectPool()
+        public CandidatePool()
         {
             _Subjects = new Dictionary<string, ISubject>();
         }
