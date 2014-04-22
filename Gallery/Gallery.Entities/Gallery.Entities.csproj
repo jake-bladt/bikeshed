@@ -46,8 +46,10 @@
     <Compile Include="Elections\SqlBackedElectionSet.cs" />
     <Compile Include="ImageGallery\FileSystemImageGallery.cs" />
     <Compile Include="ImageGallery\IImageGallery.cs" />
+    <Compile Include="ImageGallery\ISubjectPool.cs" />
     <Compile Include="ImageGallery\Scrubber.cs" />
     <Compile Include="ImageGallery\SqlTrackedImageGallery.cs" />
+    <Compile Include="ImageGallery\SubjectPool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetLists\SetList.cs" />
     <Compile Include="SetLists\SqlBackedSetlist.cs" />
