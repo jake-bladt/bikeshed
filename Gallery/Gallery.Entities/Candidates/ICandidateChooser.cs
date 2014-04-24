@@ -11,5 +11,6 @@ namespace Gallery.Entities.Candidates
     public interface ICandidateChooser
     {
         List<ISubject> GetCandidates();
+        string Name { get; }
     }
 }

@@ -22,5 +22,8 @@ namespace Gallery.Entities.Candidates
             _Pool.Candidates.ForEach(c => ret.Add(c));
             return ret;
         }
+
+        public string Name { get; set; }
+
     }
 }
