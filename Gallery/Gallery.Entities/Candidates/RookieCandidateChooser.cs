@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Gallery.Entities.Candidates
 {
-    class RookieCandidateChooser
+    public class RookieCandidateChooser : ICandidateChooser
     {
+        public List<Subjects.ISubject> GetCandidates()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

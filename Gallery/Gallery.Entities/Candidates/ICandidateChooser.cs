@@ -10,6 +10,6 @@ namespace Gallery.Entities.Candidates
 {
     public interface ICandidateChooser
     {
-        List<ISubject> GetCandidate();
+        List<ISubject> GetCandidates();
     }
 }

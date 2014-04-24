@@ -16,12 +16,10 @@ namespace Gallery.Entities.Candidates
             _Pool = pool;
         }
 
-        public List<ISubject> GetCandidate()
+        public List<ISubject> GetCandidates()
         {
             var ret = new List<ISubject>();
-
-            
-
+            _Pool.Candidates.ForEach(c => ret.Add(c));
             return ret;
         }
     }
