@@ -39,15 +39,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllCandidateChooser.cs" />
-    <Compile Include="CandidatePool.cs" />
+    <Compile Include="Candidates\AllCandidateChooser.cs" />
+    <Compile Include="Candidates\CandidatePool.cs" />
     <Compile Include="Elections\Election.cs" />
     <Compile Include="Elections\IElection.cs" />
     <Compile Include="Elections\IElectionSet.cs" />
     <Compile Include="Elections\SqlBackedElection.cs" />
     <Compile Include="Elections\SqlBackedElectionSet.cs" />
-    <Compile Include="ICandidateChooser.cs" />
-    <Compile Include="ICandidatePool.cs" />
+    <Compile Include="Candidates\ICandidateChooser.cs" />
+    <Compile Include="Candidates\ICandidatePool.cs" />
     <Compile Include="ImageGallery\FileSystemImageGallery.cs" />
     <Compile Include="ImageGallery\IImageGallery.cs" />
     <Compile Include="ImageGallery\ISubjectPool.cs" />
@@ -55,7 +55,7 @@
     <Compile Include="ImageGallery\SqlTrackedImageGallery.cs" />
     <Compile Include="ImageGallery\SubjectPool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RookieCandidateChooser.cs" />
+    <Compile Include="Candidates\RookieCandidateChooser.cs" />
     <Compile Include="SetLists\SetList.cs" />
     <Compile Include="SetLists\SqlBackedSetlist.cs" />
     <Compile Include="Subjects\FileBackedSubject.cs" />
