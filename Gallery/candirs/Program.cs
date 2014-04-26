@@ -17,6 +17,7 @@ namespace candirs
         {
             string rootPath = args[0];
             string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
             
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
@@ -26,15 +27,15 @@ namespace candirs
             var choosers = new ICandidateChooser[] { rookieChooser, travelChooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSets = registrar.GetContestCandidates();
-
-            candidateSets.ToList().ForEach(kvp =>
+            var writer = new FileSystemContestWriter(rootPath, poolRoot);
+            if (writer.WriteContests(candidateSets))
             {
-                Console.WriteLine("Set: " + kvp.Key);
-                kvp.Value.ForEach(subj =>
-                {
-                    Console.WriteLine(subj.DisplayName);
-                });
-            });
+                Console.WriteLine("Contests written.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to write contests.");
+            }
 
             Console.ReadLine();
         }

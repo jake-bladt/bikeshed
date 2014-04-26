@@ -42,6 +42,8 @@
     <Compile Include="Candidates\AllCandidateChooser.cs" />
     <Compile Include="Candidates\CandidatePool.cs" />
     <Compile Include="Candidates\ContestCandidateRegistrar.cs" />
+    <Compile Include="Candidates\FileSystemContestWriter.cs" />
+    <Compile Include="Candidates\IContestWriter.cs" />
     <Compile Include="Elections\Election.cs" />
     <Compile Include="Elections\IElection.cs" />
     <Compile Include="Elections\IElectionSet.cs" />
