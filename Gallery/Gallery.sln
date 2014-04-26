@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "slideshow", "slideshow\slid
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ss2dir", "ss2dir\ss2dir.csproj", "{B2679344-083F-4B46-BC16-78B89279E6AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "candirs", "candirs\candirs.csproj", "{A91D57BE-6087-4914-91B4-E15CF7BD4A5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -74,6 +76,10 @@ Global
 		{B2679344-083F-4B46-BC16-78B89279E6AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2679344-083F-4B46-BC16-78B89279E6AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2679344-083F-4B46-BC16-78B89279E6AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A91D57BE-6087-4914-91B4-E15CF7BD4A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A91D57BE-6087-4914-91B4-E15CF7BD4A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A91D57BE-6087-4914-91B4-E15CF7BD4A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A91D57BE-6087-4914-91B4-E15CF7BD4A5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
