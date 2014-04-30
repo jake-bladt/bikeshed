@@ -14,6 +14,11 @@ namespace Gallery
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Yearbook Images",
+                url: "Yearbook/{name}",
+                defaults: new { controller = "Yearbook", action = "Image", name = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
