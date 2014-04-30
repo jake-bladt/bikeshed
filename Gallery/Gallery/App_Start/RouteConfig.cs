@@ -19,6 +19,11 @@ namespace Gallery
                 defaults: new { controller = "Yearbook", action = "Image", name = UrlParameter.Optional });
 
             routes.MapRoute(
+                name: "Subject Details",
+                url: "Profile/{name}",
+                defaults: new { controller = "Subject", action = "Details", name = UrlParameter.Optional });
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

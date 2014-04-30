@@ -1,7 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "All Subjects";
 }
 
-<h2>Index</h2>
+<h2>Subjects</h2>
+
+<ul>
+  @foreach (ISubject subject in ViewBag.Subjects) { 
+    <li>@Html.ActionLink(subject.DisplayName, "Details", new { name = subject.Name })</li>
+  }
+</ul>
 
