@@ -13,7 +13,7 @@ namespace Gallery.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public FileResult Image(string name)
         {
-            var yearbookRoot = ConfigurationManager.AppSettings["yearbooktLocation"];
+            var yearbookRoot = ConfigurationManager.AppSettings["yearbookLocation"];
             var imagePath = Path.Combine(yearbookRoot, name + ".jpg");
             if (System.IO.File.Exists(imagePath))
             {
