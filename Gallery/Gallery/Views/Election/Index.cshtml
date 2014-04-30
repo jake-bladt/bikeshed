@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Elections";
+    var elections = (List<Gallery.Entities.Elections.IElection>)ViewBag.Elections;
+}
+
+<h2>Elections</h2>
+<table class="table table-striped table-bordered table-condensed" width="500">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Date</td>
+      <td>Places</td>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var election in elections)
+    {
+      <tr>
+        <td>@Html.ActionLink(election.Name, "Details", new { Id = election.Id })</td>
+        <td>@election.EventDate.ToString("d-MMM-yyyy")</td>
+        <td>@election.WinnerCount</td>
+      </tr>
+    }
+  </tbody>
+</table>
+

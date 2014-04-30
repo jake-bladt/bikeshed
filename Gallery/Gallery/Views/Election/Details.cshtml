@@ -1,0 +1,26 @@
+﻿@model Gallery.Entities.Elections.Election
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>@Model.Name</h2>
+<h3>@Model.EventDate.ToString("d-MMM-yyyy")</h3>
+
+<table class="table table-striped table-bordered table-condensed" width="500">
+  <thead>
+    <tr>
+      <td>Rank</td>
+      <td>Subject</td>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach (var kvp in Model.Winners)
+    {
+      <tr>
+        <td>@kvp.Key</td>
+        <td>@kvp.Value.DisplayName</td>
+      </tr>
+    }
+  </tbody>
+</table>

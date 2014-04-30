@@ -37,6 +37,7 @@ namespace Gallery.Entities.SetLists
         public SqlBackedSetlist(string cn, string name) : base(name)
         {
             ConnectionString = cn;
+            Name = name;
         }
 
         public bool Fetch(int? id = null)

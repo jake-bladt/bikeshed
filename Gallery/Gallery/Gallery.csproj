@@ -117,6 +117,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ElectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MigrationController.cs" />
     <Compile Include="Global.asax.cs">
@@ -161,6 +162,8 @@
     <Content Include="Views\Home\Utils.cshtml" />
     <Content Include="Coffee\utils.coffee" />
     <Content Include="Views\Shared\_SubjectSets.cshtml" />
+    <Content Include="Views\Election\Index.cshtml" />
+    <Content Include="Views\Election\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
