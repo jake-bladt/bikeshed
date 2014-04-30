@@ -33,26 +33,7 @@ namespace Gallery.Entities.Elections
 
         public IElection GetElection(int id)
         {
-            Election ret = null;
-            var cn = new SqlConnection(_ConnectionString);
-            cn.Open();
-            var cmd = new SqlCommand("getElection", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.Add(new SqlParameter("id", id));
-            var rdr = cmd.ExecuteReader();
-
-            if (rdr.Read())
-            {
-                ret = new Election
-                {
-                    Id = Convert.ToInt32(rdr["Id"]),
-                    EventDate = Convert.ToDateTime(rdr["EventDate"]),
-                    Name = rdr["ElectionName"].ToString(),
-                    WinnerCount = Convert.ToInt32(rdr["WinnerCount"]),
-                    EventType = (ElectionType)(Convert.ToInt32(rdr["ElectionTypeId"])),
-                    Winners = new Dictionary<int,Subjects.ISubject>()
-                };
-            }
-            return ret;
+            return SqlBackedElection.FromId(id, _ConnectionString);
         }
 
         protected IElection ElectionFromRow(SqlDataReader rdr)
