@@ -1,0 +1,9 @@
+﻿@model Gallery.Entities.Subjects.SqlBackedSubject
+
+@{
+    ViewBag.Title = "Subject";
+    ISubject subject = ViewBag.Subject;
+}
+
+<h2>@subject.DisplayName</h2>
+<h3>@subject.ImageCount Images</h3>
