@@ -1,0 +1,110 @@
+﻿<!doctype html>
+<html data-ng-app="adApp">
+  <head>
+    <title>Ad Data, Jan 1-Apr 1, 2011</title>
+      <link rel="stylesheet" type="text/css" href="Styles/app_styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script src="Scripts/ad_app.js"></script>
+  </head>
+  <body>
+    <h2>Ad Data, Jan 1-Apr 1, 2011</h2>
+
+    <!-- TODO: Use FiltersController -->
+    <p>| <a href="#" onClick="showData('allDataDiv'); return false">All</a> | 
+         <a href="#" onClick="showData('bigCoverDiv'); return false">Big Covers</a> | 
+         <a href="#" onClick="showData('bigAdDiv'); return false">Big Ads</a> | 
+         <a href="#" onClick="showData('totalPageCoverageDiv'); return false">Total Page Count</a> | 
+    </p>
+
+    <div id="allDataDiv" class="datagrid invisible" data-ng-controller='AllDataController' data-ng-cloak="">
+        <table id="allDataTable">
+          <thead>
+            <tr>
+              <td><a href="#" data-ng-click="sortBy('AdId')">AdID</a></td>
+              <td><a href="#" data-ng-click="sortBy('BrandId')">BrandID</a></td>
+              <td><a href="#" data-ng-click="sortBy('BrandName')">Brand</a></td>
+              <td><a href="#" data-ng-click="sortBy('numPages')">Page Size</a></td>
+              <td><a href="#" data-ng-click="sortBy('Position')">Position</a></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="row in data.ads">
+              <td>{{ row.AdId }}</td>
+              <td>{{ row.Brand.BrandId }}</td>
+              <td>{{ row.Brand.BrandName }}</td>
+              <td>{{ row.NumPages }}</td>
+              <td>{{ row.Position }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+            &nbsp;{{navInfo}} 
+            <a href="#"  data-ng-click="skip(0)">1</a>
+            <a href="#"  data-ng-click="skip(20)">2</a>
+        </p>
+    </div>
+
+    <div id="bigCoverDiv" class="datagrid invisible" data-ng-controller='BigCoverController' data-ng-cloak="">
+        <table id="bigCoverTable">
+          <thead>
+            <tr>
+              <td><a href="#" data-ng-click="sortBy('AdId')">AdID</a></td>
+              <td><a href="#" data-ng-click="sortBy('BrandId')">BrandID</a></td>
+              <td><a href="#" data-ng-click="sortBy('BrandName')">Brand</a></td>
+              <td><a href="#" data-ng-click="sortBy('numPages')">Page Size</a></td>
+              <td><a href="#" data-ng-click="sortBy('Position')">Position</a></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="row in data.ads">
+              <td>{{ row.AdId }}</td>
+              <td>{{ row.Brand.BrandId }}</td>
+              <td>{{ row.Brand.BrandName }}</td>
+              <td>{{ row.NumPages }}</td>
+              <td>{{ row.Position }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>
+            &nbsp;{{navInfo}} 
+            <a href="#"  data-ng-click="skip(0)">1</a>
+            <a href="#"  data-ng-click="skip(20)">2</a>
+        </p>
+    </div>
+
+    <div id="bigAdDiv" data-ng-controller='BigAdController' data-ng-cloak="" class ="datagrid invisible">
+        <table id="bigAdTable">
+          <thead>
+            <tr>
+              <td>Brand</td>
+              <td>Largest Ad</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="row in data">
+              <td>{{ row.BrandName }}</td>
+              <td>{{ row.LargestAd }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+    <div id="totalPageCoverageDiv" data-ng-controller='TotalPageCoverageController' data-ng-cloak="" class ="datagrid invisible">
+        <table id="totalPageCoverageTable">
+          <thead>
+            <tr>
+              <td>Brand</td>
+              <td>Total Coverage</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-ng-repeat="row in data">
+              <td>{{ row.BrandName }}</td>
+              <td>{{ row.TotalCoverage }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+
+  </body>
+</html>

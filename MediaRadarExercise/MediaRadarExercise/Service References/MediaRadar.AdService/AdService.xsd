@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AdDataService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AdDataService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ArrayOfAd">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Ad" nillable="true" type="tns:Ad" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAd" nillable="true" type="tns:ArrayOfAd" />
+  <xs:complexType name="Ad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AdId" type="xs:int" />
+      <xs:element minOccurs="0" name="Brand" nillable="true" type="tns:Brand" />
+      <xs:element minOccurs="0" name="NumPages" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ad" nillable="true" type="tns:Ad" />
+  <xs:complexType name="Brand">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BrandId" type="xs:int" />
+      <xs:element minOccurs="0" name="BrandName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Brand" nillable="true" type="tns:Brand" />
+</xs:schema>
