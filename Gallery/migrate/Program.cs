@@ -19,7 +19,7 @@ namespace migrate
             if (!subjectResult) return ExitOn("Subject migration failed.");
 
             var electionResult = MigrateElections();
-            if (!subjectResult) return ExitOn("Election migration failed.");
+            if (!electionResult) return ExitOn("Election migration failed.");
 
             return ExitOn("Migration complete.");
         }

@@ -1,8 +1,8 @@
 ﻿@model Gallery.Entities.Subjects.SqlBackedSubject
 
 @{
-    ViewBag.Title = "Subject";
     ISubject subject = ViewBag.Subject;
+    ViewBag.Title = subject.DisplayName;
 }
 
 <h2>@subject.DisplayName</h2>
