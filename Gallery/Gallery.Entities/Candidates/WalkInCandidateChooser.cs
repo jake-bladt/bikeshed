@@ -31,6 +31,6 @@ namespace Gallery.Entities.Candidates
             return ret;
         }
 
-        public string Name { get; protected set; }
+        public string Name { get; set; }
     }
 }
