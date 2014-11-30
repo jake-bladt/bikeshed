@@ -22,7 +22,7 @@ namespace Gallery.Entities.Candidates
         public List<ISubject> GetCandidates()
         {
             var ret = new List<ISubject>();
-            var chance = _targetCount / _pool.Candidates.Count();
+            var chance = _pool.Candidates.Count() / _targetCount;
             var rng = new Random();
             _pool.Candidates.ForEach(c =>
             {
