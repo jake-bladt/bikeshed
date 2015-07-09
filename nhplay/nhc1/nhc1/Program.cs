@@ -44,6 +44,7 @@ namespace nhc1
                     reading.Steps = steps;
                     session.Update(reading);
                 }
+                session.Flush();
             }
         }
 
