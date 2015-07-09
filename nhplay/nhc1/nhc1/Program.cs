@@ -20,8 +20,31 @@ namespace nhc1
             CreateDB();
             var user = CreateUser();
 
+            UpsertReading(new DateTime(2015, 1, 1), 6120, user);
+            UpsertReading(new DateTime(2015, 1, 2), 2117, user);
+            UpsertReading(new DateTime(2015, 1, 3), 4545, user);
+            UpsertReading(new DateTime(2015, 1, 4), 5000, user);
 
             Console.ReadLine();
+        }
+
+        public static void UpsertReading(DateTime dt, int steps, User user)
+        {
+            var factory = CreateSessionFactory();
+            using (var session = factory.OpenSession())
+            {
+                var reading = session.Query<StepData>().Where(d => d.User == user && d.Date == dt).FirstOrDefault();
+                if(null == reading)
+                {
+                    reading = new StepData { Date = dt, Steps = steps, User = user };
+                    session.Save(reading);
+                }
+                else
+                {
+                    reading.Steps = steps;
+                    session.Update(reading);
+                }
+            }
         }
 
         public static User CreateUser()
