@@ -24,6 +24,7 @@ namespace nhc1
             UpsertReading(new DateTime(2015, 1, 2), 2117, user);
             UpsertReading(new DateTime(2015, 1, 3), 4545, user);
             UpsertReading(new DateTime(2015, 1, 4), 5000, user);
+            UpsertReading(new DateTime(2015, 1, 5), 5155, user);
 
             Console.ReadLine();
         }
