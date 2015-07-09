@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FluentNHibernate.Mapping;
 
 namespace nhc1
 {
@@ -11,5 +8,15 @@ namespace nhc1
         public virtual int Id { get; set; }
         public virtual DateTime Date { get; set; }
         public virtual int Steps { get; set; }
+    }
+
+    public class StepDataMap : ClassMap<StepData>
+    {
+        public StepDataMap()
+        {
+            Id(x => x.Id);
+            Map(x => x.Date);
+            Map(x => x.Steps);
+        }
     }
 }
