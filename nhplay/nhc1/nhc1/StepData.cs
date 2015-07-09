@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace nhc1
 {
-    class StepData
+    public class StepData
     {
+        public virtual int Id { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual int Steps { get; set; }
     }
 }
