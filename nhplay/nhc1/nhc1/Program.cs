@@ -25,7 +25,7 @@ namespace nhc1
                   .MsSql2012
                   .ConnectionString(cnStr))
                   .Mappings(m => m.FluentMappings.AddFromAssemblyOf<UserMap>())
-                  .ExposeConfiguration(c => new SchemaUpdate(c).Execute(true, false))
+                  .ExposeConfiguration(c => new SchemaUpdate(c).Execute(true, true))
                   .BuildSessionFactory();
         }
     }
