@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("pfixcon")]
+[assembly: AssemblyTitle("nhc1")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Your Company Name")]
-[assembly: AssemblyProduct("pfixcon")]
-[assembly: AssemblyCopyright("Copyright © Your Company Name 2009")]
+[assembly: AssemblyCompany("Windows User")]
+[assembly: AssemblyProduct("nhc1")]
+[assembly: AssemblyCopyright("Copyright © Windows User 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("eb40ccb1-9c96-4be5-b5a2-df80fccabeb4")]
+[assembly: Guid("e619e67e-aedf-4f0d-9906-611623e33903")]
 
 // Version information for an assembly consists of the following four values:
 //
