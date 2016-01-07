@@ -23,7 +23,7 @@ namespace runoffs
             var pool = CandidatePool.FromFileSystemDirectory(poolInfo);
             var chooser = new WalkInCandidateChooser(pool, targetCount * contestCount);
 
-            var candidates = chooser.GetCandidates();
+            var candidates = chooser.GetCandidates().Shuffle();
             var candidatesArray = candidates.ToArray();
             for (int i = 1; i <= contestCount; ++i)
             {
