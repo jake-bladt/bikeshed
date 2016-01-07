@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,6 +18,19 @@ namespace Gallery.Entities.Candidates
             gallery.Subjects.Values.ToList().ForEach(subj =>
             {
                 ret.Add(subj);
+            });
+            return ret;
+        }
+
+        public static CandidatePool FromFileSystemDirectory(DirectoryInfo rootInfo)
+        {
+            var candidateImages = rootInfo.GetFiles("*.jpg");
+            var ret = new CandidatePool();
+            var id = 0;
+            candidateImages.ToList().ForEach(img =>
+            {
+                var candy = new FsoBackedSubject(img, ++id);
+                ret.Add(candy);
             });
             return ret;
         }
