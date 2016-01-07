@@ -63,6 +63,7 @@
     <Compile Include="SetLists\SetList.cs" />
     <Compile Include="SetLists\SqlBackedSetlist.cs" />
     <Compile Include="Subjects\FileBackedSubject.cs" />
+    <Compile Include="Subjects\FsoBackedSubject.cs" />
     <Compile Include="Subjects\ISubject.cs" />
     <Compile Include="Subjects\ISubjectReader.cs" />
     <Compile Include="Subjects\ISubjectWriter.cs" />
