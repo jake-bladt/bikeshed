@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Gallery.Entities.Candidates;
+using Gallery.Entities.Subjects;
 
 namespace runoffs
 {
@@ -28,14 +29,16 @@ namespace runoffs
             for (int i = 1; i <= contestCount; ++i)
             {
                 var runoffPath = Path.Combine(runoffRoot, i.ToString("000"));
+                Directory.CreateDirectory(runoffPath);
                 for (int j = 1; j <= targetCount; ++j)
                 {
                     var targetCandidateSlot = (i - 1) * targetCount + j - 1;
                     if (candidatesArray.Length > targetCandidateSlot)
                     {
-                        var candy = candidatesArray[targetCandidateSlot];
+                        var candy = (FsoBackedSubject)candidatesArray[targetCandidateSlot];
                         var targetLocation = Path.Combine(runoffPath, candy.DisplayName);
                         Console.WriteLine(String.Format("Copying {0} to {1}", candy.Name, targetLocation));
+                        File.Copy(candy.FullPath, targetLocation);
                     }
                 }
             }
