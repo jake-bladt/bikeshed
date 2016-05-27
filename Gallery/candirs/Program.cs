@@ -22,7 +22,7 @@ namespace candirs
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
-            var walkinChooser = new WalkInCandidateChooser(pool, 250.0) { Name = "walkin" };
+            var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
             var travelChooser = new AllCandidateChooser(pool) { Name = "travel" };
             var choosers = new ICandidateChooser[] { walkinChooser, rookieChooser, travelChooser };
