@@ -15,7 +15,7 @@ namespace slideshow
         {
             string setName = args[0];
             string showName = args[1];
-            int imageCount = Int32.Parse(args[2]);
+            Int32 imageCount = Int32.Parse(args[2]);
             string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             string subjectRoot = ConfigurationManager.AppSettings["subjectLocation"];
             string slideshowRoot = ConfigurationManager.AppSettings["slideshowLocation"];
