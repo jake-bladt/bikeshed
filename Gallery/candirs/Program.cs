@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.IO;
 
 using Gallery.Entities.Candidates;
 using Gallery.Entities.ImageGallery;
-
 
 namespace candirs
 {
