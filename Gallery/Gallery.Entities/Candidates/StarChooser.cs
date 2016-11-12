@@ -7,11 +7,11 @@ using Gallery.Entities.Subjects;
 
 namespace Gallery.Entities.Candidates
 {
-    public class RookieCandidateChooser : ICandidateChooser
+    public class StarChooser : ICandidateChooser
     {
         protected string ConnectionString { get; set; }
 
-        public RookieCandidateChooser(string cn)
+        public StarChooser(string cn)
         {
             ConnectionString = cn;
         }
@@ -23,7 +23,7 @@ namespace Gallery.Entities.Candidates
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
 
-            var cmd = new SqlCommand("getRookies", cn) { CommandType = CommandType.StoredProcedure };
+            var cmd = new SqlCommand("getStars", cn) { CommandType = CommandType.StoredProcedure };
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {

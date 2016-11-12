@@ -7,14 +7,18 @@ using Gallery.Entities.Subjects;
 
 namespace Gallery.Entities.Candidates
 {
-    public class RookieCandidateChooser : ICandidateChooser
+    public class SetCandidateChooser : ICandidateChooser
     {
-        protected string ConnectionString { get; set; }
+        protected string ConnectionString;
+        protected string TargetSetName;
 
-        public RookieCandidateChooser(string cn)
+        public SetCandidateChooser(string setName, string cnStr)
         {
-            ConnectionString = cn;
+            TargetSetName = setName;
+            ConnectionString = cnStr;
         }
+
+        public string Name { get; set; }
 
         public List<ISubject> GetCandidates()
         {
@@ -23,7 +27,8 @@ namespace Gallery.Entities.Candidates
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
 
-            var cmd = new SqlCommand("getRookies", cn) { CommandType = CommandType.StoredProcedure };
+            var cmd = new SqlCommand("getSubjectSetMembers", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("setName", TargetSetName));
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
@@ -39,7 +44,5 @@ namespace Gallery.Entities.Candidates
 
             return ret;
         }
-
-        public string Name { get; set; }
     }
 }

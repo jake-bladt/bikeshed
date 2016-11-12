@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.IO;
 
 using Gallery.Entities.Candidates;
 using Gallery.Entities.ImageGallery;
-
 
 namespace candirs
 {
@@ -22,10 +17,11 @@ namespace candirs
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
+            var travelChooser = new SetCandidateChooser(args[1], cn) { Name = "travel" };
             var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
-            var travelChooser = new AllCandidateChooser(pool) { Name = "travel" };
-            var choosers = new ICandidateChooser[] { walkinChooser, rookieChooser, travelChooser };
+            var starChooser = new StarChooser(cn) { Name = "star" };
+            var choosers = new ICandidateChooser[] { travelChooser, walkinChooser, rookieChooser, starChooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSets = registrar.GetContestCandidates();
             var writer = new FileSystemContestWriter(rootPath, poolRoot);
