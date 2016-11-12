@@ -22,7 +22,26 @@ namespace Gallery.Entities.Candidates
 
         public List<ISubject> GetCandidates()
         {
-            throw new NotImplementedException();
+            var ret = new List<ISubject>();
+
+            var cn = new SqlConnection(ConnectionString);
+            cn.Open();
+
+            var cmd = new SqlCommand("getRookies", cn) { CommandType = CommandType.StoredProcedure };
+            var rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var subject = new SqlBackedSubject
+                {
+                    ID = Convert.ToInt32(rdr["Id"]),
+                    Name = rdr["Name"].ToString(),
+                    DisplayName = rdr["DisplayName"].ToString(),
+                    ImageCount = Convert.ToInt32(rdr["ImageCount"])
+                };
+                ret.Add(subject);
+            }
+
+            return ret;
         }
     }
 }
