@@ -17,10 +17,11 @@ namespace candirs
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
+            var travelChooser = new SetCandidateChooser(cn, args[1]) { Name = "travel" };
             var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
-            var travelChooser = new AllCandidateChooser(pool) { Name = "travel" };
-            var choosers = new ICandidateChooser[] { walkinChooser, rookieChooser, travelChooser };
+            var starChooser = new AllCandidateChooser(pool) { Name = "star" };
+            var choosers = new ICandidateChooser[] { travelChooser, walkinChooser, rookieChooser, starChooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSets = registrar.GetContestCandidates();
             var writer = new FileSystemContestWriter(rootPath, poolRoot);

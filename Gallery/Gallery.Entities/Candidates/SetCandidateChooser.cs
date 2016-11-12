@@ -18,7 +18,7 @@ namespace Gallery.Entities.Candidates
             ConnectionString = cnStr;
         }
 
-        public string Name { get; protected set; }
+        public string Name { get; set; }
 
         public List<ISubject> GetCandidates()
         {
