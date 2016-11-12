@@ -27,7 +27,8 @@ namespace Gallery.Entities.Candidates
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
 
-            var cmd = new SqlCommand("getRookies", cn) { CommandType = CommandType.StoredProcedure };
+            var cmd = new SqlCommand("getSubjectSetMembers", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("setName", TargetSetName));
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
