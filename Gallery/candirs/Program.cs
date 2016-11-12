@@ -20,7 +20,7 @@ namespace candirs
             var travelChooser = new SetCandidateChooser(args[1], cn) { Name = "travel" };
             var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
-            var starChooser = new AllCandidateChooser(pool) { Name = "star" };
+            var starChooser = new StarChooser(cn) { Name = "star" };
             var choosers = new ICandidateChooser[] { travelChooser, walkinChooser, rookieChooser, starChooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSets = registrar.GetContestCandidates();
