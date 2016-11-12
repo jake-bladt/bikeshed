@@ -1,12 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Gallery.Entities.Candidates
 {
-    public class SetCandidateChooser
+    public class SetCandidateChooser : ICandidateChooser
     {
+        protected string ConnectionString;
+        protected string TargetSetName;
+
+        public SetCandidateChooser(string setName, string cnStr)
+        {
+            TargetSetName = setName;
+            ConnectionString = cnStr;
+        }
+
+        public string Name { get; protected set; }
+
+        public List<ISubject> GetCandidates()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
