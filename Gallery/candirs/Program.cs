@@ -17,7 +17,7 @@ namespace candirs
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
-            var travelChooser = new SetCandidateChooser(cn, args[1]) { Name = "travel" };
+            var travelChooser = new SetCandidateChooser(args[1], cn) { Name = "travel" };
             var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
             var starChooser = new AllCandidateChooser(pool) { Name = "star" };
