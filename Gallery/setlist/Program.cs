@@ -19,7 +19,7 @@ namespace setlist
                 var count = args.Length > 1 ? Int32.Parse(args[1]) : 10;
                 var reader = new SqlElectionReader(cnStr);
                 var listings = reader.GetElectionListing(count);
-                listings.ForEach(el => Console.WriteLine(String.Format("{0}. {1}"), el.Id, el.Name));
+                listings.ForEach(el => Console.WriteLine(String.Format("{0}. {1}", el.Id, el.Name)));
             }
             else
             {
