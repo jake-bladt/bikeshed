@@ -34,7 +34,16 @@ namespace Gallery.Entities.Elections
         public List<IElectionListing> GetElectionListing(int count)
         {
             var ret = new List<IElectionListing>();
-
+            var cn = new SqlConnection(_ConnectionString);
+            cn.Open();
+            var cmd = new SqlCommand("listElections", cn) { CommandType = CommandType.StoredProcedure };
+            cmd.Parameters.Add(new SqlParameter("count", count));
+            var rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                var listing = new ElectionListing { Name = (String)rdr["Name"], Id = (int)rdr["Id"] }; 
+                ret.Add(listing);
+            }
             return ret;
         }
 
