@@ -13,39 +13,48 @@ namespace setlist
     {
         static void Main(string[] args)
         {
-            string listName = args[0];
-            var elections = new List<IElection>();
-            string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var firstArg = args[0].ToLower();
 
-            for (int i = 1; i < args.Length; i++)
+            if (firstArg == "list" || firstArg == "l")
             {
-                int id;
-                IElection election;
-                if (Int32.TryParse(args[i], out id) && id.ToString() == args[i])
-                {
-                    election = SqlBackedElection.FromId(id, cnStr);
-                }
-                else
-                {
-                    election = SqlBackedElection.FromName(args[i], cnStr);
-                }
-                if (null == election)
-                {
-                    Console.WriteLine(String.Format("There is no election named {0}", args[i]));
-                    return;
-                }
-                elections.Add(election);
-            }
-
-            var theSetList = SetList.FromElections(elections, listName);
-            var dbSetList = SqlBackedSetlist.CloneFrom(theSetList, cnStr);
-            if(dbSetList.Store())
-            {
-                Console.WriteLine("Setlist created.");
+                // run in list mode.
             }
             else
             {
-                Console.WriteLine("Failed to create setlist.");
+                string listName = firstArg;
+                var elections = new List<IElection>();
+                string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+
+                for (int i = 1; i < args.Length; i++)
+                {
+                    int id;
+                    IElection election;
+                    if (Int32.TryParse(args[i], out id) && id.ToString() == args[i])
+                    {
+                        election = SqlBackedElection.FromId(id, cnStr);
+                    }
+                    else
+                    {
+                        election = SqlBackedElection.FromName(args[i], cnStr);
+                    }
+                    if (null == election)
+                    {
+                        Console.WriteLine(String.Format("There is no election named {0}", args[i]));
+                        return;
+                    }
+                    elections.Add(election);
+                }
+
+                var theSetList = SetList.FromElections(elections, listName);
+                var dbSetList = SqlBackedSetlist.CloneFrom(theSetList, cnStr);
+                if (dbSetList.Store())
+                {
+                    Console.WriteLine("Setlist created.");
+                }
+                else
+                {
+                    Console.WriteLine("Failed to create setlist.");
+                }
             }
 
             Console.ReadLine();
