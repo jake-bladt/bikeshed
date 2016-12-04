@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
 
 using Gallery.Entities.Elections;
 using Gallery.Entities.SetLists;
@@ -14,16 +12,19 @@ namespace setlist
         static void Main(string[] args)
         {
             var firstArg = args[0].ToLower();
+            string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
 
             if (firstArg == "list" || firstArg == "l")
             {
-                // run in list mode.
+                var count = args.Length > 1 ? Int32.Parse(args[1]) : 10;
+                var reader = new SqlElectionReader(cnStr);
+                var listings = reader.GetElectionListing(count);
+                listings.ForEach(el => Console.WriteLine(String.Format("{0}. {1}"), el.Id, el.Name));
             }
             else
             {
                 string listName = firstArg;
                 var elections = new List<IElection>();
-                string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
 
                 for (int i = 1; i < args.Length; i++)
                 {
