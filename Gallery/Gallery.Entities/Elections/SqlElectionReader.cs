@@ -31,6 +31,13 @@ namespace Gallery.Entities.Elections
             return ret;
         }
 
+        public List<IElectionListing> GetElectionListing(int count)
+        {
+            var ret = new List<IElectionListing>();
+
+            return ret;
+        }
+
         public IElection GetElection(int id)
         {
             return SqlBackedElection.FromId(id, _ConnectionString);

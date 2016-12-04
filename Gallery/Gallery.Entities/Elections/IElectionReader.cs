@@ -9,6 +9,7 @@ namespace Gallery.Entities.Elections
     public interface IElectionReader
     {
         List<IElection> GetAllElections();
+        List<IElectionListing> GetElectionListing(int count);
         IElection GetElection(int id);
     }
 }

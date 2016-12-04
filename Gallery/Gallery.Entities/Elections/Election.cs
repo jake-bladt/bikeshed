@@ -10,7 +10,7 @@ using Gallery.Entities.Utilities;
 
 namespace Gallery.Entities.Elections
 {
-    public class Election : IElection
+    public class Election : IElection, IElectionListing
     {
         public static Election FromDirectory(
             string dirPath,
