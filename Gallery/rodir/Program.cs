@@ -36,7 +36,11 @@ namespace rodir
             var candidateSets = registrar.GetContestCandidates();
             var subset = candidateSets[sourceList];
 
-
+            // TODO - Convert the subset to a pool.
+            // The number of cycles through the pool is either rocCount or infinite.
+            // Loop until the number of cycles is depleted or all candidates in the subset
+            // have been assigned to a runoff.
+            // Write those runoffs to disc.
 
         }
     }
