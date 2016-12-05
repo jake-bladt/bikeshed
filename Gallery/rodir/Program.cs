@@ -11,6 +11,27 @@ namespace rodir
     {
         static void Main(string[] args)
         {
+            var roCountString = args[0];
+            int contestantCount = Int32.Parse(args[1]);
+            var sourceList = args.Length > 2 ? args[2] : String.Empty;
+
+            string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
+            string roRoot = Path.Combine(ConfigurationManager.AppSettings["electionsRoot"], "runoff");
+
+            var gallery = new SqlTrackedImageGallery(cn);
+            var pool = CandidatePool.FromGallery(gallery);
+
+            ICandidateChooser chooser = null;
+            if(String.IsNullOrEmpty(sourceList))
+            {
+                chooser = new AllCandidateChooser(pool);
+            }
+            else
+            {
+
+            }
+
         }
     }
 }
