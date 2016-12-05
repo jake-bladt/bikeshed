@@ -53,6 +53,16 @@ namespace Gallery.Migration
             return true;
         }
 
+        public bool MigrateSpecials(string rootPath)
+        {
+            return false;
+        }
+
+        public bool MigrateRunoffs(string rootPath)
+        {
+            return false;
+        }
+
         protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType> 
           { 
               { "travel", ElectionType.Travel },
