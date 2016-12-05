@@ -108,8 +108,9 @@ namespace Gallery.Migration
         protected bool MigrateRunoffDirectory(DirectoryInfo di)
         {
             DateTime eventDate = EventDateFromDirName(di.Name.Substring(0, 8));
-
-            return false;
+            int runoffNum = Int32.Parse(di.Name.Substring(9));
+            var name = RunoffElectionNameFromParts(eventDate, runoffNum);
+            return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.RunOff);
         }
 
         protected bool IsAnnualFolder(DirectoryInfo di)
@@ -127,6 +128,11 @@ namespace Gallery.Migration
         protected string MonthlyElectionNameFromParts(DateTime eventDate, string subdirName)
         {
             return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
+        }
+
+        protected string RunoffElectionNameFromParts(DateTime eventDate, int runoffNum)
+        {
+            return String.Format("{0} runoff #{1}", eventDate.ToString("MMMM d yyyy"), runoffNum);
         }
 
         protected string SpecialElectionNameFromDirectoryName(string directoryName)
