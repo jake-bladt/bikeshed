@@ -14,7 +14,7 @@ namespace specdir
             string setName = args[0];
             string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
-            string specialRoot = Path.Combine(ConfigurationManager.AppSettings[""], "special");
+            string specialRoot = Path.Combine(ConfigurationManager.AppSettings["electionsRoot"], "special");
             string contestPath = Path.Combine(specialRoot, setName);
 
             var gallery = new SqlTrackedImageGallery(cn);
