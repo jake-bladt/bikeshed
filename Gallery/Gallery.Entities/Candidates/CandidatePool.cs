@@ -35,6 +35,13 @@ namespace Gallery.Entities.Candidates
             return ret;
         }
 
+        public static CandidatePool FromListOfSubjects(List<ISubject> subjects)
+        {
+            var ret = new CandidatePool();
+            subjects.ForEach(s => ret.Add(s));
+            return ret;
+        }
+
         protected Dictionary<string, ISubject> _Subjects;
         protected bool _ListIsDirty = false;
         protected List<ISubject> _Candidates;

@@ -22,19 +22,21 @@ namespace rodir
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
-            ICandidateChooser chooser = null;
+            CandidatePool subsetPool;
             if(String.IsNullOrEmpty(sourceList))
             {
+                ICandidateChooser chooser = null;
                 chooser = new AllCandidateChooser(pool) { Name = sourceList };
+                var choosers = new ICandidateChooser[] { chooser };
+                var registrar = new ContestCandidateRegistrar(pool, choosers);
+                var candidateSets = registrar.GetContestCandidates();
+                var subset = candidateSets[sourceList];
+                subsetPool = CandidatePool.FromListOfSubjects(subset);
             }
             else
             {
-                chooser = new SetCandidateChooser(sourceList, cn) { Name = sourceList };
+                subsetPool = pool;
             }
-            var choosers = new ICandidateChooser[] { chooser };
-            var registrar = new ContestCandidateRegistrar(pool, choosers);
-            var candidateSets = registrar.GetContestCandidates();
-            var subset = candidateSets[sourceList];
 
             // TODO - Convert the subset to a pool.
             // The number of cycles through the pool is either rocCount or infinite.
