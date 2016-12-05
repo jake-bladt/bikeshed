@@ -22,8 +22,8 @@ namespace rodir
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
-            CandidatePool subsetPool;
-            if(String.IsNullOrEmpty(sourceList))
+            CandidatePool subsetPool = pool;
+            if(!String.IsNullOrEmpty(sourceList))
             {
                 ICandidateChooser chooser = null;
                 chooser = new AllCandidateChooser(pool) { Name = sourceList };
@@ -33,12 +33,7 @@ namespace rodir
                 var subset = candidateSets[sourceList];
                 subsetPool = CandidatePool.FromListOfSubjects(subset);
             }
-            else
-            {
-                subsetPool = pool;
-            }
 
-            // TODO - Convert the subset to a pool.
             // The number of cycles through the pool is either rocCount or infinite.
             // Loop until the number of cycles is depleted or all candidates in the subset
             // have been assigned to a runoff.
