@@ -20,7 +20,7 @@ namespace specdir
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
 
-            var chooser = new SetCandidateChooser(args[1], cn) { Name = setName };
+            var chooser = new SetCandidateChooser(setName, cn) { Name = setName };
             var choosers = new ICandidateChooser[] { chooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSet = registrar.GetContestCandidates();
