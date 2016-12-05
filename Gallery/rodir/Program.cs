@@ -25,12 +25,18 @@ namespace rodir
             ICandidateChooser chooser = null;
             if(String.IsNullOrEmpty(sourceList))
             {
-                chooser = new AllCandidateChooser(pool);
+                chooser = new AllCandidateChooser(pool) { Name = sourceList };
             }
             else
             {
-
+                chooser = new SetCandidateChooser(sourceList, cn) { Name = sourceList };
             }
+            var choosers = new ICandidateChooser[] { chooser };
+            var registrar = new ContestCandidateRegistrar(pool, choosers);
+            var candidateSets = registrar.GetContestCandidates();
+            var subset = candidateSets[sourceList];
+
+
 
         }
     }
