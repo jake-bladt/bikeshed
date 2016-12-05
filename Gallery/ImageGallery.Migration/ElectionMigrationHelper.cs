@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -55,7 +56,14 @@ namespace Gallery.Migration
 
         public bool MigrateSpecials(string rootPath)
         {
-            return false;
+            var specialsPath = Path.Combine(rootPath, "specials");
+            if (!Directory.Exists(specialsPath)) throw new ArgumentException("Could not find the directory " + specialsPath);
+            var specialsDi = new DirectoryInfo(specialsPath);
+            specialsDi.GetDirectories().ToList().ForEach(electionDi =>
+            {
+                if (!MigrateSpecialDirectory(electionDi)) Trace.WriteLine(String.Format("Failed to migrate special election from {0}.", electionDi.Name));
+            });
+            return true;
         }
 
         public bool MigrateRunoffs(string rootPath)
@@ -90,6 +98,13 @@ namespace Gallery.Migration
             return true;
         }
 
+        protected bool MigrateSpecialDirectory(DirectoryInfo di)
+        {
+            DateTime eventDate = di.LastWriteTime;
+            string name = SpecialElectionNameFromDirectoryName(di.Name);
+            return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.Special);
+        }
+
         protected bool IsAnnualFolder(DirectoryInfo di)
         {
             string pattern = @"^\d{4}$";
@@ -105,6 +120,19 @@ namespace Gallery.Migration
         protected string ElectionNameFromParts(DateTime eventDate, string subdirName)
         {
             return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
+        }
+
+        protected string SpecialElectionNameFromDirectoryName(string directoryName)
+        {
+            var dnameArr = directoryName.ToCharArray();
+            var sb = new StringBuilder(dnameArr[0]);
+            for(int i = 1; i < dnameArr.Length; i++)
+            {
+                var c = dnameArr[i].ToString();
+                if(c == c.ToUpper()) sb.Append(" ");
+                sb.Append(c);
+            }
+            return sb.ToString();
         }
 
         protected DateTime EventDateFromDirName(string dirName)
