@@ -88,7 +88,7 @@ namespace Gallery.Migration
                 if (Directory.Exists(fullPath))
                 {
                     DateTime eventDate = EventDateFromDirName(di.Name);
-                    string name = ElectionNameFromParts(eventDate, kvp.Key);
+                    string name = MonthlyElectionNameFromParts(eventDate, kvp.Key);
                     var eventType = kvp.Value;
                     var migrateSuccess = MigrateDirectoryToDB(fullPath, name, eventDate, eventType);
                     if (!migrateSuccess) throw new ElectionMigrationException(
@@ -105,6 +105,13 @@ namespace Gallery.Migration
             return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.Special);
         }
 
+        protected bool MigrateRunoffDirectory(DirectoryInfo di)
+        {
+            DateTime eventDate = EventDateFromDirName(di.Name.Substring(0, 8));
+
+            return false;
+        }
+
         protected bool IsAnnualFolder(DirectoryInfo di)
         {
             string pattern = @"^\d{4}$";
@@ -117,7 +124,7 @@ namespace Gallery.Migration
             return Regex.IsMatch(di.Name, pattern);
         }
 
-        protected string ElectionNameFromParts(DateTime eventDate, string subdirName)
+        protected string MonthlyElectionNameFromParts(DateTime eventDate, string subdirName)
         {
             return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
         }
