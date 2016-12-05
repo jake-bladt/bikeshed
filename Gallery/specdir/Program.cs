@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 
 using Gallery.Entities.Candidates;
 using Gallery.Entities.ImageGallery;
@@ -10,11 +11,11 @@ namespace specdir
     {
         static void Main(string[] args)
         {
-            string contestPath = args[0];
-            string setName = args[1];
-
+            string setName = args[0];
             string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
+            string specialRoot = Path.Combine(ConfigurationManager.AppSettings[""], "special");
+            string contestPath = Path.Combine(specialRoot, setName);
 
             var gallery = new SqlTrackedImageGallery(cn);
             var pool = CandidatePool.FromGallery(gallery);
