@@ -44,7 +44,7 @@ namespace Gallery.Entities.Elections
 
             for (int i = 1; i <= winnerCount; i++)
             {
-                if (!winners.ContainsKey(i)) throw new EmptyElectionSlotException(String.Format("Slot {0} is empty", i));
+                if (!winners.ContainsKey(i)) return null;
             }
 
             
