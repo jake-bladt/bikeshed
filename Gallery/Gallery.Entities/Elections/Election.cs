@@ -31,6 +31,7 @@ namespace Gallery.Entities.Elections
             {
                 var line = fi.Name;
                 var entries = NameMapper.ElectionFileNameToElectionEntry(line);
+                if (null == entries) return;
                 int pos = entries.Item1;
                 string winnerName = entries.Item2;
 
