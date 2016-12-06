@@ -115,7 +115,7 @@ namespace Gallery.Migration
 
         protected bool MigrateRunoffDirectory(DirectoryInfo di)
         {
-            DateTime eventDate = EventDateFromDirName(di.Name.Substring(0, 8));
+            DateTime eventDate = di.CreationTime;
             int runoffNum = Int32.Parse(di.Name.Substring(9));
             var name = RunoffElectionNameFromParts(eventDate, runoffNum);
             return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.RunOff);
