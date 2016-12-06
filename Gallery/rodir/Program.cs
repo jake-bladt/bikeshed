@@ -13,9 +13,10 @@ namespace rodir
     {
         static void Main(string[] args)
         {
-            var roCountString = args[0];
-            int contestantCount = Int32.Parse(args[1]);
-            var sourceList = args.Length > 2 ? args[2] : String.Empty;
+            var roSetName = args[0];
+            var roCountString = args[1];
+            int contestantCount = Int32.Parse(args[2]);
+            var sourceList = args.Length > 3 ? args[3] : String.Empty;
 
             string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
@@ -41,7 +42,7 @@ namespace rodir
 
             // Loop until the number of cycles is depleted or all candidates in the subset
             // have been assigned to a runoff.
-            var runoffSets = new Dictionary<int, List<ISubject>>();
+            var runoffSets = new Dictionary<string, List<ISubject>>();
             for(int i = 1; i <= runCount; i++)
             {
                 var chooserName = String.Format("runoff{0}", i.ToString("000"));
@@ -62,6 +63,11 @@ namespace rodir
 
             // Write the runoffs to disc.
 
+        }
+
+        static string OrdinalToRunoffName(int ordinal)
+        {
+            return String.Format("{0}-{1}", DateTime.Now.ToString("yyyyMMdd"), ordinal.ToString("###"));
         }
     }
 }
