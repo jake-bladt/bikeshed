@@ -69,7 +69,14 @@ namespace Gallery.Migration
 
         public bool MigrateRunoffs(string rootPath)
         {
-            return false;
+            var runoffsPath = Path.Combine(rootPath, "special");
+            if (!Directory.Exists(runoffsPath)) throw new ArgumentException("Could not find the directory " + runoffsPath);
+            var runoffsDi = new DirectoryInfo(runoffsPath);
+            runoffsDi.GetDirectories().ToList().ForEach(electionDi =>
+            {
+                if (!MigrateRunoffDirectory(electionDi)) Trace.WriteLine(String.Format("Failed to migrate special election from {0}.", electionDi.Name));
+            });
+            return true;
         }
 
         protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType> 
