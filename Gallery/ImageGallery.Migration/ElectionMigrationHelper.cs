@@ -116,8 +116,7 @@ namespace Gallery.Migration
         protected bool MigrateRunoffDirectory(DirectoryInfo di)
         {
             DateTime eventDate = di.CreationTime;
-            int runoffNum = Int32.Parse(di.Name.Substring(9));
-            var name = RunoffElectionNameFromParts(eventDate, runoffNum);
+            var name = RunoffElectionNameFromDirName(di.Name);
             return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.RunOff);
         }
 
@@ -138,9 +137,11 @@ namespace Gallery.Migration
             return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
         }
 
-        protected string RunoffElectionNameFromParts(DateTime eventDate, int runoffNum)
+        protected string RunoffElectionNameFromDirName(string dirName)
         {
-            return String.Format("{0} runoff #{1}", eventDate.ToString("MMMM d yyyy"), runoffNum);
+            if (!dirName.Contains("-")) return dirName;
+            var dirNameParts = dirName.Split('-');
+            return String.Format("{0} #(1}", dirNameParts[0], Int32.Parse(dirNameParts[1]));
         }
 
         protected string SpecialElectionNameFromDirectoryName(string directoryName)
