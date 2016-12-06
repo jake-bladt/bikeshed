@@ -41,7 +41,7 @@ namespace rodir
 
             // Loop until the number of cycles is depleted or all candidates in the subset
             // have been assigned to a runoff.
-            var runoffSets = new Dictionary<int, List<ISubject>();
+            var runoffSets = new Dictionary<int, List<ISubject>>();
             for(int i = 1; i <= runCount; i++)
             {
                 var chooserName = String.Format("runoff{0}", i.ToString("000"));
@@ -60,7 +60,7 @@ namespace rodir
                 }
             }
 
-            // Write those runoffs to disc.
+            // Write the runoffs to disc.
 
         }
     }
