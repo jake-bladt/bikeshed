@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "runoffs", "runoffs\runoffs.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "specdir", "specdir\specdir.csproj", "{0C90DF53-F832-4FC3-ACC3-446510721B1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rodir", "rodir\rodir.csproj", "{A74D2B08-DCA8-4BB9-9AED-5A6494C35F54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{0C90DF53-F832-4FC3-ACC3-446510721B1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C90DF53-F832-4FC3-ACC3-446510721B1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C90DF53-F832-4FC3-ACC3-446510721B1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A74D2B08-DCA8-4BB9-9AED-5A6494C35F54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A74D2B08-DCA8-4BB9-9AED-5A6494C35F54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A74D2B08-DCA8-4BB9-9AED-5A6494C35F54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A74D2B08-DCA8-4BB9-9AED-5A6494C35F54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

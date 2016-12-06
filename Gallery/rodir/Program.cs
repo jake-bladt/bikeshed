@@ -77,7 +77,7 @@ namespace rodir
 
         static string OrdinalToRunoffName(string setName, int ordinal)
         {
-            return String.Format("{0}-{1}", setName, ordinal.ToString("###"));
+            return String.Format("{0}-{1}", setName, ordinal.ToString("000"));
         }
     }
 }
