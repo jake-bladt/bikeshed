@@ -15,8 +15,8 @@ namespace migrate
     {
         static int Main(string[] args)
         {
-            //var subjectResult = MigrateSubjects();
-            //if (!subjectResult) return ExitOn("Subject migration failed.");
+            var subjectResult = MigrateSubjects();
+            if (!subjectResult) return ExitOn("Subject migration failed.");
 
             var electionResult = MigrateElections();
             if (!electionResult) return ExitOn("Election migration failed.");
@@ -59,7 +59,7 @@ namespace migrate
             var targetSet = new SqlBackedElectionSet(connStr);
 
             var helper = new ElectionMigrationHelper(dbGallery, targetSet);
-            // if (!helper.MigrateHistory(rootPath)) return false;
+            if (!helper.MigrateHistory(rootPath)) return false;
             var specs = helper.MigrateSpecials(rootPath);
             return helper.MigrateRunoffs(rootPath) && specs;
         }
