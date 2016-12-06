@@ -98,5 +98,13 @@ namespace Gallery.Entities.Candidates
                 return _Candidates;
             }
         }
+
+        public int Count
+        {
+            get
+            {
+                return _Subjects.Values.Count;
+            }
+        }
     }
 }

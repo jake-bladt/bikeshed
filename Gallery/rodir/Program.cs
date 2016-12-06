@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Configuration;
+using System.Collections.Generic;
 using System.IO;
 
 using Gallery.Entities.Candidates;
 using Gallery.Entities.ImageGallery;
+using Gallery.Entities.Subjects;
 
 namespace rodir
 {
@@ -35,8 +37,29 @@ namespace rodir
             }
 
             // The number of cycles through the pool is either rocCount or infinite.
+            var runCount = roCountString == "*" ? Int32.MaxValue : Int32.Parse(roCountString);
+
             // Loop until the number of cycles is depleted or all candidates in the subset
             // have been assigned to a runoff.
+            var runoffSets = new Dictionary<int, List<ISubject>();
+            for(int i = 1; i <= runCount; i++)
+            {
+                var chooserName = String.Format("runoff{0}", i.ToString("000"));
+                var runoffChooser = new WalkInCandidateChooser(pool, contestantCount) { Name = chooserName };
+                var subsetChoosers = new ICandidateChooser[] { runoffChooser };
+                var subsetRegistrar = new ContestCandidateRegistrar(pool, subsetChoosers);
+                var runoffCandidateSets =subsetRegistrar.GetContestCandidates();
+                var runoffCandidates = runoffCandidateSets[chooserName];
+                if(runoffCandidates.Count > 0)
+                {
+                    runoffSets[i] = runoffCandidates;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
             // Write those runoffs to disc.
 
         }
