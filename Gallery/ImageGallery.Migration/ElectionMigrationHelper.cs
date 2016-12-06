@@ -56,7 +56,7 @@ namespace Gallery.Migration
 
         public bool MigrateSpecials(string rootPath)
         {
-            var specialsPath = Path.Combine(rootPath, "specials");
+            var specialsPath = Path.Combine(rootPath, "special");
             if (!Directory.Exists(specialsPath)) throw new ArgumentException("Could not find the directory " + specialsPath);
             var specialsDi = new DirectoryInfo(specialsPath);
             specialsDi.GetDirectories().ToList().ForEach(electionDi =>
