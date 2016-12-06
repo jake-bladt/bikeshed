@@ -142,7 +142,7 @@ namespace Gallery.Migration
             if (!dirName.Contains("-")) return dirName;
             var dirNameParts = dirName.Split('-');
             var ordinal = Int32.Parse(dirNameParts[1]);
-            return String.Format("{0} #(1}", dirNameParts[0], ordinal);
+            return dirNameParts[0] + " #" + ordinal;
         }
 
         protected string SpecialElectionNameFromDirectoryName(string directoryName)
