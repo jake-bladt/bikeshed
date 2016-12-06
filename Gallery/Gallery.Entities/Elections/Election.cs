@@ -10,7 +10,7 @@ using Gallery.Entities.Utilities;
 
 namespace Gallery.Entities.Elections
 {
-    public class Election : IElection
+    public class Election : IElection, IElectionListing
     {
         public static Election FromDirectory(
             string dirPath,
@@ -31,6 +31,7 @@ namespace Gallery.Entities.Elections
             {
                 var line = fi.Name;
                 var entries = NameMapper.ElectionFileNameToElectionEntry(line);
+                if (null == entries) return;
                 int pos = entries.Item1;
                 string winnerName = entries.Item2;
 
@@ -43,7 +44,7 @@ namespace Gallery.Entities.Elections
 
             for (int i = 1; i <= winnerCount; i++)
             {
-                if (!winners.ContainsKey(i)) throw new EmptyElectionSlotException(String.Format("Slot {0} is empty", i));
+                if (!winners.ContainsKey(i)) return null;
             }
 
             

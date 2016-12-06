@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,7 @@ namespace Gallery.Migration
         public bool MigrateDirectoryToDB(string dirPath, string electionName, DateTime eventDate, ElectionType eventType)
         {
             var election = Election.FromDirectory(dirPath, electionName, eventDate, eventType, Gallery);
+            if (null == election) return false;
             return Target.Store(election);
         }
 
@@ -53,6 +55,30 @@ namespace Gallery.Migration
             return true;
         }
 
+        public bool MigrateSpecials(string rootPath)
+        {
+            var specialsPath = Path.Combine(rootPath, "special");
+            if (!Directory.Exists(specialsPath)) throw new ArgumentException("Could not find the directory " + specialsPath);
+            var specialsDi = new DirectoryInfo(specialsPath);
+            specialsDi.GetDirectories().ToList().ForEach(electionDi =>
+            {
+                if (!MigrateSpecialDirectory(electionDi)) Trace.WriteLine(String.Format("Failed to migrate special election from {0}.", electionDi.Name));
+            });
+            return true;
+        }
+
+        public bool MigrateRunoffs(string rootPath)
+        {
+            var runoffsPath = Path.Combine(rootPath, "runoff");
+            if (!Directory.Exists(runoffsPath)) throw new ArgumentException("Could not find the directory " + runoffsPath);
+            var runoffsDi = new DirectoryInfo(runoffsPath);
+            runoffsDi.GetDirectories().ToList().ForEach(electionDi =>
+            {
+                if (!MigrateRunoffDirectory(electionDi)) Trace.WriteLine(String.Format("Failed to migrate special election from {0}.", electionDi.Name));
+            });
+            return true;
+        }
+
         protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType> 
           { 
               { "travel", ElectionType.Travel },
@@ -70,7 +96,7 @@ namespace Gallery.Migration
                 if (Directory.Exists(fullPath))
                 {
                     DateTime eventDate = EventDateFromDirName(di.Name);
-                    string name = ElectionNameFromParts(eventDate, kvp.Key);
+                    string name = MonthlyElectionNameFromParts(eventDate, kvp.Key);
                     var eventType = kvp.Value;
                     var migrateSuccess = MigrateDirectoryToDB(fullPath, name, eventDate, eventType);
                     if (!migrateSuccess) throw new ElectionMigrationException(
@@ -78,6 +104,20 @@ namespace Gallery.Migration
                 }                
             });
             return true;
+        }
+
+        protected bool MigrateSpecialDirectory(DirectoryInfo di)
+        {
+            DateTime eventDate = di.LastWriteTime;
+            string name = SpecialElectionNameFromDirectoryName(di.Name);
+            return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.Special);
+        }
+
+        protected bool MigrateRunoffDirectory(DirectoryInfo di)
+        {
+            DateTime eventDate = di.CreationTime;
+            var name = RunoffElectionNameFromDirName(di.Name);
+            return MigrateDirectoryToDB(di.FullName, name, eventDate, ElectionType.RunOff);
         }
 
         protected bool IsAnnualFolder(DirectoryInfo di)
@@ -92,9 +132,30 @@ namespace Gallery.Migration
             return Regex.IsMatch(di.Name, pattern);
         }
 
-        protected string ElectionNameFromParts(DateTime eventDate, string subdirName)
+        protected string MonthlyElectionNameFromParts(DateTime eventDate, string subdirName)
         {
             return String.Format("{0} {1} group", eventDate.ToString("MMMM yyyy"), subdirName.ToLower());
+        }
+
+        protected string RunoffElectionNameFromDirName(string dirName)
+        {
+            if (!dirName.Contains("-")) return dirName;
+            var dirNameParts = dirName.Split('-');
+            var ordinal = Int32.Parse(dirNameParts[1]);
+            return dirNameParts[0] + " #" + ordinal;
+        }
+
+        protected string SpecialElectionNameFromDirectoryName(string directoryName)
+        {
+            var dnameArr = directoryName.ToCharArray();
+            var sb = new StringBuilder(dnameArr[0]);
+            for(int i = 1; i < dnameArr.Length; i++)
+            {
+                var c = dnameArr[i].ToString();
+                if(c == c.ToUpper()) sb.Append(" ");
+                sb.Append(c);
+            }
+            return sb.ToString();
         }
 
         protected DateTime EventDateFromDirName(string dirName)

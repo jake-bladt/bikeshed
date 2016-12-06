@@ -59,7 +59,9 @@ namespace migrate
             var targetSet = new SqlBackedElectionSet(connStr);
 
             var helper = new ElectionMigrationHelper(dbGallery, targetSet);
-            return helper.MigrateHistory(rootPath);
+            if (!helper.MigrateHistory(rootPath)) return false;
+            var specs = helper.MigrateSpecials(rootPath);
+            return helper.MigrateRunoffs(rootPath) && specs;
         }
 
         public static bool MigrateSubjectSets()
