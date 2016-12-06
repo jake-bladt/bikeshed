@@ -26,6 +26,7 @@ namespace Gallery.Migration
         public bool MigrateDirectoryToDB(string dirPath, string electionName, DateTime eventDate, ElectionType eventType)
         {
             var election = Election.FromDirectory(dirPath, electionName, eventDate, eventType, Gallery);
+            if (null == election) return false;
             return Target.Store(election);
         }
 

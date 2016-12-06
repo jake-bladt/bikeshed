@@ -60,8 +60,8 @@ namespace migrate
 
             var helper = new ElectionMigrationHelper(dbGallery, targetSet);
             // if (!helper.MigrateHistory(rootPath)) return false;
-            if (!helper.MigrateSpecials(rootPath)) return false;
-            return helper.MigrateRunoffs(rootPath);
+            var specs = helper.MigrateSpecials(rootPath);
+            return helper.MigrateRunoffs(rootPath) && specs;
         }
 
         public static bool MigrateSubjectSets()
