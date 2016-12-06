@@ -53,7 +53,7 @@ namespace rodir
                 var runoffCandidates = runoffCandidateSets[chooserName];
                 if(runoffCandidates.Count > 0)
                 {
-                    runoffSets[i] = runoffCandidates;
+                    runoffSets[OrdinalToRunoffName(roSetName, i)] = runoffCandidates;
                 }
                 else
                 {
@@ -62,12 +62,22 @@ namespace rodir
             }
 
             // Write the runoffs to disc.
+            var writer = new FileSystemContestWriter(roRoot, poolRoot);
+            if (writer.WriteContests(runoffSets))
+            {
+                Console.WriteLine("Contests written.");
+            }
+            else
+            {
+                Console.WriteLine("Failed to write contests.");
+            }
 
+            Console.ReadLine();
         }
 
-        static string OrdinalToRunoffName(int ordinal)
+        static string OrdinalToRunoffName(string setName, int ordinal)
         {
-            return String.Format("{0}-{1}", DateTime.Now.ToString("yyyyMMdd"), ordinal.ToString("###"));
+            return String.Format("{0}-{1}", setName, ordinal.ToString("###"));
         }
     }
 }
