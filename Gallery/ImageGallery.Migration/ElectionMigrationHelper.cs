@@ -69,7 +69,7 @@ namespace Gallery.Migration
 
         public bool MigrateRunoffs(string rootPath)
         {
-            var runoffsPath = Path.Combine(rootPath, "special");
+            var runoffsPath = Path.Combine(rootPath, "runoff");
             if (!Directory.Exists(runoffsPath)) throw new ArgumentException("Could not find the directory " + runoffsPath);
             var runoffsDi = new DirectoryInfo(runoffsPath);
             runoffsDi.GetDirectories().ToList().ForEach(electionDi =>
@@ -141,7 +141,8 @@ namespace Gallery.Migration
         {
             if (!dirName.Contains("-")) return dirName;
             var dirNameParts = dirName.Split('-');
-            return String.Format("{0} #(1}", dirNameParts[0], Int32.Parse(dirNameParts[1]));
+            var ordinal = Int32.Parse(dirNameParts[1]);
+            return String.Format("{0} #(1}", dirNameParts[0], ordinal);
         }
 
         protected string SpecialElectionNameFromDirectoryName(string directoryName)
