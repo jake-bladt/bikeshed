@@ -152,7 +152,8 @@ namespace Gallery.Migration
             for(int i = 1; i < dnameArr.Length; i++)
             {
                 var c = dnameArr[i].ToString();
-                if(c == c.ToUpper()) sb.Append(" ");
+                // Fix #49 - Only add a space for legitimate capital letters - 26-Dec-2016
+                if(c == c.ToUpper() && c != c.ToLower()) sb.Append(" ");
                 sb.Append(c);
             }
             return sb.ToString();
