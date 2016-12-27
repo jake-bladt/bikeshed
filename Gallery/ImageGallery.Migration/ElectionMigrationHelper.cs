@@ -148,7 +148,8 @@ namespace Gallery.Migration
         protected string SpecialElectionNameFromDirectoryName(string directoryName)
         {
             var dnameArr = directoryName.ToCharArray();
-            var sb = new StringBuilder(dnameArr[0]);
+            var sb = new StringBuilder();
+            sb.Append(dnameArr[0]);
             for(int i = 1; i < dnameArr.Length; i++)
             {
                 var c = dnameArr[i].ToString();
