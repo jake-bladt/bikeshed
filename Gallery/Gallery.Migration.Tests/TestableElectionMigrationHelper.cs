@@ -27,7 +27,8 @@ namespace Gallery.Migration.Tests
         [Fact]
         public void TestSpecialElectionTitleDoesntTruncate()
         {
-           
+            var title = this.SpecialElectionNameFromDirectoryName("2017Rookies");
+            title.ShouldBe("2017 Rookies");
         }
     }
 }
