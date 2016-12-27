@@ -67,6 +67,12 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ImageGallery.Migration\Gallery.Migration.csproj">
+      <Project>{37cf7ef6-4dd4-40db-a903-39e9148c8e67}</Project>
+      <Name>Gallery.Migration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
