@@ -18,7 +18,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Entities", "Gallery.Entities\Gallery.Entities.csproj", "{C468C90B-AFF4-4139-80A9-9D18A9A44148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rosubj", "rosubj\rosubj.csproj", "{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pfixrnd", "rosubj\pfixrnd.csproj", "{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "setlist", "setlist\setlist.csproj", "{70AEEF7E-8D31-48DF-B528-8A527ED31F39}"
 EndProject

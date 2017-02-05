@@ -141,7 +141,7 @@ namespace Gallery.Migration
         {
             if (!dirName.Contains("-")) return dirName;
             var dirNameParts = dirName.Split('-');
-            var ordinal = Int32.Parse(dirNameParts[1]);
+            var ordinal = Int32.Parse(dirNameParts[dirNameParts.Length -1]);
             return dirNameParts[0] + " #" + ordinal;
         }
 
