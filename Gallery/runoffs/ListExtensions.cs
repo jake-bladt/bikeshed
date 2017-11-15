@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace runoffs
 {
@@ -19,6 +20,11 @@ namespace runoffs
                 list[n] = value;
             }
             return list;
+        }
+
+        public static IList<T> GetRandom<T>(this IList<t> list, int pullCount)
+        {
+            return list.OrderBy(x => )
         }
     }
 }
