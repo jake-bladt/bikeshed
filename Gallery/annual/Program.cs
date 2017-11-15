@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace annual
 {
@@ -16,7 +17,13 @@ namespace annual
                 var path = args[1];
                 var subjects = GetYearDisplayNames(year, 
                     ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString);
-                subjects.ForEach(s => Console.WriteLine(s));
+                if(CreateContest(subjects, ConfigurationManager.AppSettings["yearbookSource"], path))
+                {
+                    Console.WriteLine("Contest created.");
+                } else
+                {
+                    Console.WriteLine("Failed to create contest.");
+                }
 
                 Console.ReadLine();
             }
@@ -46,6 +53,18 @@ namespace annual
             }
 
             return ret;
+        }
+
+        static bool CreateContest(List<String> subjects, string srcDir, string targetDir)
+        {
+            if (!Directory.Exists(srcDir) || !Directory.Exists(targetDir)) return false;
+
+            subjects.ForEach(s => {
+                Console.WriteLine(s);
+                File.Copy(Path.Combine(srcDir, s + ".jpg"), Path.Combine(targetDir, s + ".jpg"));
+            });
+
+            return true;
         }
 
     }
