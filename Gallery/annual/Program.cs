@@ -10,6 +10,20 @@ namespace annual
     {
         static void Main(string[] args)
         {
+            if(args.Length == 2)
+            {
+
+            }
+            else
+            {
+                Usage();
+            }
         }
+
+        static void Usage()
+        {
+            Console.WriteLine("Usage: annual [year] [directory]");
+        }
+
     }
 }
