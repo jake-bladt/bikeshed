@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rodir", "rodir\rodir.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Migration.Tests", "Gallery.Migration.Tests\Gallery.Migration.Tests.csproj", "{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "annual", "annual\annual.csproj", "{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,10 @@ Global
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E3DF5C2-8A38-4A03-86D7-8D463C917E47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
