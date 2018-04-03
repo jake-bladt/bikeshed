@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace sneakers
 {
@@ -13,7 +14,7 @@ namespace sneakers
             if(1 == args.Length)
             {
                 var dir = args[0];
-
+                var subjects = GetSneakers(ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString);
             }
             else
             {
@@ -21,10 +22,38 @@ namespace sneakers
             }
         }
 
-    static void Usage()
-    {
-        Console.WriteLine("Usage: sneakers [directory]");
-    }
+        static void Usage()
+        {
+            Console.WriteLine("Usage: sneakers [directory]");
+        }
+
+        static List<String> GetSneakers(string cnStr)
+        {
+            var ret = new List<String>();
+
+            var cn = new SqlConnection(cnStr);
+            cn.Open();
+            var cmd = new SqlCommand("getSneakIns", cn) { CommandType = CommandType.StoredProcedure };
+            var rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                ret.Add(rdr["SubjectName"].ToString());
+            }
+
+            return ret;
+        }
+
+        static bool CreateContest(List<String> subjects, string srcDir, string targetDir)
+        {
+            if (!Directory.Exists(srcDir) || !Directory.Exists(targetDir)) return false;
+
+            subjects.ForEach(s => {
+                Console.WriteLine(s);
+                File.Copy(Path.Combine(srcDir, s + ".jpg"), Path.Combine(targetDir, s + ".jpg"));
+            });
+
+            return true;
+        }
 
     }
 }
