@@ -10,6 +10,21 @@ namespace sneakers
     {
         static void Main(string[] args)
         {
+            if(1 == args.Length)
+            {
+                var dir = args[0];
+
+            }
+            else
+            {
+                Usage();
+            }
         }
+
+    static void Usage()
+    {
+        Console.WriteLine("Usage: sneakers [directory]");
+    }
+
     }
 }
