@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gallery.Migration.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "annual", "annual\annual.csproj", "{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sneakers", "sneakers\sneakers.csproj", "{C0A55FA8-2849-4E9B-A9C3-105115E7B71D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +106,10 @@ Global
 		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51DFFB4B-1C6C-48F7-BA22-19D4F68618EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0A55FA8-2849-4E9B-A9C3-105115E7B71D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0A55FA8-2849-4E9B-A9C3-105115E7B71D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0A55FA8-2849-4E9B-A9C3-105115E7B71D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0A55FA8-2849-4E9B-A9C3-105115E7B71D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

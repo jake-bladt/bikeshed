@@ -13,8 +13,18 @@ namespace sneakers
         {
             if(1 == args.Length)
             {
-                var dir = args[0];
+                var path = args[0];
                 var subjects = GetSneakers(ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString);
+                if (CreateContest(subjects, ConfigurationManager.AppSettings["yearbookSource"], path))
+                {
+                    Console.WriteLine("Contest created.");
+                }
+                else
+                {
+                    Console.WriteLine("Failed to create contest.");
+                }
+
+                Console.ReadLine();
             }
             else
             {
