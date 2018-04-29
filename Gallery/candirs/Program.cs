@@ -22,7 +22,7 @@ namespace candirs
             var walkinChooser = new WalkInCandidateChooser(pool, 300.0) { Name = "walkin" };
             var rookieChooser = new RookieCandidateChooser(cn) { Name = "rookie" };
             var starChooser = new StarChooser(cn) { Name = "star" };
-            var choosers = new ICandidateChooser[] { travelChooser, walkinChooser, rookieChooser, starChooser };
+            var choosers = new ICandidateChooser[] { travelChooser, prospectChooser, walkinChooser, rookieChooser, starChooser };
             var registrar = new ContestCandidateRegistrar(pool, choosers);
             var candidateSets = registrar.GetContestCandidates();
             var writer = new FileSystemContestWriter(rootPath, poolRoot);
