@@ -44,6 +44,7 @@
     <Compile Include="Candidates\ContestCandidateRegistrar.cs" />
     <Compile Include="Candidates\FileSystemContestWriter.cs" />
     <Compile Include="Candidates\IContestWriter.cs" />
+    <Compile Include="Candidates\ProspectCandidateChooser.cs" />
     <Compile Include="Candidates\SetCandidateChooser.cs" />
     <Compile Include="Candidates\StarChooser.cs" />
     <Compile Include="Candidates\WalkInCandidateChooser.cs" />
