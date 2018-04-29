@@ -79,13 +79,14 @@ namespace Gallery.Migration
             return true;
         }
 
-        protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType> 
-          { 
+        protected Dictionary<string, ElectionType> ElectionTypesByName = new Dictionary<string, ElectionType>
+          {
               { "travel", ElectionType.Travel },
               { "rookie", ElectionType.Rookie },
               { "star",   ElectionType.Star   },
               { "walkin", ElectionType.WalkIn },
-              { "wonder", ElectionType.Wonder }
+              { "wonder", ElectionType.Wonder },
+              { "prospect", ElectionType.Prospect }
           };
 
         protected bool MigrateMonthlyDirectory(DirectoryInfo di)

@@ -17,6 +17,7 @@ namespace Gallery.Entities.Elections
       , Wonder = 5
       , RunOff = 6
       , Special = 7
+      , Prospect = 8
     }
 
     public interface IElection
