@@ -7,12 +7,12 @@ using Gallery.Entities.Subjects;
 
 namespace Gallery.Entities.Candidates
 {
-    public class ProsepctCandidateChooser : ICandidateChooser
+    public class ProspectCandidateChooser : ICandidateChooser
     {
         public string Name { get; set; }
         protected string ConnectionString { get; set; }
 
-        public ProsepctCandidateChooser(string cn)
+        public ProspectCandidateChooser(string cn)
         {
             ConnectionString = cn;
         }
