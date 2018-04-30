@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace cate
 {
-    class Program
+    class CommandLineParser
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine(args[1]);
-            Console.ReadLine();
-        }
     }
 }
