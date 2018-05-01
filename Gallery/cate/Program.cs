@@ -22,15 +22,18 @@ namespace cate
 
             if(args.Length > 1)
             {
-                Console.WriteLine(parsed.SubjectName);
-                Console.WriteLine($"First switch: {parsed.Switches.First()}");
-                Console.WriteLine($"First category: {parsed.Categories.First()}");
+                parsed.Categories.ToList().ForEach(c =>
+                {
+                    var ret = repo.SetSubjectCategory(parsed.SubjectName, c);
+                    Console.WriteLine($"{parsed.SubjectName} in {c} ({ret})");
+                });
             }
 
             var cats = repo.GetSubjectCategories(parsed.SubjectName);
 
             Console.WriteLine($"Categories for {parsed.SubjectName}");
             cats.ForEach(c => Console.WriteLine(c));
+            Console.WriteLine();
 
             Console.ReadLine();
         }
