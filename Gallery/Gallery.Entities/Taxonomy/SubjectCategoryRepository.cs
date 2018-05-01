@@ -51,7 +51,7 @@ namespace Gallery.Entities.Taxonomy
                 cmd.Parameters.AddWithValue("@categoryName", categoryName);
 
                 var relId = new SqlParameter();
-                relId.ParameterName = "@relatonshipId";
+                relId.ParameterName = "@relationshipId";
                 relId.SqlDbType = SqlDbType.Int;
                 relId.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(relId);
