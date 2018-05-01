@@ -75,9 +75,11 @@
     <Compile Include="Subjects\SqlBackedSubject.cs" />
     <Compile Include="Subjects\SqlSubjectReader.cs" />
     <Compile Include="Subjects\SqlSubjectWriter.cs" />
+    <Compile Include="Taxonomy\SubjectCategoryRepository.cs" />
     <Compile Include="Utilities\Exceptions.cs" />
     <Compile Include="Utilities\NameMapper.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
