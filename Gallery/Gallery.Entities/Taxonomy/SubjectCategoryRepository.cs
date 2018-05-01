@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 
 namespace Gallery.Entities.Taxonomy
 {
-    class SubjectCategoryRepository
+    public class SubjectCategoryRepository
     {
         protected string _ConnectionString;
 
