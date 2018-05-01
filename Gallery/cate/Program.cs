@@ -10,7 +10,12 @@ namespace cate
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(args[1]);
+            var parsed = new CommandLineParser(args);
+
+            Console.WriteLine(parsed.SubjectName);
+            Console.WriteLine($"First switch: {parsed.Switches.First()}");
+            Console.WriteLine($"First category: {parsed.Categories.First()}");
+
             Console.ReadLine();
         }
     }
