@@ -35,7 +35,7 @@ namespace cate
             cats.ForEach(c => Console.WriteLine(c));
             Console.WriteLine();
 
-            Console.ReadLine();
+            // Console.ReadLine();
         }
     }
 }
