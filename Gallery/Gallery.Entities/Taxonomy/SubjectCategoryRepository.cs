@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Gallery.Entities.Taxonomy
 {
@@ -15,7 +14,29 @@ namespace Gallery.Entities.Taxonomy
             _ConnectionString = cnStr;
         }
 
+        public List<String> GetSubjectCategories(string subjectName)
+        {
+            var cn = new SqlConnection(_ConnectionString);
+            var cmd = new SqlCommand("getSubjectCategories", cn) { CommandType = CommandType.StoredProcedure };
+            var ret = new List<String>();
 
+            try
+            {
+                cn.Open();
+                cmd.Parameters.AddWithValue("@name", subjectName);
+                var rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    ret.Add(rdr["CategoryName"].ToString());
+                }
+            }
+            finally
+            {
+                cn.Close();
+            }
+
+            return ret;
+        }
 
     }
 }
