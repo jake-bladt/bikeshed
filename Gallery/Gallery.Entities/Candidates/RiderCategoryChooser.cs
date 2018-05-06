@@ -28,7 +28,7 @@ namespace Gallery.Entities.Candidates
             try
             {
                 cn.Open();
-                var cmd = new SqlCommand("getSubjectsByCategory") { CommandType = CommandType.StoredProcedure };
+                var cmd = new SqlCommand("getSubjectsByCategory", cn) { CommandType = CommandType.StoredProcedure };
                 cmd.Parameters.AddWithValue("@name", CategoryName);
                 var rdr = cmd.ExecuteReader();
                 while (rdr.Read())
