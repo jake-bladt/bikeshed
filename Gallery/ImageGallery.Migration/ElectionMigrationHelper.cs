@@ -86,7 +86,8 @@ namespace Gallery.Migration
               { "star",   ElectionType.Star   },
               { "walkin", ElectionType.WalkIn },
               { "wonder", ElectionType.Wonder },
-              { "prospect", ElectionType.Prospect }
+              { "prospect", ElectionType.Prospect },
+              { "rider", ElectionType.Rider }
           };
 
         protected bool MigrateMonthlyDirectory(DirectoryInfo di)
