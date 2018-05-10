@@ -18,6 +18,7 @@ namespace Gallery.Entities.Elections
       , RunOff = 6
       , Special = 7
       , Prospect = 8
+      , Rider = 9
     }
 
     public interface IElection
