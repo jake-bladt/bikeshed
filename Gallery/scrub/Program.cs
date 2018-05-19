@@ -35,7 +35,7 @@ namespace scrub
             {
                 Console.WriteLine(ex);
             }
-            Console.ReadLine();
+            // Console.ReadLine();
         }
     }
 }
