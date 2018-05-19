@@ -50,7 +50,7 @@ namespace Gallery.Entities.Subjects
                 {
                     _files = new Dictionary<string, FileInfo>();
                     var di = new DirectoryInfo(DirectoryPath);
-                    var arr = di.GetFiles("*.jpg", SearchOption.AllDirectories);
+                    var arr = di.GetFiles("*.jp*g", SearchOption.AllDirectories);
                     arr.ToList().ForEach(fi => _files[fi.FullName] = fi);
                 }
                 return _files;
