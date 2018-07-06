@@ -20,7 +20,7 @@ namespace sarro
             var sars = chooser.GetCandidates();
             Console.WriteLine($"{sars.Count} SARs discovered.");
 
-            var shuffled = sars.OrderBy(x => new Random().Next()).ToArray();
+            var shuffled = sars.OrderBy(x => new Random().Next()).ToList().ToArray();
             var roNum = 0;
             DirectoryInfo roDi = null;
             for(int i = 0; i < shuffled.Length; i++)
@@ -36,7 +36,7 @@ namespace sarro
                 if (File.Exists(srcPath))
                 {
                     Console.WriteLine($"Copying {srcPath} to {tarPath}.");
-                    File.Copy(srcPath, tarPath);
+                    // File.Copy(srcPath, tarPath);
                 }
             }
 
