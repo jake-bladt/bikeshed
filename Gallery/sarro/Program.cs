@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 
 using Gallery.Entities.Candidates;
-using Gallery.Entities.Subjects;
 
 namespace sarro
 {
@@ -34,8 +33,11 @@ namespace sarro
                 var fn = $"{shuffled[i].Name}.jpg";
                 var srcPath = Path.Combine(yearbookHome, fn);
                 var tarPath = Path.Combine(roDi.FullName, fn);
-                Console.WriteLine($"Copying {srcPath} to {tarPath}.");
-                File.Copy(srcPath, tarPath);
+                if (File.Exists(srcPath))
+                {
+                    Console.WriteLine($"Copying {srcPath} to {tarPath}.");
+                    File.Copy(srcPath, tarPath);
+                }
             }
 
             Console.WriteLine("Operation complete.");
