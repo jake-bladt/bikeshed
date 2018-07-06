@@ -31,7 +31,7 @@ namespace sarro
                      var roPath = $"{runoffRoot}{(++roNum).ToString("000")}";
                     roDi = Directory.CreateDirectory(roPath);
                 }
-                var fn = $"{shuffled[i].DisplayName}.jpg";
+                var fn = $"{shuffled[i].Name}.jpg";
                 var srcPath = Path.Combine(yearbookHome, fn);
                 var tarPath = Path.Combine(roDi.FullName, fn);
                 Console.WriteLine($"Copying {srcPath} to {tarPath}.");
