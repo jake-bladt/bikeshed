@@ -20,7 +20,8 @@ namespace sarro
             var sars = chooser.GetCandidates();
             Console.WriteLine($"{sars.Count} SARs discovered.");
 
-            var shuffled = sars.OrderBy(x => new Random().Next()).ToList().ToArray();
+            var rnd = new Random();
+            var shuffled = sars.OrderBy(x => rnd.Next()).ToArray();
             var roNum = 0;
             DirectoryInfo roDi = null;
             for(int i = 0; i < shuffled.Length; i++)
