@@ -13,6 +13,9 @@ namespace sarro
     {
         static void Main(string[] args)
         {
+            var runoffRoot = args[0];
+            var targetCount = args.Length > 1 ? Int32.Parse(args[1]) : 30;
+
         }
     }
 }
