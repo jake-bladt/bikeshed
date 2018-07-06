@@ -48,6 +48,7 @@
     <Compile Include="Candidates\RiderCategoryChooser.cs" />
     <Compile Include="Candidates\SetCandidateChooser.cs" />
     <Compile Include="Candidates\StarChooser.cs" />
+    <Compile Include="Candidates\SuperannuatedRookieChooser.cs" />
     <Compile Include="Candidates\WalkInCandidateChooser.cs" />
     <Compile Include="ElectionListing.cs" />
     <Compile Include="Elections\Election.cs" />
