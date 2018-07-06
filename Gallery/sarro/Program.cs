@@ -37,7 +37,7 @@ namespace sarro
                 if (File.Exists(srcPath))
                 {
                     Console.WriteLine($"Copying {srcPath} to {tarPath}.");
-                    // File.Copy(srcPath, tarPath);
+                    File.Copy(srcPath, tarPath);
                 }
             }
 
