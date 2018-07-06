@@ -35,7 +35,7 @@ namespace sarro
                 var srcPath = Path.Combine(yearbookHome, fn);
                 var tarPath = Path.Combine(roDi.FullName, fn);
                 Console.WriteLine($"Copying {srcPath} to {tarPath}.");
-                // File.Copy(srcPath, tarPath);
+                File.Copy(srcPath, tarPath);
             }
 
             Console.WriteLine("Operation complete.");
