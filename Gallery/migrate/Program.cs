@@ -11,11 +11,19 @@ namespace migrate
     {
         static int Main(string[] args)
         {
-            var subjectResult = MigrateSubjects();
-            if (!subjectResult) return ExitOn("Subject migration failed.");
+            var parts = args.Length > 0 ? args[0] : "*";
 
-            var electionResult = MigrateElections();
-            if (!electionResult) return ExitOn("Election migration failed.");
+            if (parts == "*" || parts == "subjects")
+            {
+                var subjectResult = MigrateSubjects();
+                if (!subjectResult) return ExitOn("Subject migration failed.");
+            }
+
+            if (parts == "*" || parts == "elections")
+            {
+                var electionResult = MigrateElections();
+                if (!electionResult) return ExitOn("Election migration failed.");
+            }
 
             return ExitOn("Migration complete.");
         }
