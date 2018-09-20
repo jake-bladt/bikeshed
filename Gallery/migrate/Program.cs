@@ -15,12 +15,14 @@ namespace migrate
 
             if (parts == "*" || parts == "subjects")
             {
+                Console.WriteLine("Migrating subjects.");
                 var subjectResult = MigrateSubjects();
                 if (!subjectResult) return ExitOn("Subject migration failed.");
             }
 
             if (parts == "*" || parts == "elections")
             {
+                Console.WriteLine("Migrating elections.");
                 var electionResult = MigrateElections();
                 if (!electionResult) return ExitOn("Election migration failed.");
             }
