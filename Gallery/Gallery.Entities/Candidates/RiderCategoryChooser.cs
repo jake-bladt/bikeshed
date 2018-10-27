@@ -23,15 +23,25 @@ namespace Gallery.Entities.Candidates
         public List<ISubject> GetCandidates()
         {
             var ret = new List<ISubject>();
-
-            
+            SqlCommand cmd;
 
             var cn = new SqlConnection(ConnectionString);
+            if (Determinant.StartsWith("sp:"))
+            {
+                var determinantParts = Determinant.Split(':');
+                var spName = determinantParts[1];
+                cmd = new SqlCommand(spName, cn) { CommandType = CommandType.StoredProcedure };
+            }
+            else
+            {
+                cmd = new SqlCommand("getSubjectsByCategory", cn) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.AddWithValue("@name", Determinant);
+            }
+
+
             try
             {
                 cn.Open();
-                var cmd = new SqlCommand("getSubjectsByCategory", cn) { CommandType = CommandType.StoredProcedure };
-                cmd.Parameters.AddWithValue("@name", Determinant);
                 var rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
