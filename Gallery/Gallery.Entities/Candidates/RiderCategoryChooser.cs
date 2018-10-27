@@ -10,26 +10,38 @@ namespace Gallery.Entities.Candidates
     public class RiderCategoryChooser : ICandidateChooser
     {
         protected string ConnectionString;
-        protected string CategoryName;
+        protected string Determinant;
 
         public string Name { get; set; }
 
-        public RiderCategoryChooser(String categoryName, String cnStr)
+        public RiderCategoryChooser(String determinant, String cnStr)
         {
-            CategoryName = categoryName;
+            Determinant = determinant;
             ConnectionString = cnStr;
         }
 
         public List<ISubject> GetCandidates()
         {
             var ret = new List<ISubject>();
+            SqlCommand cmd;
 
             var cn = new SqlConnection(ConnectionString);
+            if (Determinant.StartsWith("sp:"))
+            {
+                var determinantParts = Determinant.Split(':');
+                var spName = determinantParts[1];
+                cmd = new SqlCommand(spName, cn) { CommandType = CommandType.StoredProcedure };
+            }
+            else
+            {
+                cmd = new SqlCommand("getSubjectsByCategory", cn) { CommandType = CommandType.StoredProcedure };
+                cmd.Parameters.AddWithValue("@name", Determinant);
+            }
+
+
             try
             {
                 cn.Open();
-                var cmd = new SqlCommand("getSubjectsByCategory", cn) { CommandType = CommandType.StoredProcedure };
-                cmd.Parameters.AddWithValue("@name", CategoryName);
                 var rdr = cmd.ExecuteReader();
                 while (rdr.Read())
                 {
