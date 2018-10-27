@@ -7,8 +7,8 @@
     <ProjectGuid>{C17768DA-CD5D-4C92-B19D-8E9FB125BB0D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>rosubj</RootNamespace>
-    <AssemblyName>rosubj</AssemblyName>
+    <RootNamespace>pfixrnd</RootNamespace>
+    <AssemblyName>pfixrnd</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
