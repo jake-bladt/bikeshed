@@ -112,6 +112,7 @@ namespace Gallery.Entities.Elections
             cmd.Parameters.Add(new SqlParameter("rank", rank));
             cmd.Parameters.Add(new SqlParameter("points", points));
             cmd.ExecuteNonQuery();
+            cn.Close();
             return true;
         }
     }
