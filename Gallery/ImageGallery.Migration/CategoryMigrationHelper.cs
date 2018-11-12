@@ -35,6 +35,7 @@ namespace Gallery.Migration
                     {
                         var catName = rdr["CategoryName"].ToString();
                         exportLine += $" \"{catName}\"";
+                        migrationCount++;
                     } else
                     {
                         callback(exportLine);
