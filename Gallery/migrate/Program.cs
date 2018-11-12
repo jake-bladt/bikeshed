@@ -13,6 +13,13 @@ namespace migrate
         {
             var parts = args.Length > 0 ? args[0] : "*";
 
+            if(parts == "*" || parts == "categories")
+            {
+                Console.WriteLine("Migrating categories");
+                var cateResult = MigrateCategories();
+                if (!cateResult) return ExitOn("Category migration failed.");
+            }
+
             if (parts == "*" || parts == "subjects")
             {
                 Console.WriteLine("Migrating subjects.");
@@ -69,6 +76,15 @@ namespace migrate
             var specs = helper.MigrateSpecials(rootPath);
             var ret = helper.MigrateRunoffs(rootPath) && specs;
             return ret;
+        }
+
+        public static bool MigrateCategories()
+        {
+            var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var helper = new CategoryMigrationHelper(connStr);
+            var importCount = helper.Migrate((l) => Console.WriteLine(l));
+            Console.WriteLine($"{importCount.ToString("#,##0")} subject categories migrated.");
+            return true;
         }
 
         public static bool MigrateSubjectSets()
