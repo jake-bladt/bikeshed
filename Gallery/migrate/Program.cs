@@ -83,7 +83,7 @@ namespace migrate
         {
             var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             var helper = new CategoryMigrationHelper(connStr);
-            var rootDir = ConfigurationManager.ConnectionStrings["galleryRoot"].ConnectionString;
+            var rootDir = ConfigurationManager.AppSettings["galleryRoot"];
 
             var outputPath = Path.Combine(rootDir, "cates.txt");
             var writer = new CategoryMigrationWriter(outputPath);

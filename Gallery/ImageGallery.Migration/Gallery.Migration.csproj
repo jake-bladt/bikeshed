@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryMigrationHelper.cs" />
+    <Compile Include="CategoryMigrationWriter.cs" />
     <Compile Include="ElectionMigrationHelper.cs" />
     <Compile Include="SubjectMigrationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
