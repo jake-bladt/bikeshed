@@ -89,6 +89,7 @@ namespace migrate
             var writer = new CategoryMigrationWriter(outputPath);
             var importCount = helper.Migrate((l) => writer.WriteExportLine(l));
             Console.WriteLine($"{importCount.ToString("#,##0")} subject categories migrated.");
+            writer.Dispose();
             return true;
         }
 
