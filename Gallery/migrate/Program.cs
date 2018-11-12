@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 
 using Gallery.Entities.Elections;
 using Gallery.Entities.ImageGallery;
@@ -82,7 +83,11 @@ namespace migrate
         {
             var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
             var helper = new CategoryMigrationHelper(connStr);
-            var importCount = helper.Migrate((l) => Console.WriteLine(l));
+            var rootDir = ConfigurationManager.ConnectionStrings["galleryRoot"].ConnectionString;
+
+            var outputPath = Path.Combine(rootDir, "cates.txt");
+            var writer = new CategoryMigrationWriter(outputPath);
+            var importCount = helper.Migrate((l) => writer.WriteExportLine(l));
             Console.WriteLine($"{importCount.ToString("#,##0")} subject categories migrated.");
             return true;
         }
