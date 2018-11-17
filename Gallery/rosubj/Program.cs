@@ -12,7 +12,8 @@ namespace pfixrnd
     {
         static void Main(string[] args)
         {
-            var dirPath = args[0];
+            var reversalFlag = (args[0] == "-r");
+            var dirPath = args[0] == "-r" ? args[1] : args[0]; 
             var di = new DirectoryInfo(dirPath);
             var fis = di.GetFiles("*.jpg");
             string pattern = @"^x\d{5}-";
@@ -20,7 +21,12 @@ namespace pfixrnd
 
             fis.ToList().ForEach(fi =>
             {
-                if (!Regex.IsMatch(fi.Name, pattern))
+                var regexMatch = Regex.IsMatch(fi.Name, pattern);
+                if (regexMatch && reversalFlag)
+                {
+
+                }
+                else if(!regexMatch && !reversalFlag)
                 {
                     int prefixNum = random.Next(0, 50000) + 50000;
                     var newFileName = String.Format("x{0}-{1}", prefixNum, fi.Name);
