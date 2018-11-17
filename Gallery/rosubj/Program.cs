@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace pfixrnd
 {
@@ -24,7 +22,17 @@ namespace pfixrnd
                 var regexMatch = Regex.IsMatch(fi.Name, pattern);
                 if (regexMatch && reversalFlag)
                 {
-
+                    var parts = fi.Name.Split('-');
+                    var newFileNameBuilder = new StringBuilder(parts[1]);
+                    for(var i = 2; i < parts.Length; i++)
+                    {
+                        newFileNameBuilder.Append('-');
+                        newFileNameBuilder.Append(parts[i]);
+                    }
+                    var newFileName = newFileNameBuilder.ToString();
+                    var newFilePath = Path.Combine(di.FullName, newFileName);
+                    Console.WriteLine($"{fi.Name} -> {newFileName}");
+                    // File.Move(fi.FullName, newFilePath);
                 }
                 else if(!regexMatch && !reversalFlag)
                 {
@@ -32,7 +40,7 @@ namespace pfixrnd
                     var newFileName = String.Format("x{0}-{1}", prefixNum, fi.Name);
                     var newFilePath = Path.Combine(di.FullName, newFileName);
                     Console.WriteLine(String.Format("{0} -> {1}", fi.Name, newFileName));
-                    File.Move(fi.FullName, newFilePath);
+                    // File.Move(fi.FullName, newFilePath);
                 }
             });
 
