@@ -32,7 +32,7 @@ namespace pfixrnd
                     var newFileName = newFileNameBuilder.ToString();
                     var newFilePath = Path.Combine(di.FullName, newFileName);
                     Console.WriteLine($"{fi.Name} -> {newFileName}");
-                    // File.Move(fi.FullName, newFilePath);
+                    File.Move(fi.FullName, newFilePath);
                 }
                 else if(!regexMatch && !reversalFlag)
                 {
@@ -40,7 +40,7 @@ namespace pfixrnd
                     var newFileName = String.Format("x{0}-{1}", prefixNum, fi.Name);
                     var newFilePath = Path.Combine(di.FullName, newFileName);
                     Console.WriteLine(String.Format("{0} -> {1}", fi.Name, newFileName));
-                    // File.Move(fi.FullName, newFilePath);
+                    File.Move(fi.FullName, newFilePath);
                 }
             });
 
