@@ -36,7 +36,7 @@ namespace pfixrnd
                 }
                 else if(!regexMatch && !reversalFlag)
                 {
-                    int prefixNum = random.Next(0, 50000) + 50000;
+                    int prefixNum = random.Next(0, 50000) + 49999;
                     var newFileName = String.Format("x{0}-{1}", prefixNum, fi.Name);
                     var newFilePath = Path.Combine(di.FullName, newFileName);
                     Console.WriteLine(String.Format("{0} -> {1}", fi.Name, newFileName));
