@@ -15,7 +15,7 @@ namespace pfixrnd
             var dirPath = args[0];
             var di = new DirectoryInfo(dirPath);
             var fis = di.GetFiles("*.jpg");
-            string pattern = @"^x\d{6}-";
+            string pattern = @"^x\d{5}-";
             var random = new Random();
 
             fis.ToList().ForEach(fi =>
