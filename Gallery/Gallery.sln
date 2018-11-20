@@ -44,6 +44,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cate", "cate\cate.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sarro", "sarro\sarro.csproj", "{1FB535CC-81DA-4420-9EA9-4D73FE9740BC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mismatch", "mismatch\mismatch.csproj", "{AF48BBC5-0176-4FE7-8D30-F35A6B656792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,6 +124,10 @@ Global
 		{1FB535CC-81DA-4420-9EA9-4D73FE9740BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FB535CC-81DA-4420-9EA9-4D73FE9740BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FB535CC-81DA-4420-9EA9-4D73FE9740BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF48BBC5-0176-4FE7-8D30-F35A6B656792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF48BBC5-0176-4FE7-8D30-F35A6B656792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF48BBC5-0176-4FE7-8D30-F35A6B656792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF48BBC5-0176-4FE7-8D30-F35A6B656792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
