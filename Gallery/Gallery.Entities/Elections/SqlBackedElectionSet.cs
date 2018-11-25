@@ -38,7 +38,7 @@ namespace Gallery.Entities.Elections
             var cn = new SqlConnection(ConnectionString);
             cn.Open();
             var cmd = new SqlCommand("getElection", cn) { CommandType = CommandType.StoredProcedure };
-            cmd.Parameters.Add("name", election.Name);
+            cmd.Parameters.AddWithValue ("@name", election.Name);
             var rdr = cmd.ExecuteReader();
             if(rdr.Read())
             {
