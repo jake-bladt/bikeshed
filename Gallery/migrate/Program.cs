@@ -6,6 +6,7 @@ using System.Text;
 
 using Gallery.Entities.Elections;
 using Gallery.Entities.ImageGallery;
+using Gallery.Entities.Taxonomy;
 using Gallery.Migration;
 
 namespace migrate
@@ -190,12 +191,13 @@ namespace migrate
                 }
             }
 
+            var repo = new SubjectCategoryRepository(connStr);
             subjectCategories.ForEach(sc =>
             {
-                Console.WriteLine(sc.SubjectName);
-                Console.WriteLine("=============");
-                sc.Categories.ForEach(c => Console.WriteLine(c));
-                Console.WriteLine();
+                sc.Categories.ForEach(c => {
+                    Console.WriteLine($"{sc.SubjectName}: {c}");
+                    repo.SetSubjectCategory(sc.SubjectName, c);
+                });
             });
 
             return true;
