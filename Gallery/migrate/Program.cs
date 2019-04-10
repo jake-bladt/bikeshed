@@ -165,6 +165,7 @@ namespace migrate
                         token.Append(c);
                     }
                 }
+                ret.Categories.Add(token.ToString());
 
                 return ret;
             }
