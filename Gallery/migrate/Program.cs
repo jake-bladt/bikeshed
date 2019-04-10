@@ -166,7 +166,7 @@ namespace migrate
                         token.Append(c);
                     }
                 }
-                ret.Categories.Add(token.ToString());
+                if(tokenNum > 0) ret.Categories.Add(token.ToString());
 
                 return ret;
             }
