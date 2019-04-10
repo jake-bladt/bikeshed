@@ -12,6 +12,7 @@ namespace migrate
     {
         static int Main(string[] args)
         {
+
             var parts = args.Length > 0 ? args[0] : "*";
 
             if(parts == "*" || parts == "categories")
@@ -45,9 +46,15 @@ namespace migrate
             return 0;
         }
 
+        private static string GetDbConnectionString()
+        {
+            return Environment.GetEnvironmentVariable("GALLERY_CONSTR") ?? 
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+        }
+
         public static bool MigrateSubjects()
         {
-            var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var connStr = GetDbConnectionString();
             var dbGallery = new SqlTrackedImageGallery(connStr);
             int dbCount = dbGallery.Subjects.Count;
             Console.WriteLine(String.Format("{0} subjects in the database.", dbCount.ToString("#,##0")));
@@ -68,7 +75,7 @@ namespace migrate
         {
             string rootPath = ConfigurationManager.AppSettings["electionSource"];
 
-            var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var connStr = GetDbConnectionString();
             var dbGallery = new SqlTrackedImageGallery(connStr);
             var targetSet = new SqlBackedElectionSet(connStr);
 
@@ -81,7 +88,7 @@ namespace migrate
 
         public static bool MigrateCategories()
         {
-            var connStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var connStr = GetDbConnectionString();
             var helper = new CategoryMigrationHelper(connStr);
             var rootDir = ConfigurationManager.AppSettings["galleryRoot"];
 
