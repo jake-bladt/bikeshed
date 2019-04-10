@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
+using System.Text;
 
 using Gallery.Entities.Elections;
 using Gallery.Entities.ImageGallery;
@@ -36,6 +38,13 @@ namespace migrate
                 if (!electionResult) return ExitOn("Election migration failed.");
             }
 
+            if(parts == "rcate")
+            {
+                Console.WriteLine("Restoring categories.");
+                var restoreResult = ReverseMigrateSubjectCategories();
+                if (!restoreResult) return ExitOn("Category restoration failed.");
+            }
+
             return ExitOn("Migration complete.");
         }
 
@@ -48,8 +57,9 @@ namespace migrate
 
         private static string GetDbConnectionString()
         {
-            return Environment.GetEnvironmentVariable("GALLERY_CONSTR") ?? 
-                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ? 
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
         }
 
         public static bool MigrateSubjects()
@@ -100,10 +110,94 @@ namespace migrate
             return true;
         }
 
-        public static bool MigrateSubjectSets()
+        private class SubjectCategories
         {
+            public string SubjectName { get; set; }
+            public List<String> Categories { get; private set; }
 
-            return false;
+            public SubjectCategories()
+            {
+                Categories = new List<String>();
+            }
+
+            public static SubjectCategories FromLine(string line)
+            {
+                var lineAsChars = line.ToCharArray();
+                const char DQUOTE = '"';
+                const char SPACE = ' ';
+                var token = new StringBuilder();
+                var tokenNum = 0;
+                var inQuotedString = false;
+                var ret = new SubjectCategories();
+
+                for(int i = 0; i < lineAsChars.Length; i++)
+                {
+                    var c = lineAsChars[i];
+
+                    if (DQUOTE == c)
+                    {
+                        inQuotedString = !inQuotedString;
+                    }
+                    else if (SPACE == c)
+                    {
+                        if(inQuotedString)
+                        {
+                            token.Append(SPACE);
+                        }
+                        else
+                        {
+                            var val = token.ToString();
+                            token = new StringBuilder();
+
+                            if(0 == tokenNum)
+                            {
+                                ret.SubjectName = val;
+                            }
+                            else
+                            {
+                                ret.Categories.Add(val);
+                            }
+                            tokenNum++;
+                        }
+                    }
+                    else
+                    {
+                        token.Append(c);
+                    }
+                }
+
+                return ret;
+            }
+            
+        }
+
+        public static bool ReverseMigrateSubjectCategories()
+        {
+            var connStr = GetDbConnectionString();
+            var rootDir = ConfigurationManager.AppSettings["galleryRoot"];
+            var inputPath = Path.Combine(rootDir, "cates.txt");
+
+            var lines = File.ReadAllLines(inputPath);
+            var subjectCategories = new List<SubjectCategories>();
+            for(int i = 0; i < lines.Length; i++)
+            {
+                var line = lines[i];
+                if(line.Length > 0)
+                {
+                    var sc = SubjectCategories.FromLine(line);
+                    subjectCategories.Add(sc);
+                }
+            }
+
+            subjectCategories.ForEach(sc =>
+            {
+                Console.WriteLine(sc.SubjectName);
+                Console.WriteLine("=============");
+                sc.Categories.ForEach(c => Console.WriteLine(c));
+                Console.WriteLine();
+            });
+
+            return true;
         }
     }
 }
