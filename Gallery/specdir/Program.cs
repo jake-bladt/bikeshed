@@ -12,7 +12,7 @@ namespace specdir
         static void Main(string[] args)
         {
             string setName = args[0];
-            string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string cn = GetDbConnectionString();
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
             string specialRoot = Path.Combine(ConfigurationManager.AppSettings["electionsRoot"], "special");
 
@@ -28,5 +28,13 @@ namespace specdir
             Console.WriteLine(msg);
             Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }

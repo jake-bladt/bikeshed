@@ -14,7 +14,7 @@ namespace scrub
             {
                 var galleryPath = ConfigurationManager.AppSettings["GallerySource"];
                 var gallery = new FileSystemImageGallery(galleryPath);
-                var dbCnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+                var dbCnStr = GetDbConnectionString();
 
                 var dbUpdater = new SqlSubjectWriter(dbCnStr);
                 var scrubber = new Scrubber(gallery, dbUpdater);
@@ -37,5 +37,13 @@ namespace scrub
             }
             // Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }

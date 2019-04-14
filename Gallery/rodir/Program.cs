@@ -18,7 +18,7 @@ namespace rodir
             int contestantCount = Int32.Parse(args[2]);
             var sourceList = args.Length > 3 ? args[3] : String.Empty;
 
-            string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string cn = GetDbConnectionString();
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
             string roRoot = Path.Combine(ConfigurationManager.AppSettings["electionsRoot"], "runoff");
 
@@ -79,5 +79,13 @@ namespace rodir
         {
             return String.Format("{0}-{1}", setName, ordinal.ToString("000"));
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }

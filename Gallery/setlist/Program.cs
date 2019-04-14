@@ -12,7 +12,7 @@ namespace setlist
         static void Main(string[] args)
         {
             var firstArg = args[0].ToLower();
-            string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string cnStr = GetDbConnectionString();
 
             if (firstArg == "list" || firstArg == "l")
             {
@@ -60,5 +60,13 @@ namespace setlist
 
             Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }
