@@ -10,7 +10,7 @@ namespace cate
     {
         static void Main(string[] args)
         {
-            var cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var cnStr = GetDbConnectionString();
             var repo = new SubjectCategoryRepository(cnStr);
             var parsed = new CommandLineParser(args);
 
@@ -37,5 +37,13 @@ namespace cate
 
             // Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }
