@@ -16,7 +16,7 @@ namespace slideshow
             string setName = args[0];
             string showName = args[1];
             Int32 imageCount = Int32.Parse(args[2]);
-            string cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string cnStr = GetDbConnectionString();
             string subjectRoot = ConfigurationManager.AppSettings["subjectLocation"];
             string slideshowRoot = ConfigurationManager.AppSettings["slideshowLocation"];
 
@@ -51,5 +51,13 @@ namespace slideshow
             Console.ReadLine();
 
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }

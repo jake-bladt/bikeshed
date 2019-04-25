@@ -9,14 +9,20 @@ namespace annual
 {
     class Program
     {
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
         static void Main(string[] args)
         {
             if(args.Length == 2)
             {
                 var year = args[0];
                 var path = args[1];
-                var subjects = GetYearDisplayNames(year, 
-                    ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString);
+                var subjects = GetYearDisplayNames(year, GetDbConnectionString());
                 if(CreateContest(subjects, ConfigurationManager.AppSettings["yearbookSource"], path))
                 {
                     Console.WriteLine("Contest created.");
@@ -26,6 +32,10 @@ namespace annual
                 }
 
                 Console.ReadLine();
+            }
+            else if(args.Length == 1 && args[0] == "restore")
+            {
+
             }
             else
             {

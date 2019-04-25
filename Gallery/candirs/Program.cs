@@ -11,7 +11,7 @@ namespace candirs
         static void Main(string[] args)
         {
             string rootPath = args[0];
-            string cn = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            string cn = GetDbConnectionString();
             string poolRoot = ConfigurationManager.AppSettings["yearbookLocation"];
             
             var gallery = new SqlTrackedImageGallery(cn);
@@ -41,5 +41,13 @@ namespace candirs
 
             Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }

@@ -14,7 +14,7 @@ namespace sneakers
             if(1 == args.Length)
             {
                 var path = args[0];
-                var subjects = GetSneakers(ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString);
+                var subjects = GetSneakers(GetDbConnectionString());
                 if (CreateContest(subjects, ConfigurationManager.AppSettings["yearbookSource"], path))
                 {
                     Console.WriteLine("Contest created.");
@@ -63,6 +63,13 @@ namespace sneakers
             });
 
             return true;
+        }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
         }
 
     }

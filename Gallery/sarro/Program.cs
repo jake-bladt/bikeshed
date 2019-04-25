@@ -15,7 +15,7 @@ namespace sarro
             var targetCount = args.Length > 1 ? Int32.Parse(args[1]) : 18;
             var yearbookHome = ConfigurationManager.AppSettings["yearbookLocation"];
 
-            var cnStr = ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString;
+            var cnStr = GetDbConnectionString();
             var chooser = new SuperannuatedRookieChooser(cnStr);
             var sars = chooser.GetCandidates();
             Console.WriteLine($"{sars.Count} SARs discovered.");
@@ -44,5 +44,13 @@ namespace sarro
             Console.WriteLine("Operation complete.");
             Console.ReadLine();
         }
+
+        private static string GetDbConnectionString()
+        {
+            var env = Environment.GetEnvironmentVariable("GALLERY_CONSTR");
+            return String.IsNullOrEmpty(env) ?
+                ConfigurationManager.ConnectionStrings["galleryDb"].ConnectionString : env;
+        }
+
     }
 }
