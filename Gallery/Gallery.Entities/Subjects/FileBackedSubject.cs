@@ -50,7 +50,12 @@ namespace Gallery.Entities.Subjects
                 {
                     _files = new Dictionary<string, FileInfo>();
                     var di = new DirectoryInfo(DirectoryPath);
-                    var arr = di.GetFiles("*.jp*g", SearchOption.AllDirectories);
+                    var ar1 = di.GetFiles("*.jp*g", SearchOption.AllDirectories);
+                    var ar2 = di.GetFiles("*.webp", SearchOption.AllDirectories);
+                    var arr = new FileInfo[ar1.Length + ar2.Length];
+                    if (ar1.Length > 0) Array.Copy(ar1, arr, ar1.Length);
+                    if (ar2.Length > 0) Array.Copy(ar2, 0, arr, ar1.Length, ar2.Length);
+
                     arr.ToList().ForEach(fi => _files[fi.FullName] = fi);
                 }
                 return _files;
