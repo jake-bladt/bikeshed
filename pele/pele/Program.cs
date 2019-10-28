@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text.RegularExpressions;
 
 namespace pele
 {
     class Program
     {
-        public static string Path { get; set; }
+        public static string TargetPath { get; set; }
 
         public static void Usage()
         {
             Console.WriteLine("Usage: pele <directory-to-watch>");
         }
 
+        public static void PlayChime()
+        {
+            var player = new SoundPlayer();
+            player.SoundLocation = Path.Combine(Environment.CurrentDirectory, "chime.wav");
+            player.Play();
+        }
+
         public static void ScanElection(object sender, FileSystemEventArgs e)
         {
             Console.WriteLine($"Change in {e.Name}.");
 
-            var di = new DirectoryInfo(Path);
+            var di = new DirectoryInfo(TargetPath);
             var files = di.GetFiles("*.jpg");
             var totalFileCount = files.Length;
             Console.WriteLine($"{totalFileCount} files.");
@@ -63,6 +71,7 @@ namespace pele
 
                     if(errList.ToArray().Length > 0)
                     {
+                        PlayChime();
                         errList.ForEach(e => Console.WriteLine(e));
                     }
 
@@ -80,9 +89,9 @@ namespace pele
                 return;
             }
 
-            Path = args[0];
-            Console.WriteLine($"Watching {Path}.");
-            var watcher = new FileSystemWatcher(Path);
+            TargetPath = args[0];
+            Console.WriteLine($"Watching {TargetPath}.");
+            var watcher = new FileSystemWatcher(TargetPath);
             watcher.Created += ScanElection;
             watcher.Deleted += ScanElection;
             watcher.Renamed += ScanElection;
