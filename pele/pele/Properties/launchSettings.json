@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "pele": {
+      "commandName": "Project",
+      "commandLineArgs": "H:\\shared_root\\jake\\bulk\\regal\\bins\\cast\\elections\\special\\2019-All"
+    }
+  }
+}
