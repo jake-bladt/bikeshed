@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Media;
+using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace pele
@@ -19,7 +21,8 @@ namespace pele
         public static void PlayChime()
         {
             var player = new SoundPlayer();
-            player.SoundLocation = Path.Combine(Environment.CurrentDirectory, "chime.wav");
+
+            player.SoundLocation = ChimeLocation;
             player.Play();
         }
 
@@ -81,6 +84,8 @@ namespace pele
             Console.WriteLine();
         }
 
+        public static string ChimeLocation { get; set;  }
+
         static void Main(string[] args)
         {
             if(args.Length < 1)
@@ -88,6 +93,15 @@ namespace pele
                 Usage();
                 return;
             }
+
+            var currDirParts = Assembly.GetExecutingAssembly().Location.Split(Path.DirectorySeparatorChar);
+            var currDirBuilder = new StringBuilder();
+            for(int i = 0; i < currDirParts.Length - 1; i++)
+            {
+                currDirBuilder.Append(currDirParts[i]);
+                currDirBuilder.Append(Path.DirectorySeparatorChar);
+            }
+            ChimeLocation = Path.Combine(currDirBuilder.ToString(), "chime.wav");
 
             TargetPath = args[0];
             Console.WriteLine($"Watching {TargetPath}.");
