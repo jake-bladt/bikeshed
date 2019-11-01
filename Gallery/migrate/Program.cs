@@ -21,7 +21,7 @@ namespace migrate
 
             Policy.
                 Handle<SqlException>()
-                .Retry(3);
+                .WaitAndRetry(5, t => TimeSpan.FromSeconds(t ^ 2));
 
             var parts = args.Length > 0 ? args[0] : "*";
 
