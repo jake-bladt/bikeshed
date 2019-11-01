@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 
@@ -9,12 +10,18 @@ using Gallery.Entities.ImageGallery;
 using Gallery.Entities.Taxonomy;
 using Gallery.Migration;
 
+using Polly;
+
 namespace migrate
 {
     class Program
     {
         static int Main(string[] args)
         {
+
+            Policy.
+                Handle<SqlException>()
+                .WaitAndRetry(5, t => TimeSpan.FromSeconds(t ^ 2));
 
             var parts = args.Length > 0 ? args[0] : "*";
 
