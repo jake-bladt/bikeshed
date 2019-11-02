@@ -7,6 +7,7 @@
         public string SubjectName { get; set; }
         public int SubjectId { get; set; }
         public int OrdinalRank { get; set; }
+        public int PointValue { get; set; }
 
     }
 }

@@ -31,7 +31,8 @@ namespace Gallery.Entities.Elections
                         ElectionName = rdr["ElectionName"].ToString(),
                         SubjectId = (int)rdr["SubjectId"],
                         SubjectName = rdr["SubjectName"].ToString(),
-                        OrdinalRank = (int)rdr["OrdinalRank"]
+                        OrdinalRank = (int)rdr["OrdinalRank"],
+                        PointValue = (int)rdr["PointValue"]
                     };
                     ret.Add(singleResult);
                 }
