@@ -8,6 +8,8 @@ namespace Gallery.Entities.Elections
 {
     public class ElectionResultSet : List<SingleElectionResult>
     {
+        public List<string> ParseErrors { get; protected set; } = new List<string>();
+
         public bool Has(SingleElectionResult toMatch)
         {
             return this.Any<SingleElectionResult>(r =>

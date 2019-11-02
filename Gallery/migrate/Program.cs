@@ -92,8 +92,12 @@ namespace migrate
         public static bool MigrateElections()
         {
             string rootPath = ConfigurationManager.AppSettings["electionSource"];
-
             var connStr = GetDbConnectionString();
+
+            var sqlElectionResultSetFactory = new SqlBackedElectionResultSetFacotry(connStr);
+
+
+
             var dbGallery = new SqlTrackedImageGallery(connStr);
             var targetSet = new SqlBackedElectionSet(connStr);
 
@@ -101,7 +105,7 @@ namespace migrate
             if (!helper.MigrateHistory(rootPath)) return false;
             var specs = helper.MigrateSpecials(rootPath);
             var ret = helper.MigrateRunoffs(rootPath) && specs;
-            return ret;
+            return true;
         }
 
         public static bool MigrateCategories()
