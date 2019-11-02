@@ -52,11 +52,15 @@
     <Compile Include="Candidates\WalkInCandidateChooser.cs" />
     <Compile Include="ElectionListing.cs" />
     <Compile Include="Elections\Election.cs" />
+    <Compile Include="Elections\ElectionResultSet.cs" />
     <Compile Include="Elections\IElection.cs" />
     <Compile Include="Elections\IElectionListing.cs" />
     <Compile Include="Elections\IElectionReader.cs" />
+    <Compile Include="Elections\IElectionResultSetFactory.cs" />
     <Compile Include="Elections\IElectionSet.cs" />
+    <Compile Include="Elections\SingleElectionResult.cs" />
     <Compile Include="Elections\SqlBackedElection.cs" />
+    <Compile Include="Elections\SqlBackedElectionResultSetFacotry.cs" />
     <Compile Include="Elections\SqlBackedElectionSet.cs" />
     <Compile Include="Candidates\ICandidateChooser.cs" />
     <Compile Include="Candidates\ICandidatePool.cs" />

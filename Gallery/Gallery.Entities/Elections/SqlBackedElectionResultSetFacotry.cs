@@ -27,7 +27,11 @@ namespace Gallery.Entities.Elections
                 {
                     var singleResult = new SingleElectionResult
                     {
-
+                        ElectionId = (int)rdr["ElectionId"],
+                        ElectionName = rdr["ElectionName"].ToString(),
+                        SubjectId = (int)rdr["SubjectId"],
+                        SubjectName = rdr["SubjectName"].ToString(),
+                        OrdinalRank = (int)rdr["OrdinalRank"]
                     };
                     ret.Add(singleResult);
                 }

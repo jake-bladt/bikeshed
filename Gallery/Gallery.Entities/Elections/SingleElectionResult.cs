@@ -6,7 +6,7 @@
         public int ElectionId { get; set; }
         public string SubjectName { get; set; }
         public int SubjectId { get; set; }
-        public int OrdinalPosition { get; set; }
+        public int OrdinalRank { get; set; }
 
     }
 }
