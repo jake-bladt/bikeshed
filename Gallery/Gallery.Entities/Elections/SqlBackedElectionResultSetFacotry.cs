@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Sql;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace Gallery.Entities.Elections
 {
@@ -15,7 +16,23 @@ namespace Gallery.Entities.Elections
 
         public ElectionResultSet GetResultSet()
         {
-            throw new NotImplementedException();
+
+            var ret = new ElectionResultSet();
+            using(var cn = new SqlConnection(_connectionString))
+            {
+                cn.Open();
+                var cmd = new SqlCommand("getAllElectionWinners", cn) { CommandType = CommandType.StoredProcedure };
+                var rdr = cmd.ExecuteReader();
+                while(rdr.Read())
+                {
+                    var singleResult = new SingleElectionResult
+                    {
+
+                    };
+                    ret.Add(singleResult);
+                }
+            }
+            return ret;
         }
     }
 }
