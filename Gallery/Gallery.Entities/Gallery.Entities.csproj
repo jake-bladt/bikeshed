@@ -53,6 +53,7 @@
     <Compile Include="ElectionListing.cs" />
     <Compile Include="Elections\Election.cs" />
     <Compile Include="Elections\ElectionResultSet.cs" />
+    <Compile Include="Elections\FileSystemElectionResultSetFactory.cs" />
     <Compile Include="Elections\IElection.cs" />
     <Compile Include="Elections\IElectionListing.cs" />
     <Compile Include="Elections\IElectionReader.cs" />
