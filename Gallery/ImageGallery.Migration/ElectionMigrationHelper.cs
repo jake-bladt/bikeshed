@@ -14,6 +14,16 @@ namespace Gallery.Migration
 {
     public class ElectionMigrationHelper
     {
+        public class MigrationResult
+        {
+            public bool Success { get; set; }
+
+            public MigrationResult(bool success)
+            {
+                Success = success;
+            }
+        }
+
         public IImageGallery Gallery { get; protected set; }
         public IElectionSet Target { get; protected set; }
 
@@ -22,6 +32,13 @@ namespace Gallery.Migration
             Gallery = gallery;
             Target = target;
         }
+
+        public List<SingleElectionResult> GetDeltas(ElectionResultSet setFrom, ElectionResultSet setTo)
+        {
+            return setFrom.Where(r => !setTo.Has(r)).ToList();
+        }
+
+
 
         public bool MigrateDirectoryToDB(string dirPath, string electionName, DateTime eventDate, ElectionType eventType)
         {
