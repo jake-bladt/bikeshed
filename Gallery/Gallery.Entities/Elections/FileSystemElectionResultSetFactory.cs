@@ -104,6 +104,10 @@ namespace Gallery.Entities.Elections
                     var electionName = BankElectionName(di.Name, electionDate, kvp.Key);
                     return res && GetElectionResults(di, electionName, electionDate, resultSet);
                 }
+                else
+                {
+                    return true; // Historic months don't have all election types
+                }
             });
         }
 
