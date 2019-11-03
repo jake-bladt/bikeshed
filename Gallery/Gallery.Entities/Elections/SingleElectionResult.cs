@@ -1,4 +1,6 @@
-﻿namespace Gallery.Entities.Elections
+﻿using System;
+
+namespace Gallery.Entities.Elections
 {
     public class SingleElectionResult
     {
@@ -8,6 +10,6 @@
         public int SubjectId { get; set; }
         public int OrdinalRank { get; set; }
         public int PointValue { get; set; }
-
+        public DateTime EventDate { get; set; }
     }
 }
