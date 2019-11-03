@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
-using Gallery.Entities.ImageGallery;
 using Gallery.Entities.Subjects;
-using Gallery.Entities.Utilities;
 
 namespace Gallery.Entities.Elections
 {

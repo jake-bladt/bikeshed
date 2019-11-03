@@ -52,7 +52,7 @@ namespace Gallery.Entities.Elections
                     {
                         var electionDate = ro.CreationTime;
                         var electionName = RunoffElectionName(ro.Name);
-                        GetElectionResults(ro, electionName, electionDate, ret);
+                        GetElectionResults(ro, electionName, electionDate, ElectionType.RunOff, ret);
                     });
                 }
                 else
@@ -69,7 +69,7 @@ namespace Gallery.Entities.Elections
                     {
                         var electionDate = special.CreationTime;
                         var electionName = SpecialElectionName(special.Name);
-                        GetElectionResults(special, electionName, electionDate, ret);
+                        GetElectionResults(special, electionName, electionDate, ElectionType.Special, ret);
                     });
                 }
                 else
@@ -102,7 +102,7 @@ namespace Gallery.Entities.Elections
                     var di = new DirectoryInfo(bankPath);
                     var electionDate = DateFromDirectoryPattern(monthDir.Name);
                     var electionName = BankElectionName(di.Name, electionDate, kvp.Key);
-                    return res && GetElectionResults(di, electionName, electionDate, resultSet);
+                    return res && GetElectionResults(di, electionName, electionDate, kvp.Value, resultSet);
                 }
                 else
                 {
@@ -111,7 +111,12 @@ namespace Gallery.Entities.Elections
             });
         }
 
-        protected SingleElectionResult ResultFromFile(string electionName, DateTime electionDate, FileInfo fi, int subjectCount)
+        protected SingleElectionResult ResultFromFile(
+            string electionName, 
+            DateTime electionDate, 
+            FileInfo fi, 
+            int subjectCount,
+            ElectionType electionType)
         {
             string stripped = fi.Name.Replace(".jpg", String.Empty);
             var parts = stripped.Split('-');
@@ -130,6 +135,7 @@ namespace Gallery.Entities.Elections
             return new SingleElectionResult
             {
                 ElectionName = electionName,
+                EventType = electionType,
                 SubjectName = subjectName.ToString(),
                 EventDate = electionDate,
                 OrdinalRank = int.TryParse(parts[0], out rank) ? rank : -1,
@@ -137,10 +143,16 @@ namespace Gallery.Entities.Elections
             };
         }
 
-        protected bool GetElectionResults(DirectoryInfo di, string electionName, DateTime electionDate, ElectionResultSet resultSet)
+        protected bool GetElectionResults(
+            DirectoryInfo di, 
+            string electionName, 
+            DateTime electionDate,
+            ElectionType electionType,
+            ElectionResultSet resultSet)
         {
             var images = di.GetFiles("*.jpg");
-            var parsedResults = images.ToList().Select(fi => ResultFromFile(electionName, electionDate, fi, images.Length));
+            var parsedResults = images.ToList().Select(fi => 
+                ResultFromFile(electionName, electionDate, fi, images.Length, electionType));
 
             if(parsedResults.Any(r => r.OrdinalRank == -1))
             {

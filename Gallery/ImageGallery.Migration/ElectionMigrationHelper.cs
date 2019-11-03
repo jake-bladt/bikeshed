@@ -28,8 +28,8 @@ namespace Gallery.Migration
 
         public bool ApplyDeltas(List<SingleElectionResult> deltas)
         {
-            var effectedElectionNames = deltas.GroupBy(d => d.ElectionName).Select(grp => grp.First().ElectionName);
-            effectedElectionNames.ToList().ForEach(Console.WriteLine);
+            var effectedElectionWinners = deltas.GroupBy(d => d.ElectionName).Select(grp => grp.First(w => w.OrdinalRank == 1));
+            effectedElectionWinners.ToList().ForEach(w => Console.WriteLine(w.ElectionName));
             return true;
         }
 

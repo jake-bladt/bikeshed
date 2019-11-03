@@ -11,5 +11,6 @@ namespace Gallery.Entities.Elections
         public int OrdinalRank { get; set; }
         public int PointValue { get; set; }
         public DateTime EventDate { get; set; }
+        public ElectionType EventType { get; set; }
     }
 }
