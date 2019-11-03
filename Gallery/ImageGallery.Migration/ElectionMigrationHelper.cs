@@ -14,11 +14,11 @@ namespace Gallery.Migration
 {
     public class ElectionMigrationHelper
     {
-        public IImageGallery Gallery { get; protected set; }
+        public IElectionWriter Writer { get; protected set; }
 
-        public ElectionMigrationHelper(IImageGallery gallery)
+        public ElectionMigrationHelper(IElectionWriter writer)
         {
-            Gallery = gallery;
+            Writer = writer;
         }
 
         public List<SingleElectionResult> GetDeltas(ElectionResultSet setFrom, ElectionResultSet setTo)
@@ -28,8 +28,13 @@ namespace Gallery.Migration
 
         public bool ApplyDeltas(List<SingleElectionResult> deltas)
         {
-            var effectedElectionWinners = deltas.GroupBy(d => d.ElectionName).Select(grp => grp.First(w => w.OrdinalRank == 1));
-            effectedElectionWinners.ToList().ForEach(w => Console.WriteLine(w.ElectionName));
+            var effectedElectionTops = deltas.GroupBy(d => d.ElectionName).Select(grp => grp.First(w => w.OrdinalRank == 1));
+            effectedElectionTops.ToList().ForEach(e =>
+            {
+                var electionResults = deltas.Where(d => d.ElectionName == e.ElectionName).ToList();
+                var electionId = Writer.Upsert(e);
+                Writer.AddWiners(electionId, electionResults);
+            });
             return true;
         }
 

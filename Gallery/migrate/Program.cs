@@ -109,7 +109,8 @@ namespace migrate
             Console.WriteLine($"{fsParseErrorCount} parse errors found in file system.");
             fsSet.ParseErrors.ForEach(Console.WriteLine);
 
-            var helper = new ElectionMigrationHelper(dbGallery);
+            var electionWriter = new SqlBackedElectionWriter(dbGallery, connStr);
+            var helper = new ElectionMigrationHelper(electionWriter);
             var deltas = helper.GetDeltas(fsSet, sqlSet);
             var deltaCount = deltas.Count.ToString("#,##0");
             Console.WriteLine($"{deltaCount} deltas found.");

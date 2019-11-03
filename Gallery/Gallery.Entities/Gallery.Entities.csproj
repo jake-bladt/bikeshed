@@ -59,12 +59,14 @@
     <Compile Include="Elections\IElectionReader.cs" />
     <Compile Include="Elections\IElectionResultSetFactory.cs" />
     <Compile Include="Elections\IElectionSet.cs" />
+    <Compile Include="Elections\IElectionWriter.cs" />
     <Compile Include="Elections\SingleElectionResult.cs" />
     <Compile Include="Elections\SqlBackedElection.cs" />
     <Compile Include="Elections\SqlBackedElectionResultSetFacotry.cs" />
     <Compile Include="Elections\SqlBackedElectionSet.cs" />
     <Compile Include="Candidates\ICandidateChooser.cs" />
     <Compile Include="Candidates\ICandidatePool.cs" />
+    <Compile Include="Elections\SqlBackedElectionWriter.cs" />
     <Compile Include="Elections\SqlElectionReader.cs" />
     <Compile Include="ImageGallery\FileSystemImageGallery.cs" />
     <Compile Include="ImageGallery\IImageGallery.cs" />
