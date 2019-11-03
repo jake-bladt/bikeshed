@@ -104,11 +104,6 @@ namespace Gallery.Entities.Elections
                     var electionName = BankElectionName(di.Name, electionDate, kvp.Key);
                     return res && GetElectionResults(di, electionName, electionDate, resultSet);
                 }
-                else
-                {
-                    resultSet.ParseErrors.Add($"Missing expected directory {bankPath}.");
-                    return res && true;
-                }
             });
         }
 
