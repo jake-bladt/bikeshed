@@ -51,16 +51,23 @@ namespace Gallery.Entities.Elections
             }
             else
             {
-                var cn2 = new SqlConnection(_ConnectionString);
-                cn2.Open();
-
-                var cmd2 = new SqlCommand("addElection", cn) { CommandType = CommandType.StoredProcedure };
-                cmd2.Parameters.Add(new SqlParameter("name", exemplar.ElectionName));
-                cmd2.Parameters.Add(new SqlParameter("date", exemplar.EventDate));
-                cmd2.Parameters.Add(new SqlParameter("winnerCount", exemplar.PointValue));
-                cmd2.Parameters.Add(new SqlParameter("typeId", (int)exemplar.EventType));
-                return (int)cmd.ExecuteScalar();
+                return CreateElection(exemplar);
             }
         }
+
+        public int CreateElection(SingleElectionResult exemplar)
+        {
+            var cn2 = new SqlConnection(_ConnectionString);
+            cn2.Open();
+
+            var cmd2 = new SqlCommand("addElection", cn2) { CommandType = CommandType.StoredProcedure };
+            cmd2.Parameters.Add(new SqlParameter("name", exemplar.ElectionName));
+            cmd2.Parameters.Add(new SqlParameter("date", exemplar.EventDate));
+            cmd2.Parameters.Add(new SqlParameter("winnerCount", exemplar.PointValue));
+            cmd2.Parameters.Add(new SqlParameter("typeId", (int)exemplar.EventType));
+            var id = cmd2.ExecuteScalar();
+            return Int32.Parse(id.ToString());
+        }
+
     }
 }
