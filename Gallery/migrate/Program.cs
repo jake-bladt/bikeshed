@@ -92,16 +92,30 @@ namespace migrate
         public static bool MigrateElections()
         {
             string rootPath = ConfigurationManager.AppSettings["electionSource"];
-
             var connStr = GetDbConnectionString();
-            var dbGallery = new SqlTrackedImageGallery(connStr);
-            var targetSet = new SqlBackedElectionSet(connStr);
 
-            var helper = new ElectionMigrationHelper(dbGallery, targetSet);
-            if (!helper.MigrateHistory(rootPath)) return false;
-            var specs = helper.MigrateSpecials(rootPath);
-            var ret = helper.MigrateRunoffs(rootPath) && specs;
-            return ret;
+            var sqlElectionResultSetFactory = new SqlBackedElectionResultSetFacotry(connStr);
+            var dbGallery = new SqlTrackedImageGallery(connStr);
+            var fsElectionResultSetFactory = new FileSystemElectionResultSetFactory(rootPath, dbGallery);
+
+            var sqlSet = sqlElectionResultSetFactory.GetResultSet();
+            var sqlCount = sqlSet.Count.ToString("#,##0");
+            Console.WriteLine($"{sqlCount} results in DB.");
+
+            var fsSet = fsElectionResultSetFactory.GetResultSet();
+            var fsCount = fsSet.Count.ToString("#,##0");
+            Console.WriteLine($"{fsCount} results in file system.");
+            var fsParseErrorCount = fsSet.ParseErrors.Count.ToString("#,##0");
+            Console.WriteLine($"{fsParseErrorCount} parse errors found in file system.");
+            fsSet.ParseErrors.ForEach(Console.WriteLine);
+
+            var electionWriter = new SqlBackedElectionWriter(dbGallery, connStr);
+            var helper = new ElectionMigrationHelper(electionWriter);
+            var deltas = helper.GetDeltas(fsSet, sqlSet);
+            var deltaCount = deltas.Count.ToString("#,##0");
+            Console.WriteLine($"{deltaCount} deltas found.");
+
+            return helper.ApplyDeltas(deltas);
         }
 
         public static bool MigrateCategories()

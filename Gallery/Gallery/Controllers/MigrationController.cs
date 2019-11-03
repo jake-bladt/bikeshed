@@ -22,11 +22,10 @@ namespace Gallery.Controllers
             var gallery = new SqlTrackedImageGallery(galleryDbConn);
             var electionSet = new SqlBackedElectionSet(galleryDbConn);
 
-            var helper = new ElectionMigrationHelper(gallery, electionSet);
+            var helper = new ElectionMigrationHelper(gallery);
             var date = eventDate ?? DateTime.Now;
-            bool result = helper.MigrateDirectoryToDB(dirPath, electionName, date, ElectionType.RunOff);
 
-            return Json(new { Success = result });
+            return View();
         }
 	}
 }
