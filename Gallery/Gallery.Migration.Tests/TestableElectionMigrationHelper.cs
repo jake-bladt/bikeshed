@@ -19,16 +19,9 @@ namespace Gallery.Migration.Tests
 
     public class TestableElectionMigrationHelper : ElectionMigrationHelper
     {
-        public TestableElectionMigrationHelper() : base(new FileSystemImageGallery(@"C:\"), new EmptyMockElectionSet())
+        public TestableElectionMigrationHelper() : base(new FileSystemImageGallery(@"C:\"))
         {
 
-        }
-
-        [Fact]
-        public void TestSpecialElectionTitleDoesntTruncate()
-        {
-            var title = this.SpecialElectionNameFromDirectoryName("2017Rookies");
-            title.ShouldBe("2017 Rookies");
         }
     }
 }

@@ -227,7 +227,7 @@ namespace Gallery.Entities.Elections
 
         protected string BankElectionName(String monthPattern, DateTime electionDate, String electionTypeName)
         {
-            return $"{electionDate.ToString("MMMM yyyy")} {electionTypeName}";
+            return $"{electionDate.ToString("MMMM yyyy")} {electionTypeName} group";
         }
 
         protected DateTime DateFromDirectoryPattern(string pattern)

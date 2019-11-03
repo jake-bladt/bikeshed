@@ -110,11 +110,11 @@ namespace migrate
             fsSet.ParseErrors.ForEach(Console.WriteLine);
 
             var helper = new ElectionMigrationHelper(dbGallery);
-            var deltas = helper.GetDeltas(sqlSet, fsSet);
+            var deltas = helper.GetDeltas(fsSet, sqlSet);
             var deltaCount = deltas.Count.ToString("#,##0");
             Console.WriteLine($"{deltaCount} deltas found.");
 
-            return true;
+            return helper.ApplyDeltas(deltas);
         }
 
         public static bool MigrateCategories()
