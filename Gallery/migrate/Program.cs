@@ -95,16 +95,25 @@ namespace migrate
             var connStr = GetDbConnectionString();
 
             var sqlElectionResultSetFactory = new SqlBackedElectionResultSetFacotry(connStr);
-
-
-
             var dbGallery = new SqlTrackedImageGallery(connStr);
-            var targetSet = new SqlBackedElectionSet(connStr);
+            var fsElectionResultSetFactory = new FileSystemElectionResultSetFactory(rootPath, dbGallery);
 
-            var helper = new ElectionMigrationHelper(dbGallery, targetSet);
-            if (!helper.MigrateHistory(rootPath)) return false;
-            var specs = helper.MigrateSpecials(rootPath);
-            var ret = helper.MigrateRunoffs(rootPath) && specs;
+            var sqlSet = sqlElectionResultSetFactory.GetResultSet();
+            var sqlCount = sqlSet.Count.ToString("#,##0");
+            Console.WriteLine($"{sqlCount} results in DB.");
+
+            var fsSet = fsElectionResultSetFactory.GetResultSet();
+            var fsCount = fsSet.Count.ToString("#,##0");
+            Console.WriteLine($"{fsCount} results in file system.");
+            var fsParseErrorCount = fsSet.ParseErrors.Count.ToString("#,##0");
+            Console.WriteLine($"{fsParseErrorCount} parse errors found in file system.");
+            fsSet.ParseErrors.ForEach(Console.WriteLine);
+
+            var helper = new ElectionMigrationHelper(dbGallery);
+            var deltas = helper.GetDeltas(sqlSet, fsSet);
+            var deltaCount = deltas.Count.ToString("#,##0");
+            Console.WriteLine($"{deltaCount} deltas found.");
+
             return true;
         }
 

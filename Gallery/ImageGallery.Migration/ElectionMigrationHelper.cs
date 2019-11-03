@@ -27,7 +27,7 @@ namespace Gallery.Migration
         public IImageGallery Gallery { get; protected set; }
         public IElectionSet Target { get; protected set; }
 
-        public ElectionMigrationHelper(IImageGallery gallery, IElectionSet target )
+        public ElectionMigrationHelper(IImageGallery gallery, IElectionSet target = null)
         {
             Gallery = gallery;
             Target = target;
