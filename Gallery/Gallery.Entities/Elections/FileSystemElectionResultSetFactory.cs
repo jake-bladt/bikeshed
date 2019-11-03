@@ -100,8 +100,8 @@ namespace Gallery.Entities.Elections
                 if(Directory.Exists(bankPath))
                 {
                     var di = new DirectoryInfo(bankPath);
-                    var electionName = BankElectionName(di.Name, kvp.Key);
                     var electionDate = DateFromDirectoryPattern(monthDir.Name);
+                    var electionName = BankElectionName(di.Name, electionDate, kvp.Key);
                     return res && GetElectionResults(di, electionName, electionDate, resultSet);
                 }
                 else
@@ -226,9 +226,8 @@ namespace Gallery.Entities.Elections
             return sb.ToString() + " #" + ordinal;
         }
 
-        protected string BankElectionName(String monthPattern, String electionTypeName)
+        protected string BankElectionName(String monthPattern, DateTime electionDate, String electionTypeName)
         {
-            var electionDate = DateFromDirectoryPattern(monthPattern);
             return $"{electionDate.ToString("MMMM yyyy")} {electionTypeName}";
         }
 

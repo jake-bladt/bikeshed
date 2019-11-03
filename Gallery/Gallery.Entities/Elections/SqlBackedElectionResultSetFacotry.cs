@@ -30,7 +30,7 @@ namespace Gallery.Entities.Elections
                         ElectionId = (int)rdr["ElectionId"],
                         ElectionName = rdr["ElectionName"].ToString(),
                         SubjectId = (int)rdr["SubjectId"],
-                        SubjectName = rdr["SubjectName"].ToString(),
+                        SubjectName = rdr["WinnerName"].ToString(),
                         OrdinalRank = (int)rdr["OrdinalRank"],
                         PointValue = (int)rdr["PointValue"]
                     };
