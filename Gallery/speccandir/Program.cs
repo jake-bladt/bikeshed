@@ -45,7 +45,7 @@ namespace speccandir
         public static List<String> GetCandidates(string categorizer)
         {
             var parts = categorizer.Split(':');
-            if (parts.Length < 1) return GetCandidatesByCategory(categorizer);
+            if (parts.Length < 2) return GetCandidatesByCategory(categorizer);
             return GetCandidatesByCategorizer(parts[1]); // Should eventually fork on parts[0] == 'sp'
         }
 
@@ -62,7 +62,7 @@ namespace speccandir
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
             {
-                ret.Add(rdr["SubjectName"].ToString());
+                ret.Add(rdr["Name"].ToString());
             }
 
             return ret;
