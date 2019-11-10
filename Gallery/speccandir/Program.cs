@@ -72,8 +72,6 @@ namespace speccandir
         {
             var ret = new List<String>();
 
-            var cn = new SqlConnection(ConnectionString);
-            cn.Open();
             var cmd = CommandFromCategorizer(categorizer);
             var rdr = cmd.ExecuteReader();
             while (rdr.Read())
@@ -87,9 +85,12 @@ namespace speccandir
         // Categorizer is in the form of getSubjectsByCategoryIntersection;@cat1name=nature;@cat2name=lightning
         public static SqlCommand CommandFromCategorizer(string categorizer)
         {
+            var cn = new SqlConnection(ConnectionString);
+            cn.Open();
+
             var parts = categorizer.Split(';');
             var cmdName = parts[0];
-            var ret = new SqlCommand(cmdName) { CommandType = CommandType.StoredProcedure };
+            var ret = new SqlCommand(cmdName, cn) { CommandType = CommandType.StoredProcedure };
             for(int i=1; i < parts.Length; i++)
             {
                 var argParts = parts[i].Split('=');
