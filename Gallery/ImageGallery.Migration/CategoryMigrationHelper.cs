@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
-
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Gallery.Migration
 {
@@ -26,25 +22,32 @@ namespace Gallery.Migration
                 cn.Open();
                 var cmd = new SqlCommand("getSubjectCategoryList", cn);
                 var rdr = cmd.ExecuteReader();
-                var exportLine = String.Empty;
+
                 var oldSubject = String.Empty;
+                StringBuilder lineBuilder = null;
+
                 while(rdr.Read())
                 {
                     var newSubject = rdr["Name"].ToString();
-                    if (newSubject != oldSubject)
-                    {
-                        exportLine = newSubject;
-                    }
                     var catName = rdr["CategoryName"].ToString();
-                    exportLine += $" \"{catName}\"";
+
+                    if(newSubject != oldSubject)
+                    {
+                        lineBuilder = new StringBuilder(newSubject);
+                    }
+
+                    lineBuilder.Append(" \"");
+                    lineBuilder.Append(catName);
+                    lineBuilder.Append("\"");
                     migrationCount++;
+
                     if (newSubject != oldSubject)
                     {
-                        callback(exportLine);
+                        callback(lineBuilder.ToString());
                     }
                     oldSubject = newSubject;
                 }
-                callback(exportLine);
+                callback(lineBuilder.ToString());
             }
             catch(Exception ex)
             {
