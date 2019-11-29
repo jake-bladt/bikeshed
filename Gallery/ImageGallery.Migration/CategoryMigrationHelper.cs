@@ -31,13 +31,16 @@ namespace Gallery.Migration
                 while(rdr.Read())
                 {
                     var newSubject = rdr["Name"].ToString();
+                    if (newSubject != oldSubject)
+                    {
+                        exportLine = newSubject;
+                    }
                     var catName = rdr["CategoryName"].ToString();
                     exportLine += $" \"{catName}\"";
                     migrationCount++;
                     if (newSubject != oldSubject)
                     {
                         callback(exportLine);
-                        exportLine = newSubject;
                     }
                     oldSubject = newSubject;
                 }
