@@ -33,19 +33,15 @@ namespace Gallery.Migration
 
                     if(newSubject != oldSubject)
                     {
+                        if(lineBuilder != null) callback(lineBuilder.ToString());
                         lineBuilder = new StringBuilder(newSubject);
+                        oldSubject = newSubject;
                     }
 
                     lineBuilder.Append(" \"");
                     lineBuilder.Append(catName);
                     lineBuilder.Append("\"");
                     migrationCount++;
-
-                    if (newSubject != oldSubject)
-                    {
-                        callback(lineBuilder.ToString());
-                    }
-                    oldSubject = newSubject;
                 }
                 callback(lineBuilder.ToString());
             }
