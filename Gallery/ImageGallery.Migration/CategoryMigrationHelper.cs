@@ -33,11 +33,8 @@ namespace Gallery.Migration
                     var newSubject = rdr["Name"].ToString();
                     var catName = rdr["CategoryName"].ToString();
                     exportLine += $" \"{catName}\"";
-                    if (newSubject == oldSubject)
-                    {
-                        migrationCount++;
-                    } 
-                    else
+                    migrationCount++;
+                    if (newSubject != oldSubject)
                     {
                         callback(exportLine);
                         exportLine = newSubject;
