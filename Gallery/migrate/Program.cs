@@ -44,6 +44,9 @@ namespace migrate
                 Console.WriteLine("Migrating elections.");
                 var electionResult = MigrateElections();
                 if (!electionResult) return ExitOn("Election migration failed.");
+
+                var historyResult = MigrateHistoricRanks();
+                if (!historyResult) return ExitOn("Historic ranks migration failed.");
             }
 
             if(parts == "rcate")
@@ -116,6 +119,22 @@ namespace migrate
             Console.WriteLine($"{deltaCount} deltas found.");
 
             return helper.ApplyDeltas(deltas);
+        }
+
+        public static bool MigrateHistoricRanks()
+        {
+            var connStr = GetDbConnectionString();
+            var helper = new HistoricRanksMigrationHelper(connStr);
+            var result = helper.UpdateHistoricRanks();
+            if(result.Success)
+            {
+                Console.WriteLine($"Completed history migration with {result.EntryCount:0,00#} historic rank entries.");
+            }
+            else
+            {
+                Console.WriteLine($"Failed history migration. Error: {result.ExceptionReported}.");
+            }
+            return result.Success;
         }
 
         public static bool MigrateCategories()
