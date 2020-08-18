@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
+
+using GroupDocs.Conversion;
+using GroupDocs.Conversion.FileTypes;
+using GroupDocs.Conversion.Options.Convert;
 
 using Gallery.Entities.Subjects;
 
@@ -109,7 +113,23 @@ namespace Gallery.Entities.ImageGallery
 
             for (int i = 0; i < badArr.Length; i++)
             {
-                File.Move(badArr[i], goodArr[i]);
+                var  srcPath = badArr[i];
+                if(badArr[i].EndsWith(".webp"))
+                {
+                    using(var converter = new Converter(badArr[i]))
+                    {
+                        var options = new ImageConvertOptions { Format = ImageFileType.Jpg };
+                        var nameBase = Guid.NewGuid().ToString();
+                        var newName = $"{nameBase}.jpg";
+                        var fi = new FileInfo(badArr[i]);
+                        srcPath = badArr[i].Replace(fi.Name, newName);
+                        Trace.WriteLine($"{badArr[i]} -> {srcPath}");
+                        converter.Convert(srcPath, options);
+                        fi.Delete();
+                    }
+                }
+
+                File.Move(srcPath, goodArr[i]);
             }
 
             return ret;
