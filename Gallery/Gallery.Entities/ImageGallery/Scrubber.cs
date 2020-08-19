@@ -23,8 +23,10 @@ namespace Gallery.Entities.ImageGallery
             _writer = writer;
         }
 
-        public List<String> Scrub()
+        public List<String> Scrub(Action<String> messageCallback = null)
         {
+            if (null == messageCallback) messageCallback = Scrubber.WriteAsTrace;
+
             var ret = new List<String>();
             _gallery.Subjects.Values.ToList().ForEach(subj =>
             {
@@ -34,13 +36,15 @@ namespace Gallery.Entities.ImageGallery
             return ret;
         }
 
-        public string ScrubSubject(string subjectName)
+        public string ScrubSubject(string subjectName, Action<String> messageCallback = null)
         {
+            if (null == messageCallback) messageCallback = Scrubber.WriteAsTrace;
+
             string ret;
             try
             {
                 var subject = _gallery.Subject(subjectName);
-                int count = ScrubSubjectDirectory((FileBackedSubject)subject);
+                int count = ScrubSubjectDirectory((FileBackedSubject)subject, messageCallback);
                 return String.Format("{0} file(s) renamed.", count);
             }
             catch (Exception ex)
@@ -51,8 +55,10 @@ namespace Gallery.Entities.ImageGallery
             return ret;
         }
 
-        protected int ScrubSubjectDirectory(FileBackedSubject subject)
+        protected int ScrubSubjectDirectory(FileBackedSubject subject, Action<String> messageCallback = null)
         {
+            if (null == messageCallback) messageCallback = Scrubber.WriteAsTrace;
+
             var correctFileNames = GetCorrectFileNames(subject);
             var incorrectFileNames = new List<String>();
             subject.Files.Keys.ToList().ForEach(path =>
@@ -66,7 +72,7 @@ namespace Gallery.Entities.ImageGallery
                     incorrectFileNames.Add(path);
                 }
             });
-            int ret = RenameFiles(incorrectFileNames, correctFileNames);
+            int ret = RenameFiles(incorrectFileNames, correctFileNames, messageCallback);
             if (ret > 0 && null != _writer)
             {
                 _writer.UpdateImageCount(subject.Name, subject.Files.Count());
@@ -99,12 +105,19 @@ namespace Gallery.Entities.ImageGallery
             return ret;
         }
 
-        protected int RenameFiles(List<String> badNames, List<String> goodNames)
+        public static void WriteAsTrace(string msg)
+        {
+            Trace.WriteLine(msg);
+        }
+
+        protected int RenameFiles(List<String> badNames, List<String> goodNames, Action<String> messageCallback = null)
         {
             if (badNames.Count != goodNames.Count)
             {
                 throw new ArgumentException(String.Format("Can not rename {0} file(s) to (1) file names.", badNames.Count, goodNames.Count));
             }
+
+            if (null == messageCallback) messageCallback = Scrubber.WriteAsTrace;
 
             var ret = badNames.Count;
 
@@ -123,7 +136,7 @@ namespace Gallery.Entities.ImageGallery
                         var newName = $"{nameBase}.jpg";
                         var fi = new FileInfo(badArr[i]);
                         srcPath = badArr[i].Replace(fi.Name, newName);
-                        Trace.WriteLine($"{badArr[i]} -> {srcPath}");
+                        messageCallback.Invoke($"Temporarily converting {fi.Name} -> {newName}.");
                         converter.Convert(srcPath, options);
                         fi.Delete();
                     }
