@@ -22,7 +22,7 @@ namespace scrub
                 if (args.Length > 0)
                 {
                     string target = args[0].ToLower();
-                    var ret = scrubber.ScrubSubject(target);
+                    var ret = scrubber.ScrubSubject(target, msg => Console.WriteLine(msg));
                     Console.WriteLine(ret);
                 }
                 else
